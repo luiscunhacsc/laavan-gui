@@ -1,0 +1,19 @@
+{
+  "roundTripModels": 15,
+  "browserTablesExact": true,
+  "drawnMediation4Decimals": true,
+  "maxAbsoluteDifference": 7.175742222642612e-10,
+  "storage": {
+    "bytesExact": true,
+    "typeRestored": true,
+    "labelsRestored": true,
+    "missingCodesRestored": true,
+    "workerRestart": true
+  },
+  "history": {
+    "syntaxUndo": true,
+    "positionsUndo": true
+  },
+  "environment": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+  "source": "browser-2026-11-01T20-05-34-314Z.json"
+}

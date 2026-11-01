@@ -1,0 +1,9 @@
+# Structural model
+M ~ "a1"*X1
+M ~ "a2"*X2
+Y ~ "b"*M
+Y ~ "c1"*X1
+Y ~ "c2"*X2
+
+# Variances and covariances
+X1 ~~ X2

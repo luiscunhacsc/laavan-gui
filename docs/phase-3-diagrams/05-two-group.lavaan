@@ -1,0 +1,10 @@
+# Measurement model
+F =~ c(1, 1)*x1
+F =~ c("l2", "l2")*x2
+F =~ c("l3", "l3")*x3
+
+# Means and thresholds
+x1 ~ c("i1", "i1")*1
+x2 ~ c("i2", "i2")*1
+x3 ~ c("i3", "i3")*1
+F ~ c(0, NA)*1

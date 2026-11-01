@@ -1,0 +1,10 @@
+# Measurement model
+Factor =~ NA*"marker"*x1
+Factor =~ x2
+Factor =~ x3
+
+# Variances and covariances
+x1 ~~ x1
+x2 ~~ x2
+x3 ~~ x3
+Factor ~~ 1*Factor

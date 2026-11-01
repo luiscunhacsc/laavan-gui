@@ -1,0 +1,11 @@
+# Structural model
+M ~ NA*"a"*X
+Y ~ NA*"b"*M
+Y ~ NA*"cp"*X
+
+# Variances and covariances
+X ~~ X
+M ~~ M
+Y ~~ Y
+ind := a*b
+total := cp + ind

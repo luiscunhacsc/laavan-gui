@@ -1,0 +1,8 @@
+# Structural model
+M ~ "a"*X
+Y ~ "b"*M
+Y ~ "cp"*X
+
+# Defined parameters
+ind := a*b
+total := cp+ind

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "01-holzinger-swineford",
+    "title": "Holzinger–Swineford three-factor CFA",
+    "kind": "roundtrip",
+    "nodes": 21,
+    "rows": 24,
+    "width": 893.26,
+    "height": 1384,
+    "diagnostics": []
+  },
+  {
+    "id": "02-political-democracy",
+    "title": "PoliticalDemocracy full SEM",
+    "kind": "roundtrip",
+    "nodes": 27,
+    "rows": 34,
+    "width": 2059.3816731770835,
+    "height": 1259.1,
+    "diagnostics": []
+  },
+  {
+    "id": "03-mediation",
+    "title": "Labelled mediation",
+    "kind": "roundtrip",
+    "nodes": 5,
+    "rows": 8,
+    "width": 904,
+    "height": 635.5,
+    "diagnostics": []
+  },
+  {
+    "id": "04-second-order",
+    "title": "Second-order CFA",
+    "kind": "roundtrip",
+    "nodes": 25,
+    "rows": 25,
+    "width": 985.78,
+    "height": 1247,
+    "diagnostics": []
+  },
+  {
+    "id": "05-two-group",
+    "title": "Two groups with shared loading labels",
+    "kind": "roundtrip",
+    "nodes": 14,
+    "rows": 27,
+    "width": 1719.78,
+    "height": 719,
+    "diagnostics": []
+  },
+  {
+    "id": "06-observed-path",
+    "title": "Observed-only path model",
+    "kind": "roundtrip",
+    "nodes": 6,
+    "rows": 10,
+    "width": 990.55,
+    "height": 461,
+    "diagnostics": []
+  },
+  {
+    "id": "07-large",
+    "title": "Eight factors and forty indicators",
+    "kind": "roundtrip",
+    "nodes": 95,
+    "rows": 95,
+    "width": 3660.56,
+    "height": 932,
+    "diagnostics": []
+  },
+  {
+    "id": "drawn-mediation",
+    "title": "GUI-created labelled mediation",
+    "kind": "drawn",
+    "nodes": 5,
+    "rows": 8,
+    "width": 904,
+    "height": 635.5,
+    "diagnostics": []
+  },
+  {
+    "id": "drawn-cfa",
+    "title": "GUI-created CFA · unit factor variance",
+    "kind": "drawn",
+    "nodes": 7,
+    "rows": 7,
+    "width": 661.78,
+    "height": 436,
+    "diagnostics": []
+  },
+  {
+    "id": "drawn-formative",
+    "title": "GUI-created formative composite",
+    "kind": "drawn",
+    "nodes": 4,
+    "rows": 10,
+    "width": 667.5999999999999,
+    "height": 441,
+    "diagnostics": []
+  },
+  {
+    "id": "drawn-phantom",
+    "title": "New latent · no indicators yet",
+    "kind": "drawn",
+    "nodes": 1,
+    "rows": 2,
+    "width": 500,
+    "height": 350,
+    "diagnostics": []
+  }
+]

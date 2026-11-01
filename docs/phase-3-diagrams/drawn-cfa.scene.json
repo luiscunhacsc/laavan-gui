@@ -1,0 +1,594 @@
+{
+  "nodes": [
+    {
+      "id": "g1:Factor",
+      "name": "Factor",
+      "group": 1,
+      "kind": "latent",
+      "x": 220,
+      "y": 302,
+      "width": 114,
+      "height": 58,
+      "implicit": false,
+      "thresholds": [],
+      "variance": {
+        "id": 7,
+        "lhs": "Factor",
+        "op": "~~",
+        "rhs": "Factor",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 0,
+        "ustart": 1,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p7.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 7
+      }
+    },
+    {
+      "id": "g1:x1",
+      "name": "x1",
+      "group": 1,
+      "kind": "observed",
+      "x": 544,
+      "y": 172,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": []
+    },
+    {
+      "id": "g1:x2",
+      "name": "x2",
+      "group": 1,
+      "kind": "observed",
+      "x": 544,
+      "y": 302,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": []
+    },
+    {
+      "id": "g1:x3",
+      "name": "x3",
+      "group": 1,
+      "kind": "observed",
+      "x": 544,
+      "y": 432,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": []
+    },
+    {
+      "id": "res:g1:x1",
+      "name": "e1",
+      "owner": "g1:x1",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 696,
+      "y": 172,
+      "group": 1,
+      "implicit": false,
+      "variance": {
+        "id": 4,
+        "lhs": "x1",
+        "op": "~~",
+        "rhs": "x1",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 4,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p4.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 4
+      },
+      "thresholds": []
+    },
+    {
+      "id": "res:g1:x2",
+      "name": "e2",
+      "owner": "g1:x2",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 696,
+      "y": 302,
+      "group": 1,
+      "implicit": false,
+      "variance": {
+        "id": 5,
+        "lhs": "x2",
+        "op": "~~",
+        "rhs": "x2",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 5,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p5.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 5
+      },
+      "thresholds": []
+    },
+    {
+      "id": "res:g1:x3",
+      "name": "e3",
+      "owner": "g1:x3",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 696,
+      "y": 432,
+      "group": 1,
+      "implicit": false,
+      "variance": {
+        "id": 6,
+        "lhs": "x3",
+        "op": "~~",
+        "rhs": "x3",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 6,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p6.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 6
+      },
+      "thresholds": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "g1:p1",
+      "source": "g1:Factor",
+      "target": "g1:x1",
+      "kind": "directed",
+      "label": "marker",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 1,
+      "fixed": false,
+      "points": [
+        {
+          "x": 264.75660101764197,
+          "y": 284.04210452995846
+        },
+        {
+          "x": 496,
+          "y": 191.25925925925927
+        }
+      ],
+      "labelBox": {
+        "x": 365.3548902991699,
+        "y": 253.13695183363228,
+        "width": 50.9,
+        "height": 21,
+        "text": "marker",
+        "implicit": false,
+        "rowId": 1
+      }
+    },
+    {
+      "id": "g1:p2",
+      "source": "g1:Factor",
+      "target": "g1:x2",
+      "kind": "directed",
+      "label": "",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 2,
+      "fixed": false,
+      "points": [
+        {
+          "x": 277,
+          "y": 302
+        },
+        {
+          "x": 496,
+          "y": 302
+        }
+      ]
+    },
+    {
+      "id": "g1:p3",
+      "source": "g1:Factor",
+      "target": "g1:x3",
+      "kind": "directed",
+      "label": "",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 3,
+      "fixed": false,
+      "points": [
+        {
+          "x": 264.75660101764197,
+          "y": 319.95789547004154
+        },
+        {
+          "x": 496,
+          "y": 412.74074074074076
+        }
+      ]
+    },
+    {
+      "id": "attach:res:g1:x1",
+      "source": "res:g1:x1",
+      "target": "g1:x1",
+      "kind": "residual",
+      "label": "1",
+      "implicit": false,
+      "fixed": true,
+      "points": [
+        {
+          "x": 679,
+          "y": 172
+        },
+        {
+          "x": 592,
+          "y": 172
+        }
+      ],
+      "labelBox": {
+        "x": 629.615,
+        "y": 144.5,
+        "width": 11.77,
+        "height": 21,
+        "text": "1",
+        "implicit": false
+      }
+    },
+    {
+      "id": "attach:res:g1:x2",
+      "source": "res:g1:x2",
+      "target": "g1:x2",
+      "kind": "residual",
+      "label": "1",
+      "implicit": false,
+      "fixed": true,
+      "points": [
+        {
+          "x": 679,
+          "y": 302
+        },
+        {
+          "x": 592,
+          "y": 302
+        }
+      ],
+      "labelBox": {
+        "x": 629.615,
+        "y": 274.5,
+        "width": 11.77,
+        "height": 21,
+        "text": "1",
+        "implicit": false
+      }
+    },
+    {
+      "id": "attach:res:g1:x3",
+      "source": "res:g1:x3",
+      "target": "g1:x3",
+      "kind": "residual",
+      "label": "1",
+      "implicit": false,
+      "fixed": true,
+      "points": [
+        {
+          "x": 679,
+          "y": 432
+        },
+        {
+          "x": 592,
+          "y": 432
+        }
+      ],
+      "labelBox": {
+        "x": 629.615,
+        "y": 404.5,
+        "width": 11.77,
+        "height": 21,
+        "text": "1",
+        "implicit": false
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "x": 202.68,
+      "y": 236,
+      "width": 34.64,
+      "height": 20,
+      "text": "var 1",
+      "implicit": false,
+      "rowId": 7
+    },
+    {
+      "x": 667.22,
+      "y": 118,
+      "width": 57.56,
+      "height": 20,
+      "text": "var free",
+      "implicit": false,
+      "rowId": 4
+    },
+    {
+      "x": 667.22,
+      "y": 248,
+      "width": 57.56,
+      "height": 20,
+      "text": "var free",
+      "implicit": false,
+      "rowId": 5
+    },
+    {
+      "x": 667.22,
+      "y": 378,
+      "width": 57.56,
+      "height": 20,
+      "text": "var free",
+      "implicit": false,
+      "rowId": 6
+    }
+  ],
+  "panels": [
+    {
+      "x": 108,
+      "y": 95,
+      "width": 660,
+      "height": 414,
+      "group": 1,
+      "title": "Group 1"
+    }
+  ],
+  "width": 661.78,
+  "height": 436,
+  "minX": 113,
+  "minY": 68,
+  "coveredRows": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "diagnostics": [],
+  "model": {
+    "ok": true,
+    "table": [
+      {
+        "id": 1,
+        "lhs": "Factor",
+        "op": "=~",
+        "rhs": "x1",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 1,
+        "ustart": null,
+        "exo": 0,
+        "label": "marker",
+        "plabel": ".p1.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 1
+      },
+      {
+        "id": 2,
+        "lhs": "Factor",
+        "op": "=~",
+        "rhs": "x2",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 2,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p2.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 2
+      },
+      {
+        "id": 3,
+        "lhs": "Factor",
+        "op": "=~",
+        "rhs": "x3",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 3,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p3.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 3
+      },
+      {
+        "id": 4,
+        "lhs": "x1",
+        "op": "~~",
+        "rhs": "x1",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 4,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p4.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 4
+      },
+      {
+        "id": 5,
+        "lhs": "x2",
+        "op": "~~",
+        "rhs": "x2",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 5,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p5.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 5
+      },
+      {
+        "id": 6,
+        "lhs": "x3",
+        "op": "~~",
+        "rhs": "x3",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 6,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p6.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 6
+      },
+      {
+        "id": 7,
+        "lhs": "Factor",
+        "op": "~~",
+        "rhs": "Factor",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 0,
+        "ustart": 1,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p7.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 7
+      }
+    ],
+    "latent": [
+      "Factor"
+    ],
+    "observed": [
+      "x1",
+      "x2",
+      "x3"
+    ],
+    "source": [
+      {
+        "lhs": "Factor",
+        "op": "=~",
+        "rhs": "x1",
+        "block": 1,
+        "fixed": "NA",
+        "label": "marker",
+        "mod.idx": 1
+      },
+      {
+        "lhs": "Factor",
+        "op": "=~",
+        "rhs": "x2",
+        "block": 1,
+        "fixed": "",
+        "label": "",
+        "mod.idx": 0
+      },
+      {
+        "lhs": "Factor",
+        "op": "=~",
+        "rhs": "x3",
+        "block": 1,
+        "fixed": "",
+        "label": "",
+        "mod.idx": 0
+      },
+      {
+        "lhs": "x1",
+        "op": "~~",
+        "rhs": "x1",
+        "block": 1,
+        "fixed": "",
+        "label": "",
+        "mod.idx": 0
+      },
+      {
+        "lhs": "x2",
+        "op": "~~",
+        "rhs": "x2",
+        "block": 1,
+        "fixed": "",
+        "label": "",
+        "mod.idx": 0
+      },
+      {
+        "lhs": "x3",
+        "op": "~~",
+        "rhs": "x3",
+        "block": 1,
+        "fixed": "",
+        "label": "",
+        "mod.idx": 0
+      },
+      {
+        "lhs": "Factor",
+        "op": "~~",
+        "rhs": "Factor",
+        "block": 1,
+        "fixed": "1",
+        "label": "",
+        "mod.idx": 2
+      }
+    ],
+    "constraints": [],
+    "modifiers": [
+      {
+        "fixed": null,
+        "label": "marker"
+      },
+      {
+        "fixed": 1
+      }
+    ],
+    "warnings": [],
+    "options": {
+      "preset": "sem",
+      "groups": 1,
+      "fixedX": false,
+      "meanstructure": false
+    },
+    "versions": {
+      "lavaan": "0.7.3",
+      "R": "R version 4.4.3 (2025-02-28 ucrt)"
+    }
+  }
+}
