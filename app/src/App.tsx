@@ -48,6 +48,7 @@ export default function App(){
   const history=useRef<ModelHistory>(new ModelHistory({syntax:initial?.syntax??fixtures[0].syntax,options:initial?.options||defaultOptions,positions:initial?.positions||{}}));
   const skipCompile=useRef<string|undefined>(undefined);
   const verificationStarted=useRef(false);
+  const [verificationStatus,setVerificationStatus]=useState('');
   const [,setHistoryRevision]=useState(0);
   const runtime=useRef<LavaanRuntime|null>(null);if(!runtime.current)runtime.current=new LavaanRuntime(s=>setStage(s));
   const positions=useRef<Positions>(initial?.positions||{}),sceneRef=useRef<Scene|undefined>(undefined);
@@ -100,9 +101,12 @@ export default function App(){
     if(!sessionReady||restoring||verificationStarted.current)return;
     if(import.meta.env.DEV&&new URLSearchParams(location.search).has('verify')){
       verificationStarted.current=true;
-      if(new URLSearchParams(location.search).get('verify')==='editing')void import('./verify-editing').then(({verifyEditing})=>verifyEditing(runtime.current!,measureText)).then(count=>notify(`${en.editingVerification}: ${count}/15`)).catch(error=>notify(String(error)));
-      else if(new URLSearchParams(location.search).get('verify')==='analysis')void import('./verify-analysis').then(({verifyAnalysis})=>verifyAnalysis(runtime.current!,measureText)).then(count=>notify(`${en.analysisVerification}: ${count}/3`)).catch(error=>notify(String(error)));
-      else void import('./verify').then(({verifyBrowser})=>verifyBrowser(runtime.current!,measureText)).then(count=>notify(`${en.verification}: ${count}/7`)).catch(error=>notify(String(error)));
+      setVerificationStatus(en.verificationRunning);
+      const done=(label:string,total:number)=>(count:number)=>{const message=`${label}: ${count}/${total}`;setVerificationStatus(message);notify(message);};
+      const failed=(error:unknown)=>{setVerificationStatus(String(error));notify(String(error));};
+      if(new URLSearchParams(location.search).get('verify')==='editing')void import('./verify-editing').then(({verifyEditing})=>verifyEditing(runtime.current!,measureText)).then(done(en.editingVerification,15)).catch(failed);
+      else if(new URLSearchParams(location.search).get('verify')==='analysis')void import('./verify-analysis').then(({verifyAnalysis})=>verifyAnalysis(runtime.current!,measureText)).then(done(en.analysisVerification,3)).catch(failed);
+      else void import('./verify').then(({verifyBrowser})=>verifyBrowser(runtime.current!,measureText)).then(done(en.verification,7)).catch(failed);
     }
   },[sessionReady,restoring]);
   useEffect(()=>{
@@ -261,5 +265,6 @@ export default function App(){
     <footer className="statusbar"><span className={`r-status ${working?'busy':''}`}><i/>{scene?`lavaan ${scene.model.versions.lavaan}`:stageText}</span><span>{scene?en.dragHint:en.startupHint}</span><label><input type="checkbox" checked={snap} onChange={e=>setSnap(e.target.checked)}/>{en.snap}</label><span className="autosave" title={autosaveFailed?en.projectData.autosaveFailed:undefined}>{autosaveFailed?en.projectData.autosaveFailed:autosaved?<><Icon name="check" size={12}/>{en.autosave}</>:en.pending}</span></footer>
     <input ref={file} hidden type="file" accept=".json,application/json" onChange={e=>{const f=e.target.files?.[0];if(f)void open(f);e.target.value='';}}/>
     {notice&&<div className="toast" role="status"><Icon name="check" size={16}/>{notice}</div>}
+    {import.meta.env.DEV&&new URLSearchParams(location.search).has('verify')&&<div className="verification-status" role="status">{verificationStatus||en.verificationRunning}</div>}
   </div>;
 }

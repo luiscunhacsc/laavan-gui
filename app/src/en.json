@@ -123,6 +123,7 @@
   "verification": "Fixture verification",
   "analysisVerification": "Analysis verification",
   "editingVerification": "Editing and project verification",
+  "verificationRunning": "Verification is running. Leave this tab open…",
   "builder": {
     "emptyHint": "Choose Observed or Latent above, then click the canvas. You can also write syntax or choose an example.",
     "tools": "Model drawing tools",
