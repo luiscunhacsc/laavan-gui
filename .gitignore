@@ -3,5 +3,9 @@ node_modules/
 .npm-cache/
 __pycache__/
 evidence/*.tmp
+.qa-python/
+.qa-tools/
+evidence/phase-4/lo-profile/
+evidence/phase-4/tex-cache/
 dist/
 

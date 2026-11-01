@@ -1,10 +1,13 @@
 import {useMemo,useState} from 'react';
-import {numberText,parametersCsv,type AnalysisSnapshot,type Estimate} from './analysis';
-import {downloadFile} from './project';
+import {numberText,parametersCsv,type AnalysisSnapshot,type Estimate,type Modification} from './analysis';
+import {downloadBlob,downloadFile} from './project';
+import {reportLatex} from './report';
+import {InvarianceResults,ReliabilityResults,ModificationResults,BootstrapResults} from './AdvancedResults';
 import en from './en.json';
 const t=en.results;
-export default function ResultsWorkspace({snapshot,stale,error,onModel,onNotice}:{snapshot?:AnalysisSnapshot;stale:boolean;error:string;onModel:()=>void;onNotice:(message:string)=>void}){
-  const [tab,setTab]=useState<'parameters'|'fitMeasures'|'rSquared'|'script'>('parameters'),[filter,setFilter]=useState(''),[sort,setSort]=useState<{key:keyof Estimate;descending:boolean}>({key:'lhs',descending:false});
+export default function ResultsWorkspace({snapshot,stale,error,onModel,onNotice,onModification,disabled=false}:{snapshot?:AnalysisSnapshot;stale:boolean;error:string;onModel:()=>void;onNotice:(message:string)=>void;onModification?:(row:Modification)=>void;disabled?:boolean}){
+  const [tab,setTab]=useState<'parameters'|'fitMeasures'|'rSquared'|'script'|'invariance'|'modifications'|'reliability'|'bootstrap'>('parameters'),[filter,setFilter]=useState(''),[sort,setSort]=useState<{key:keyof Estimate;descending:boolean}>({key:'lhs',descending:false});
+  const [exporting,setExporting]=useState(false);
   const fit=snapshot?.result;
   const rows=useMemo(()=>{
     const source=fit?.parameters.filter(p=>`${p.lhs} ${p.op} ${p.rhs} ${p.label||''}`.toLowerCase().includes(filter.toLowerCase()))||[];
@@ -24,9 +27,15 @@ export default function ResultsWorkspace({snapshot,stale,error,onModel,onNotice}
     {fit.converged&&!fit.admissible&&<div className="analysis-alert" role="alert">{t.inadmissible}</div>}
     {fit.converged&&fit.measures.some(m=>m.name==='df'&&m.value===0)&&<div className="analysis-alert" role="note">{t.zeroDf}</div>}
     {fit.warnings.length>0&&<details className="import-warnings" open={!fit.admissible}><summary>{t.warnings} ({fit.warnings.length})</summary>{fit.warnings.map((w,i)=><p key={i}>{w}</p>)}</details>}
+    <div className="report-actions"><button className="button" disabled={exporting} onClick={()=>{setExporting(true);void import('./report-word').then(x=>x.reportWord(snapshot,stale)).then(blob=>downloadBlob(blob,'analysis.docx')).catch(()=>onNotice(en.advanced.exportFailed)).finally(()=>setExporting(false));}}>{exporting?en.advanced.exporting:en.advanced.word}</button><button className="button" onClick={()=>downloadFile(reportLatex(snapshot,stale),'analysis.tex','text/plain;charset=utf-8')}>{en.advanced.latex}</button></div>
     <div className="results-body"><section className="results-main"><div className="fit-cards">{['chisq','cfi','tli','rmsea','srmr'].map(key=>{const m=metric(key);return <div className="fit-card" key={key}><span>{name(m?.name||key)}</span><b>{numberText(m?.value)}</b>{key==='rmsea'&&<small>{numberText(metric('rmsea.ci.lower')?.value)} – {numberText(metric('rmsea.ci.upper')?.value)}</small>}</div>;})}</div>
-      <div className="result-tabs" role="tablist">{(['parameters','fitMeasures','rSquared','script'] as const).map(key=><button role="tab" aria-selected={tab===key} key={key} className={tab===key?'active':''} onClick={()=>setTab(key)}>{t[key]}</button>)}</div>
+      <div className="result-tabs" role="tablist">{(['parameters','fitMeasures','rSquared','invariance','modifications','reliability','bootstrap','script'] as const).map(key=><button role="tab" aria-selected={tab===key} key={key} className={tab===key?'active':''} onClick={()=>setTab(key)}>{(t as unknown as Record<string,string>)[key]||(en.advanced as Record<string,string>)[key]}</button>)}</div>
       <div className="result-content">
+        {tab==='invariance'&&<InvarianceResults fit={fit}/>}
+        {tab==='reliability'&&<ReliabilityResults fit={fit}/>}
+        {tab==='modifications'&&<ModificationResults fit={fit} disabled={disabled||stale} onAdd={onModification}/>}
+        {tab==='bootstrap'&&<BootstrapResults fit={fit}/>}
+        {tab==='parameters'&&<p className="result-footnote">{Math.round((fit.confidence??.95)*100)}% CI · {fit.bootstrap?en.advanced.bootstrapNote:en.advanced.reportNote}</p>}
         {tab==='parameters'&&<><div className="result-table-tools"><input aria-label={t.search} placeholder={t.search} value={filter} onChange={e=>setFilter(e.target.value)}/><button className="button" onClick={()=>downloadFile(parametersCsv(fit),'parameters.csv','text/csv;charset=utf-8')}>{t.downloadCsv}</button></div><div className="result-table-scroll"><table><thead><tr>{headers.map(([key,label])=><th key={key} aria-sort={sort.key===key?sort.descending?'descending':'ascending':'none'}><button onClick={()=>sortBy(key)}>{label}{sort.key===key?(sort.descending?' ↓':' ↑'):''}</button></th>)}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}>{headers.map(([key])=><td key={key}>{['lhs','op','rhs','label'].includes(key)?String(r[key]||''):key==='group'?r.group||1:key==='pvalue'&&r.pvalue!==null&&r.pvalue<.001?'< .001':numberText(r[key] as number|null)}</td>)}</tr>)}</tbody></table></div><p className="result-footnote">{t.precision}</p></>}
         {tab==='fitMeasures'&&<><p className="result-footnote">{t.robustHint}</p><div className="result-table-scroll"><table><thead><tr><th>{t.measure}</th><th>{t.value}</th><th>{t.note}</th></tr></thead><tbody>{fit.measures.filter(m=>fit.estimator!=='ML'||!m.name.endsWith('.scaled')&&!m.name.endsWith('.robust')).map(m=><tr key={m.name}><td>{name(m.name)}</td><td>{numberText(m.value)}</td><td>{m.value!==null?'':m.reason==='notConverged'?t.notConvergedReason:m.reason==='notAvailable'?t.notAvailable:m.reason}</td></tr>)}</tbody></table></div></>}
         {tab==='rSquared'&&<div className="result-table-scroll"><table><thead><tr><th>{en.observed} / {en.latent}</th><th>{en.group}</th><th>{en.rSquaredSymbol}</th></tr></thead><tbody>{fit.rsquared.map((r,i)=><tr key={i}><td>{r.name}</td><td>{r.group}</td><td>{numberText(r.value)}</td></tr>)}</tbody></table></div>}

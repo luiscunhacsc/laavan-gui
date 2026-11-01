@@ -1,0 +1,43 @@
+.libPaths(c(normalizePath('../.Rlib'),.libPaths()))
+source('src/r/compile.R');source('src/r/edit.R');source('src/r/analysis.R');source('src/r/advanced.R')
+fixtures<-jsonlite::fromJSON('../fixtures/models.json',simplifyVector=FALSE)
+opts<-list(preset='cfa',groups=1,fixedX=FALSE,meanstructure=FALSE)
+analysis<-list(estimator='ML',missing='listwise',group='',confidence=.95,modificationIndices=TRUE,reliability=TRUE)
+invisible(forma_example(list(example='holzinger',id='hs',name='Holzinger-Swineford')))
+q<-list(action='fit',id='hs',revision=1,text=fixtures[[1]]$syntax,options=opts,analysis=analysis)
+result<-forma_request(q);if(!result$ok)stop(result$message)
+stopifnot(result$converged,result$reliability$status=='ok',length(result$reliability$scales)==3,nrow(result$modifications$rows)>0)
+direct<-lavaan::cfa(q$text,data=lavaan::HolzingerSwineford1939,fixed.x=FALSE)
+mi<-lavaan::modindices(direct,sort.=TRUE)
+stopifnot(abs(result$modifications$rows$mi[1]-mi$mi[1])<1e-7)
+omega<-semTools::compRelSEM(direct,simplify=TRUE);ave<-semTools::AVE(direct);htmt<-semTools::htmt(q$text,data=lavaan::HolzingerSwineford1939)
+for(s in result$reliability$scales)stopifnot(abs(s$omega-omega[s$factor])<1e-10,abs(s$ave-ave[s$factor])<1e-10)
+for(p in result$reliability$pairs)stopifnot(abs(p$htmt2-htmt[p$first,p$second])<1e-10)
+single<-result
+q$options$groups<-2;q$options$meanstructure<-TRUE;q$analysis$group<-'school';q$analysis$invariance<-TRUE;q$analysis$estimator<-'MLR'
+result<-forma_request(q);if(!result$ok)stop(result$message)
+stopifnot(length(result$invariance)==4,length(result$reliability$scales)==6)
+invariance<-result
+reference<-lapply(list(character(),'loadings',c('loadings','intercepts'),c('loadings','intercepts','residuals')),function(equal)lavaan::cfa(q$text,data=lavaan::HolzingerSwineford1939,group='school',group.equal=equal,estimator='MLR',meanstructure=TRUE,fixed.x=FALSE))
+for(i in 1:4){fm<-lavaan::fitMeasures(reference[[i]]);stopifnot(abs(result$invariance[[i]]$cfi-fm['cfi.robust'])<1e-7);if(i>1){lr<-lavaan::lavTestLRT(reference[[i-1]],reference[[i]]);stopifnot(abs(result$invariance[[i]]$difference$chisq-lr[2,'Chisq diff'])<1e-7)}}
+q$analysis$bootstrap<-100;stopifnot(!forma_request(q)$ok)
+q$analysis$bootstrap<-0;q$analysis$estimator<-'WLSMV';stopifnot(!forma_request(q)$ok)
+q$options<-opts;q$analysis<-analysis;q$text<-paste0(q$text,'\nx1 ~~ 0*x2')
+edited<-forma_edit(list(text=q$text,options=opts,command=list(kind='modification',lhs='x1',op='~~',rhs='x2',group=1)))
+stopifnot(edited$model$table$free[edited$model$table$lhs=='x1'&edited$model$table$op=='~~'&edited$model$table$rhs=='x2']>0)
+o<-opts;o$groups<-2
+edited_group<-forma_edit(list(text=fixtures[[1]]$syntax,options=o,command=list(kind='modification',lhs='x1',op='~~',rhs='x2',group=2)))
+rows<-edited_group$model$table
+stopifnot(rows$free[rows$lhs=='x1'&rows$op=='~~'&rows$rhs=='x2'&rows$group==1]==0,rows$free[rows$lhs=='x1'&rows$op=='~~'&rows$rhs=='x2'&rows$group==2]>0)
+invisible(forma_example(list(example='mediation',id='med',name='Mediation')))
+q<-list(action='fit',id='med',revision=1,text=fixtures[[3]]$syntax,options=list(preset='path',groups=1,fixedX=FALSE,meanstructure=FALSE),analysis=list(estimator='ML',missing='listwise',group='',bootstrap=100,seed=12345,confidence=.95))
+result<-forma_request(q);if(!result$ok)stop(result$message)
+stopifnot(result$bootstrap$completed==100,result$bootstrap$failed==0,all(is.finite(result$parameters$ci.lower[result$parameters$op==':='])))
+bootstrap<-result
+set.seed(12345);direct_boot<-lavaan::sem(q$text,data=forma_data$current$data,fixed.x=FALSE,meanstructure=FALSE,se='bootstrap',bootstrap=100)
+expected<-lavaan::parameterEstimates(direct_boot,standardized=TRUE,boot.ci.type='perc',level=.95)
+stopifnot(max(abs(expected$ci.lower-bootstrap$parameters$ci.lower))<1e-8,max(abs(expected$se-bootstrap$parameters$se))<1e-8)
+dir.create('../evidence/phase-4',recursive=TRUE,showWarnings=FALSE)
+path<-getOption('forma.advancedEvidence','../evidence/phase-4/native.json')
+jsonlite::write_json(list(single=single,invariance=invariance,bootstrap=bootstrap,edited=edited,editedGroup=edited_group),path,auto_unbox=TRUE,dataframe='rows',na='null',null='null',digits=16,pretty=TRUE)
+cat('PASS: modification indices, group-specific edits, reliability, robust invariance, bootstrap and invalid-combination guards.\n')

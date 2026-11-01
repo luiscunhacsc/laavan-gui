@@ -35,7 +35,7 @@ export interface Annotation extends Box {text:string;implicit:boolean;rowId?:num
 export interface Panel extends Box {group:number;title:string}
 export interface Scene {nodes:SceneNode[];edges:Edge[];annotations:Annotation[];panels:Panel[];
   width:number;height:number;minX:number;minY:number;coveredRows:number[];diagnostics:string[];model:CompiledModel}
-export interface Display {implicit:boolean;labels:'labels'|'parameters';theme:'journal'|'presentation';title:string}
+export interface Display {implicit:boolean;labels:'labels'|'parameters';theme:'journal'|'presentation';title:string;notation?:boolean}
 export const defaultDisplay:Display={implicit:true,labels:'labels',theme:'journal',title:en.defaultTitle};
 export const nodeId=(group:number,name:string)=>`g${group}:${name}`;
 export const isUnmeasured=(row:Parameter)=>row.op==='=~'&&row.lhs===row.rhs&&row.free===0&&row.ustart===0;

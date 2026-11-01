@@ -15,7 +15,12 @@ export function readProject(value:unknown):Project{
   const display={...defaultDisplay,...p.display};
   const analysis={...defaultAnalysis,...p.analysis};
   if(!['ML','MLR','WLSMV'].includes(analysis.estimator)||!['listwise','fiml','pairwise'].includes(analysis.missing)||typeof analysis.group!=='string'||analysis.group.length>500)throw new Error('badProject');
+  if(analysis.bootstrap!==undefined&&(!Number.isInteger(analysis.bootstrap)||analysis.bootstrap!==0&&(analysis.bootstrap<100||analysis.bootstrap>10000)))throw new Error('badProject');
+  if(analysis.seed!==undefined&&(!Number.isInteger(analysis.seed)||analysis.seed<1||analysis.seed>2147483647))throw new Error('badProject');
+  if(analysis.confidence!==undefined&&(!Number.isFinite(analysis.confidence)||analysis.confidence<.8||analysis.confidence>.99))throw new Error('badProject');
+  for(const key of ['invariance','reliability','modificationIndices'] as const)if(analysis[key]!==undefined&&typeof analysis[key]!=='boolean')throw new Error('badProject');
   if(typeof display.title!=='string'||display.title.length>250||!['journal','presentation'].includes(display.theme)||typeof display.implicit!=='boolean')throw new Error('badProject');
+  if(display.notation!==undefined&&typeof display.notation!=='boolean')throw new Error('badProject');
   let canonical:CompiledModel|undefined;
   if(p.canonical){
     const model=p.canonical,ids=new Set<number>(),ops=new Set(['=~','<~','~','~~','~1',':=','==','<','>','|','~*~']);
@@ -32,6 +37,7 @@ export function readProject(value:unknown):Project{
 }
 export function savedProject():Project|undefined{try{const text=localStorage.getItem(SESSION);return text?readProject(JSON.parse(text)):undefined;}catch{return undefined;}}
 export function downloadFile(content:string,filename:string,type:string){
-  const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  downloadBlob(new Blob([content],{type}),filename);
 }
+export function downloadBlob(blob:Blob,filename:string){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 export function rScript(syntax:string,options:Options){return `# Reproduce the model specification in R\n# Compiled using lavaan 0.7-3; no data or fitting\nlibrary(lavaan)\n\nmodel <- ${JSON.stringify(syntax)}\n\nparameters <- lavaanify(\n  model,\n  model_type = "${options.preset==='path'?'sem':options.preset}",\n  auto = TRUE,\n  ngroups = ${options.groups},\n  fixed_x = ${options.fixedX?'TRUE':'FALSE'},\n  meanstructure = ${options.meanstructure?'TRUE':'FALSE'},\n  int_ov_free = TRUE,\n  int_lv_free = FALSE\n)\n\nparameters\n`;}

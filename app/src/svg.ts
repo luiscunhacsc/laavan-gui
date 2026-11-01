@@ -7,14 +7,14 @@ export function sceneBody(scene:Scene,display:Display,selected:string[]=[],inter
   const muted=display.theme==='presentation'?'#7b9b96':'#788187';
   const visibleNode=(n:SceneNode)=>display.implicit||!n.implicit;
   const nodes=scene.nodes.filter(visibleNode),ids=new Set(nodes.map(n=>n.id));
-  let body=`<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 1 L 10 5 L 0 9 Z" fill="context-stroke"/></marker><marker id="arrow-back" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 10 1 L 0 5 L 10 9 Z" fill="context-stroke"/></marker></defs>`;
-  body+=`<g font-family="Arial, Helvetica, sans-serif" fill="${color}">`;
+  let body='<defs>'+[['',color],['-implicit',muted]].map(([suffix,fill])=>`<marker id="arrow${suffix}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 1 L 10 5 L 0 9 Z" fill="${fill}"/></marker><marker id="arrow-back${suffix}" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 10 1 L 0 5 L 10 9 Z" fill="${fill}"/></marker>`).join('')+'</defs>';
+  body+=`<g font-family="Forma Sans, Arial, Helvetica, sans-serif" fill="${color}">`;
   if(scene.model.options.groups>1)for(const p of scene.panels)body+=`<text x="${p.x}" y="${p.y-28}" font-size="15" font-weight="600">${escape(en.group)} ${p.group}</text>`;
   for(const e of scene.edges){
     if((e.implicit&&!display.implicit)||!ids.has(e.source)||!ids.has(e.target))continue;
     const implicit=e.implicit||!!e.defaultFixed&&display.implicit;
     const path=pathData(e.points,e.kind==='covariance'&&e.points.length<20),active=interactive&&selectedParameter!==undefined&&e.rowId===selectedParameter;
-    body+=`<path d="${path}" fill="none" stroke="${active?'#248267':implicit?muted:color}" stroke-width="${active?2.8:1.65}" ${implicit?'stroke-dasharray="5 4"':''} marker-end="url(#arrow)" ${e.kind==='covariance'?'marker-start="url(#arrow-back)"':''}/>`;
+    body+=`<path d="${path}" fill="none" stroke="${active?'#248267':implicit?muted:color}" stroke-width="${active?2.8:1.65}" ${implicit?'stroke-dasharray="5 4"':''} marker-end="url(#arrow${implicit?'-implicit':''})" ${e.kind==='covariance'?`marker-start="url(#arrow-back${implicit?'-implicit':''})"`:''}/>`;
     if(interactive&&e.rowId){const row=scene.model.table.find(r=>r.id===e.rowId);body+=`<path data-parameter="${e.rowId}" d="${path}" fill="none" stroke="transparent" stroke-width="15" style="cursor:pointer" tabindex="0" role="button" aria-label="${escape(row?`${row.lhs} ${row.op} ${row.rhs}`:'')}"/>`;}
   }
   for(const n of nodes){
@@ -37,5 +37,5 @@ export function sceneBody(scene:Scene,display:Display,selected:string[]=[],inter
 }
 export function renderSvg(scene:Scene,display:Display){
   const title=display.title||en.defaultTitle,header=46;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${Math.ceil(scene.width)}" height="${Math.ceil(scene.height+header)}" viewBox="${scene.minX} ${scene.minY-header} ${scene.width} ${scene.height+header}" role="img" aria-labelledby="title desc"><title id="title">${escape(title)}</title><desc id="desc">${escape(scene.model.analysisDisplay?en.fittedExportDescription:en.exportDescription)}</desc><rect x="${scene.minX}" y="${scene.minY-header}" width="${scene.width}" height="${scene.height+header}" fill="white"/><text x="${scene.minX+30}" y="${scene.minY-8}" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="600" fill="#222a30">${escape(title)}</text>${sceneBody(scene,display)}<metadata>${escape(JSON.stringify({application:'Forma',schema:1,lavaan:scene.model.versions.lavaan,options:scene.model.options,analysis:scene.model.analysisDisplay}))}</metadata></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${Math.ceil(scene.width)}" height="${Math.ceil(scene.height+header)}" viewBox="${scene.minX} ${scene.minY-header} ${scene.width} ${scene.height+header}" role="img" aria-labelledby="title desc"><title id="title">${escape(title)}</title><desc id="desc">${escape(scene.model.analysisDisplay?en.fittedExportDescription:en.exportDescription)}</desc><rect x="${scene.minX}" y="${scene.minY-header}" width="${scene.width}" height="${scene.height+header}" fill="white"/><text x="${scene.minX+30}" y="${scene.minY-8}" font-family="Forma Sans,Arial,Helvetica,sans-serif" font-size="20" font-weight="600" fill="#222a30">${escape(title)}</text>${sceneBody(scene,display)}<metadata>${escape(JSON.stringify({application:'Forma',schema:1,lavaan:scene.model.versions.lavaan,options:scene.model.options,analysis:scene.model.analysisDisplay}))}</metadata></svg>`;
 }

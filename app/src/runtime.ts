@@ -1,6 +1,7 @@
 import compilerSource from './r/compile.R?raw';
 import analysisSource from './r/analysis.R?raw';
 import editSource from './r/edit.R?raw';
+import advancedSource from './r/advanced.R?raw';
 import {normalizeModel,type CompileResult,type Options} from './model';
 import en from './en.json';
 import {sourceQuery,cleanTypes,type DatasetState} from './dataset-source';
@@ -28,6 +29,7 @@ export class LavaanRuntime {
     await r.init();
     if(generation!==this.generation){await r.close();throw new Error('Runtime restarted');}
     this.runtime=r;
+    await r.evalRVoid('options(useFancyQuotes = FALSE)');
     // Consume console events so worker output does not accumulate.
     (async()=>{for await(const _ of r.stream()){/* diagnostics are returned by the adapter */}})().catch(()=>{});
     this.report('lavaan');
@@ -37,6 +39,7 @@ export class LavaanRuntime {
     await r.evalRVoid(compilerSource);
     await r.evalRVoid(editSource);
     await r.evalRVoid(analysisSource);
+    await r.evalRVoid(advancedSource);
     if(this.datasetSnapshot){
       const snapshot=this.datasetSnapshot;
       await this.installReader(snapshot.query);
@@ -66,6 +69,11 @@ export class LavaanRuntime {
     return result;
   }
   private async installReader(query:Record<string,unknown>){
+    if(query.action==='fit'&&(query.analysis as {reliability?:boolean})?.reliability&&!this.readers.has('semTools')){
+      this.report('readers');await this.runtime.installPackages(['semTools']);
+      if(await this.runtime.evalRString('as.character(packageVersion("semTools"))')!=='0.5.10')throw new Error(en.errors['advanced.semToolsVersion']);
+      this.readers.add('semTools');this.report('ready');
+    }
     const source=query.action==='restore'?query.source as Record<string,unknown>:query;
     const pkg=source.action==='sheets'||['xls','xlsx'].includes(String(source.format))?'readxl':['sav','zsav'].includes(String(source.format))?'haven':undefined;
     if(pkg&&!this.readers.has(pkg)){this.report('readers');await this.runtime.installPackages([pkg]);this.readers.add(pkg);this.report('ready');}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "comparedNumbers": 2902,
+  "maxAbsoluteDifference": 1.1368683772161603e-13,
+  "precision": 4,
+  "nativeLavaan": "0.7.3",
+  "nativeSemTools": "0.5.10",
+  "wasmSemTools": "0.5.10"
+}

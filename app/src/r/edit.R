@@ -103,6 +103,22 @@ forma_edit <- function(q) {
     if(name %in% names)stop('edit.duplicate')
     if(kind=='latent'&&opts$preset=='path')stop('model.pathLatent')
     spec$rows <- c(spec$rows,list(list(lhs=name,op=if(kind=='latent')'=~'else'~~',rhs=name,modifiers=if(kind=='latent')list(fixed=0)else list())))
+  } else if(kind=='modification') {
+    lhs<-command$lhs;op<-command$op;rhs<-command$rhs;g<-as.integer(command$group);ng<-as.integer(opts$groups)
+    if(!op %in% c('=~','~','~~') || !all(c(lhs,rhs) %in% names) || lhs==rhs || length(g)!=1 || is.na(g) || g<1 || g>ng)stop('edit.parameter')
+    if(op=='=~' && !lhs %in% latent)stop('edit.loadingSource')
+    matching<-model$table[model$table$op==op&((model$table$lhs==lhs&model$table$rhs==rhs)|(op=='~~'&model$table$lhs==rhs&model$table$rhs==lhs)),,drop=FALSE]
+    target<-matching[matching$group==g,,drop=FALSE]
+    if(nrow(target)>0 && (nrow(target)!=1 || target$free!=0 || is.na(target$ustart) || target$ustart!=0))stop('edit.exists')
+    index<-forma_row_index(spec,lhs,op,rhs)
+    if(!length(index)&&op=='~~')index<-forma_row_index(spec,rhs,op,lhs)
+    if(length(index)>1)stop('edit.ambiguous')
+    fixed<-rep(0,ng)
+    if(nrow(matching))for(i in seq_len(nrow(matching)))fixed[matching$group[i]]<-if(matching$free[i]>0)NA_real_ else matching$ustart[i]
+    fixed[g]<-NA_real_
+    if(length(index)) {
+      entry<-spec$rows[[index]];entry$modifiers$fixed<-fixed;spec$rows[[index]]<-entry
+    } else spec$rows<-c(spec$rows,list(list(lhs=lhs,op=op,rhs=rhs,modifiers=list(fixed=fixed))))
   } else if(kind=='connect') {
     from <- command$from;to <- command$to;relation <- command$relation
     if(!all(c(from,to) %in% names)||from==to)stop('edit.endpoints')

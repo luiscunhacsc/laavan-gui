@@ -146,6 +146,7 @@ forma_fit <- function(q) {
   d <- forma_data$current
   if (is.null(d) || d$id!=q$id || d$revision!=q$revision) stop("data.changed")
   a <- q$analysis; opts <- q$options
+  advanced <- if(exists('forma_advanced_options'))forma_advanced_options(a,d)else list(bootstrap=0,confidence=.95)
   if (!a$estimator %in% c("ML","MLR","WLSMV") || !a$missing %in% c("listwise","fiml","pairwise")) stop("analysis.options")
   if (a$estimator=="WLSMV" && a$missing=="fiml") stop("analysis.ordinalFiml")
   if (a$estimator!="WLSMV" && a$missing=="pairwise") stop("analysis.pairwise")
@@ -187,6 +188,13 @@ forma_fit <- function(q) {
     if(!is.null(d$means)) args$sample.mean <- d$means
   }
   fun <- if(opts$preset=="cfa") lavaan::cfa else lavaan::sem
+  if(isTRUE(a$invariance))forma_invariance_guard(q,compiled,ordered,d)
+  if(advanced$bootstrap>0) {
+    rng_exists<-exists('.Random.seed',envir=.GlobalEnv,inherits=FALSE)
+    if(rng_exists)previous_rng<-get('.Random.seed',envir=.GlobalEnv)
+    on.exit(if(rng_exists)assign('.Random.seed',previous_rng,envir=.GlobalEnv)else if(exists('.Random.seed',envir=.GlobalEnv,inherits=FALSE))rm('.Random.seed',envir=.GlobalEnv),add=TRUE)
+    set.seed(advanced$seed);args$se<-'bootstrap';args$bootstrap<-advanced$bootstrap
+  }
   fit <- do.call(fun,args)
   converged <- isTRUE(lavaan::lavInspect(fit,"converged"))
   admissible <- if(converged) isTRUE(lavaan::lavInspect(fit,"post.check")) else FALSE
@@ -201,7 +209,7 @@ forma_fit <- function(q) {
   pt$sourceOrder <- ifelse(is.na(idx),nrow(base$table)+seq_len(nrow(pt)),base$table$sourceOrder[idx])
   base$table <- pt; base$options <- opts
   base$latent <- forma_array(lavaan::lavNames(fit,"lv")); base$observed <- forma_array(lavaan::lavNames(fit,"ov"))
-  pe <- if(converged) lavaan::parameterEstimates(fit,standardized=TRUE) else data.frame()
+  pe <- if(converged) lavaan::parameterEstimates(fit,standardized=TRUE,level=advanced$confidence,boot.ci.type='perc') else data.frame()
   standardized <- if(converged) tryCatch(lavaan::standardizedSolution(fit,type="std.all"),error=function(e)data.frame()) else data.frame()
   measure_names <- c("chisq","df","pvalue","cfi","tli","rmsea","rmsea.ci.lower","rmsea.ci.upper","srmr",
     "chisq.scaled","df.scaled","pvalue.scaled","cfi.robust","tli.robust","rmsea.robust","rmsea.ci.lower.robust","rmsea.ci.upper.robust",
@@ -223,15 +231,30 @@ forma_fit <- function(q) {
     paste0("estimator = ",forma_quote(a$estimator)),paste0("missing = ",forma_quote(a$missing)),
     paste0("fixed.x = ",if(isTRUE(opts$fixedX))"TRUE" else "FALSE"),paste0("meanstructure = ",if(isTRUE(compiled$options$meanstructure))"TRUE" else "FALSE"),
     if(length(ordered)) paste0("ordered = ",forma_quote(ordered)), if(!is.null(args$group)) paste0("group = ",forma_quote(args$group)))
-  versions <- list(lavaan=as.character(packageVersion("lavaan")),R=R.version.string,
+  versions <- list(lavaan=as.character(packageVersion("lavaan")),R=R.version.string,semTools=if(isTRUE(a$reliability))as.character(packageVersion('semTools'))else NULL,
     readxl=if(requireNamespace("readxl",quietly=TRUE))as.character(packageVersion("readxl"))else NULL,
     haven=if(requireNamespace("haven",quietly=TRUE))as.character(packageVersion("haven"))else NULL)
-  script <- paste0("# Forma analysis; lavaan ",versions$lavaan,"\n# ",versions$R,"\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\n",forma_import_script(d),preprocessing,"\n\nfit <- ",if(opts$preset=="cfa")"cfa"else"sem","(\n  ",paste(script_args,collapse=",\n  "),"\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n")
+  if(advanced$bootstrap>0)script_args<-c(script_args,'se = "bootstrap"',paste0('bootstrap = ',advanced$bootstrap))
+  script <- paste0("# Forma analysis; lavaan ",versions$lavaan,"\n# ",versions$R,"\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\n",forma_import_script(d),preprocessing,
+    if(advanced$bootstrap>0)paste0('\nset.seed(',advanced$seed,')')else '',"\n\nfit <- ",if(opts$preset=="cfa")"cfa"else"sem","(\n  ",paste(script_args,collapse=",\n  "),"\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+    'parameterEstimates(fit, standardized = TRUE, level = ',advanced$confidence,', boot.ci.type = "perc")\n')
+  modifications<-if(isTRUE(a$modificationIndices))forma_modifications(fit,converged,admissible)else NULL
+  reliability<-if(isTRUE(a$reliability))forma_reliability(fit,args,q,admissible)else NULL
+  invariance<-if(isTRUE(a$invariance))forma_invariance(fit,args,fun)else NULL
+  if(isTRUE(a$modificationIndices))script<-paste0(script,'modindices(fit, sort. = TRUE)\n')
+  if(isTRUE(a$reliability))script<-paste0(script,'\n# semTools ',versions$semTools,'; observed-variance denominator; HTMT2 uses absolute correlations\n',
+    'semTools::compRelSEM(fit, obs.var = TRUE, tau.eq = FALSE, ord.scale = TRUE, simplify = TRUE)\nsemTools::AVE(fit, obs.var = TRUE, return.df = FALSE)\n',
+    if(is.null(args$data))paste0('semTools::htmt(',forma_quote(q$text),', sample.cov = sample_cov, absolute = TRUE, htmt2 = TRUE)\n')else paste0(
+    'cases <- lavInspect(fit, "case.idx")\nif (!is.list(cases)) cases <- list(cases)\nlapply(cases, function(i) semTools::htmt(',forma_quote(q$text),', data = data[i, , drop = FALSE], missing = ',forma_quote(a$missing),
+    if(length(ordered))paste0(', ordered = ',forma_quote(ordered))else '',', absolute = TRUE, htmt2 = TRUE))\n'))
+  if(isTRUE(a$invariance))script<-paste0(script,'\nconfigural <- fit\nmetric <- update(fit, group.equal = "loadings")\nscalar <- update(fit, group.equal = c("loadings", "intercepts"))\nstrict <- update(fit, group.equal = c("loadings", "intercepts", "residuals"))\nlavTestLRT(configural, metric, scalar, strict)\nsapply(list(configural, metric, scalar, strict), fitMeasures)\n')
   list(ok=TRUE,converged=converged,admissible=admissible,model=base,parameters=pe,standardized=standardized,
     measures=measures,rsquared=if(is.null(r2))list()else r2,nobs=forma_array(nobs),
     inputCases=if(d$kind=="raw")nrow(d$data)else d$n,excluded=if(d$kind=="raw")nrow(d$data)-sum(nobs)else 0,
     estimator=a$estimator,missing=a$missing,ordered=forma_array(ordered),script=script,versions=versions,
-    datasetId=d$id,datasetRevision=d$revision)
+    datasetId=d$id,datasetRevision=d$revision,bootstrap=if(exists('forma_bootstrap_summary'))forma_bootstrap_summary(fit,advanced)else NULL,
+    modifications=modifications,reliability=reliability,invariance=invariance,confidence=advanced$confidence,
+    groupLabels=forma_array(lavaan::lavInspect(fit,'group.label')))
 }
 forma_restore <- function(q) {
   previous <- forma_data$current

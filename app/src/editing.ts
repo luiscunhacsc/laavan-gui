@@ -8,7 +8,8 @@ export type EditCommand=
  |{kind:'removeParameter';id:number}
  |{kind:'rename';name:string;newName:string}
  |{kind:'removeVariable';name:string}
- |{kind:'format'};
+ |{kind:'format'}
+ |{kind:'modification';lhs:string;op:'=~'|'~'|'~~';rhs:string;group:number};
 export interface EditResult {ok:true;syntax:string;model:CompiledModel|null;warnings:string[]}
 export const parameterKey=(r:Pick<Parameter,'lhs'|'op'|'rhs'|'group'>)=>JSON.stringify([r.group,r.lhs,r.op,r.rhs]);
 export function nextVariableName(kind:'observed'|'latent',model?:CompiledModel){const taken=new Set([...(model?.observed||[]),...(model?.latent||[])]);let n=1;const prefix=kind==='latent'?'F':'x';while(taken.has(`${prefix}${n}`))n++;return `${prefix}${n}`;}
