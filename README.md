@@ -5,14 +5,18 @@ path analysis using datasets supplied by the user. It includes a spreadsheet-sty
 data viewer, model specification through syntax and drawing, lavaan estimation,
 annotated diagrams and analysis results. Data-free diagramming is also supported.
 
-**Phase 3 is ready for review** in `app/`: visual model editing with syntax sync,
-model undo/redo, dataset-aware projects and browser autosave are implemented
-alongside dataset import, fitting, results and the data-free converter.
+**Phase 4 is ready for review** in `app/`: invariance, bootstrap confidence
+intervals, modification-index actions, reliability/validity output, publication
+figures and APA tables now join the data viewer, model editor and lavaan fitting.
 
-- [Open the local review build](http://127.0.0.1:8000/app/dist/).
-- [Phase 3 validation and limitations](docs/phase-3.md).
-- [Seven regenerated references and four visual-edit examples](docs/phase-3-gallery.html).
+- [Open Forma](http://127.0.0.1:8000/app/dist/).
+- [Phase 4 workflows, verification and limits](docs/phase-4.md).
+- [Seven fixed models plus fitted, Greek-notation and RAM-loop examples](docs/phase-4-gallery.html).
 - [Run, build and deploy the application](app/README.md).
+
+The 12/12 browser check is recorded as VS Code embedded Chromium 150/Electron 43.
+The complete Chrome/Edge/Firefox/Safari release matrix remains open. This is a
+review build; no public deployment has been made.
 
 To start it from a new terminal:
 
@@ -22,8 +26,8 @@ npm ci
 npm run dev
 ```
 
-The application build is `app/dist/`. The root `dist/` below belongs to the
-earlier research harness. Work stops here for the requested Phase 3 review.
+The static application is `app/dist/`; the root `dist/` belongs to the earlier
+research harness. Work stops here for the requested Phase 4 review.
 
 ## Phase 0 research package
 

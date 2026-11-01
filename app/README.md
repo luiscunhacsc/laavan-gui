@@ -2,10 +2,10 @@
 
 Forma is being built as a complete dataset-based SEM application, including a
 spreadsheet-style data viewer, lavaan estimation, results and diagrams. The
-current [Phase 3 review build](../docs/phase-3.md) implements dataset import,
-a virtualised viewer, visual and syntax model editing, fitting, result tables,
-annotated diagrams and dataset-aware projects. The data-free converter remains
-available. [Phase 3 diagrams and generated syntax](../docs/phase-3-gallery.html).
+current [Phase 4 review build](../docs/phase-4.md) adds invariance, bootstrap,
+modification indices, reliability/validity tables and publication exports to the
+visual/syntax editor, data viewer, estimation and dataset-aware projects. The
+data-free converter remains available. [Review all reference figures and exports](../docs/phase-4-gallery.html).
 
 React/TypeScript provide the workspace, CodeMirror the editor, lavaan the
 scientific model, and ELK plus SEM-specific placement/routing the diagram.
@@ -13,7 +13,7 @@ There is no R server and no model upload in the production build.
 
 ## Run
 
-From this directory, with Node.js 22.12 or newer (23.6 was used here):
+From this directory, with Node.js 22.12+ or 24+ LTS (23.6 was used for these checks):
 
 ```powershell
 npm ci
@@ -26,7 +26,9 @@ checks the lavaan version before accepting a model. Network access is needed
 for the first runtime/package load. A fully offline distribution and immutable
 R package image are not yet implemented.
 Excel imports load readxl on demand; SPSS imports load haven. All data parsing
-and analysis take place in the browser worker.
+and analysis take place in the browser worker. Reliability/validity loads pinned
+semTools 0.5-10 on demand. Publication exports use local JavaScript and bundled
+OFL-licensed Noto Sans fonts.
 
 ## Use
 
@@ -83,8 +85,17 @@ and analysis take place in the browser worker.
   On opening, lavaan recompiles the draft;
   an invalid draft leaves the last valid canonical model intact.
 - Inspect the complete parameter table or copy the equivalent R script.
-- Export SVG from an up-to-date valid model. Selection controls are omitted
-  from the export. Full scientific PNG/PDF/TikZ exports belong to Phase 4.
+- Open **Analysis options** to request modification indices, reliability/validity,
+  seeded ML percentile bootstrap intervals or the continuous-CFA invariance
+  sequence. See the [workflow instructions and supported designs](../docs/phase-4.md).
+- Export an up-to-date diagram to SVG, PNG (150/300/600 DPI), vector PDF or TikZ.
+  Fonts, theme and annotation choices are retained; selections are omitted.
+  Choose a suitable physical width for legible print labels on dense models.
+- Export all result tables to Word or LaTeX with APA captions, rules and notes.
+  CI headers follow the selected confidence level. CSV/JSON retain full precision;
+  APA tables use three decimals. Invariance comparisons use lavaan's actual
+  difference tests. Modification additions apply to their indicated group and
+  make the previous fit stale until rerun.
 
 All product text is in `src/en.json`. The lightweight editor tokenizer colours
 text only: `src/r/compile.R` calls lavaan's actual parser. The R adapter
@@ -215,3 +226,21 @@ full exports and typography polish remain Phase 4. See the
 syntax families, per-origin autosave, source-file/model size limits and remaining
 browser checks. Dense diagrams/manual placement may still create crossings or
 geometry conflicts; these are reported rather than silently reinterpreted.
+
+
+## Phase 4 verification
+
+```powershell
+Rscript --vanilla scripts/setup-phase4.R
+Rscript --vanilla scripts/check-advanced.R
+Rscript --vanilla scripts/check-reproduction.R
+npm test
+npm run build
+```
+
+`http://127.0.0.1:5173/?verify=advanced` runs the opt-in 12-check public/synthetic
+verification and restores the previous worker dataset. Its loopback evidence
+endpoint is development-only and absent from the production build. The recorded
+12/12 run used VS Code embedded Chromium/Electron. Native R and actual webR
+numerical comparisons, export renderings and remaining release-browser coverage
+are documented in [Phase 4](../docs/phase-4.md).

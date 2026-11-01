@@ -249,6 +249,10 @@ forma_fit <- function(q) {
     'cases <- lavInspect(fit, "case.idx")\nif (!is.list(cases)) cases <- list(cases)\nlapply(seq_along(cases), function(g) semTools::htmt(measurement(fit, g), data = data[cases[[g]], , drop = FALSE], missing = ',forma_quote(a$missing),
     if(length(ordered))paste0(', ordered = ',forma_quote(ordered))else '',', absolute = TRUE, htmt2 = TRUE))\n'))
   if(isTRUE(a$reliability)&&reliability$status!='ok')script<-paste0(script,'\n# Reliability unavailable for this model: ',reliability$status,'\n')
+  if(isTRUE(a$reliability)&&reliability$status=='ok')script<-paste0(script,
+    '\n# Fornell-Larcker: square-root AVE on the diagonal, latent correlations off diagonal.\n',
+    'ave <- semTools::AVE(fit, obs.var = TRUE, return.df = FALSE)\nlatent_cor <- lavInspect(fit, "cor.lv")\nif (!is.list(ave)) ave <- list(ave)\nif (!is.list(latent_cor)) latent_cor <- list(latent_cor)\n',
+    'for (g in seq_along(ave)) {\n  factors <- names(ave[[g]])\n  r <- latent_cor[[g]][factors, factors, drop = FALSE]\n  root_ave <- sqrt(ave[[g]])\n  display <- r\n  diag(display) <- root_ave\n  print(display)\n  passes <- outer(root_ave, root_ave, pmin) > abs(r)\n  diag(passes) <- NA\n  print(passes)\n}\n')
   if(isTRUE(a$invariance))script<-paste0(script,'\nconfigural <- fit\nmetric <- update(fit, group.equal = "loadings")\nscalar <- update(fit, group.equal = c("loadings", "intercepts"))\nstrict <- update(fit, group.equal = c("loadings", "intercepts", "residuals"))\nlavTestLRT(configural, metric, scalar, strict)\nsapply(list(configural, metric, scalar, strict), fitMeasures)\n')
   list(ok=TRUE,converged=converged,admissible=admissible,model=base,parameters=pe,standardized=standardized,
     measures=measures,rsquared=if(is.null(r2))list()else r2,nobs=forma_array(nobs),

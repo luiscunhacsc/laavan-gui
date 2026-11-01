@@ -70,7 +70,7 @@ export default function App(){
     if(needsFit.current){setViewport(fitBox(next));needsFit.current=false;}};
   const model=committed.current?.model;
   const layOut=(m:CompiledModel,p:Positions)=>layoutModel({...(display.notation?notationModel(m):m),displayVariances:display.varianceStyle||'amos'},p,measureText);
-  useEffect(()=>{setRevision(n=>n+1);},[display.notation,display.varianceStyle]);
+  useEffect(()=>{needsFit.current=true;setRevision(n=>n+1);},[display.notation,display.varianceStyle]);
   const selectedNode=selection.length===1?viewScene?.nodes.find(n=>n.id===selection[0]&&n.kind!=='residual'):undefined;
   const chosenParameter=selectedParameter?(model?.table.find(r=>parameterKey(r)===selectedParameter)||viewScene?.model.table.find(r=>parameterKey(r)===selectedParameter)):undefined;
   const editingDisabled=restoring||fitting||working||!!syntax.trim()&&!synced;
