@@ -1,0 +1,101 @@
+[
+  {
+    "file": "01-holzinger-swineford-fitted.pdf",
+    "nodes": 21,
+    "textExtracts": true,
+    "vectorPaths": 67,
+    "noClippedText": true
+  },
+  {
+    "file": "01-holzinger-swineford.pdf",
+    "nodes": 21,
+    "textExtracts": true,
+    "vectorPaths": 67,
+    "noClippedText": true
+  },
+  {
+    "file": "02-political-democracy-fitted.pdf",
+    "nodes": 27,
+    "textExtracts": true,
+    "vectorPaths": 100,
+    "noClippedText": true
+  },
+  {
+    "file": "02-political-democracy.pdf",
+    "nodes": 27,
+    "textExtracts": true,
+    "vectorPaths": 100,
+    "noClippedText": true
+  },
+  {
+    "file": "03-mediation-fitted.pdf",
+    "nodes": 5,
+    "textExtracts": true,
+    "vectorPaths": 16,
+    "noClippedText": true
+  },
+  {
+    "file": "03-mediation.pdf",
+    "nodes": 5,
+    "textExtracts": true,
+    "vectorPaths": 16,
+    "noClippedText": true
+  },
+  {
+    "file": "04-second-order.pdf",
+    "nodes": 25,
+    "textExtracts": true,
+    "vectorPaths": 74,
+    "noClippedText": true
+  },
+  {
+    "file": "05-two-group.pdf",
+    "nodes": 14,
+    "textExtracts": true,
+    "vectorPaths": 39,
+    "noClippedText": true
+  },
+  {
+    "file": "06-observed-path.pdf",
+    "nodes": 6,
+    "textExtracts": true,
+    "vectorPaths": 24,
+    "noClippedText": true
+  },
+  {
+    "file": "07-large.pdf",
+    "nodes": 95,
+    "textExtracts": true,
+    "vectorPaths": 284,
+    "noClippedText": true
+  },
+  {
+    "file": "greek-cfa.pdf",
+    "nodes": 21,
+    "textExtracts": true,
+    "vectorPaths": 67,
+    "noClippedText": true
+  },
+  {
+    "file": "invariance-configural.pdf",
+    "nodes": 42,
+    "textExtracts": true,
+    "vectorPaths": 133,
+    "noClippedText": true
+  },
+  {
+    "file": "bootstrap.pdf",
+    "wordPages": 5,
+    "rendered": true
+  },
+  {
+    "file": "invariance.pdf",
+    "wordPages": 16,
+    "rendered": true
+  },
+  {
+    "file": "single.pdf",
+    "wordPages": 10,
+    "rendered": true
+  }
+]
