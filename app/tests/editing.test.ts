@@ -11,12 +11,13 @@ test('an unmeasured latent is drawn as one latent, with no fake indicator or sel
  assert.equal(scene.nodes.length,1);assert.equal(scene.nodes[0].kind,'latent');assert.equal(scene.edges.length,0);
  assert.equal(scene.model.observed.length,0);assert.match(renderSvg(scene,defaultDisplay),/No indicators/);assert.equal(scene.coveredRows.length,model.table.length);
 });
-for(const key of ['mediation','cfa'])test(`model created through visual commands retains complete geometry: ${key}`,async()=>{
+for(const key of ['mediation','cfa','formative'])test(`model created through visual commands retains complete geometry: ${key}`,async()=>{
  const model=normalizeModel(fixtures[key].model as CompiledModel),scene=await layoutModel(model);
  assert.deepEqual(scene.diagnostics,[]);assert.equal(scene.coveredRows.length,model.table.length);
  const interactive=sceneBody(scene,defaultDisplay,[],true);
  assert.match(interactive,/data-parameter=/);assert.match(interactive,/data-node=/);
  const exported=renderSvg(scene,defaultDisplay);assert.doesNotMatch(exported,/data-parameter=|tabindex=/);
+ if(key==='formative')for(const edge of scene.edges.filter(e=>e.kind==='directed'))assert.equal(scene.nodes.find(n=>n.id===edge.target)?.kind,'composite');
 });
 test('model history restores syntax, options and positions and discards an abandoned redo branch',()=>{
  const initial={syntax:'X ~~ X',options:defaultOptions,positions:{'g1:X':{x:100,y:200}}};
@@ -32,4 +33,10 @@ test('model history restores syntax, options and positions and discards an aband
 test('new variable names avoid existing observed and latent names',()=>{
  const model=normalizeModel(fixtures.cfa.model);
  assert.equal(nextVariableName('observed',model),'x4');assert.equal(nextVariableName('latent',model),'F1');
+});
+test('a regression back through a measurement path is rejected as feedback',async()=>{
+ const model=normalizeModel(structuredClone(fixtures.cfa.model) as CompiledModel);
+ const source=model.table.find(r=>r.op==='=~')!;
+ model.table.push({...source,id:999,op:'~',rhs:source.rhs,free:99,ustart:null,label:'',defaultFixed:false});
+ await assert.rejects(layoutModel(model),/layout.feedback/);
 });

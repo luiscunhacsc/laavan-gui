@@ -5,13 +5,13 @@ path analysis using datasets supplied by the user. It includes a spreadsheet-sty
 data viewer, model specification through syntax and drawing, lavaan estimation,
 annotated diagrams and analysis results. Data-free diagramming is also supported.
 
-**Phase 2 is ready for review** in `app/`: dataset import and inspection, lavaan
-fitting, result tables and annotated diagrams are implemented alongside the
-Phase 1 converter. Drawing new model relationships remains Phase 3.
+**Phase 3 is ready for review** in `app/`: visual model editing with syntax sync,
+model undo/redo, dataset-aware projects and browser autosave are implemented
+alongside dataset import, fitting, results and the data-free converter.
 
 - [Open the local review build](http://127.0.0.1:8000/app/dist/).
-- [Phase 2 validation and limitations](docs/phase-2.md).
-- [Seven fixed diagrams and three fitted analyses](docs/phase-2-gallery.html).
+- [Phase 3 validation and limitations](docs/phase-3.md).
+- [Seven regenerated references and four visual-edit examples](docs/phase-3-gallery.html).
 - [Run, build and deploy the application](app/README.md).
 
 To start it from a new terminal:
@@ -23,7 +23,7 @@ npm run dev
 ```
 
 The application build is `app/dist/`. The root `dist/` below belongs to the
-earlier research harness. Work stops here for the requested Phase 2 review.
+earlier research harness. Work stops here for the requested Phase 3 review.
 
 ## Phase 0 research package
 

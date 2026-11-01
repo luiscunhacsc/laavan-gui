@@ -22,7 +22,8 @@ async function placeGroup(model:CompiledModel,group:number,measure:Measure){
   for(const r of measurement)if(!ownership.has(r.rhs))ownership.set(r.rhs,r.lhs);
   const regressions=rows.filter(r=>r.op==='~');
   const arrows=regressions.map(r=>[r.rhs,r.lhs] as [string,string]);
-  if(directedCycle(base.map(n=>n.name),arrows)||directedCycle(base.map(n=>n.name),measurement.map(r=>[r.lhs,r.rhs])))throw new Error('layout.feedback');
+  const measurementArrows=measurement.map(r=>(r.op==='=~'?[r.lhs,r.rhs]:[r.rhs,r.lhs]) as [string,string]);
+  if(directedCycle(base.map(n=>n.name),[...arrows,...measurementArrows]))throw new Error('layout.feedback');
   const children=(name:string)=>measurement.filter(r=>r.lhs===name&&ownership.get(r.rhs)===name).map(r=>byName.get(r.rhs)!).filter(Boolean);
   const regNames=new Set(regressions.flatMap(r=>[r.lhs,r.rhs]));
   const skeleton=base.filter(n=>!ownership.has(n.name)||regNames.has(n.name));

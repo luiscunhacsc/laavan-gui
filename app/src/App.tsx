@@ -162,7 +162,7 @@ export default function App(){
     void applyEdit({kind,name:chosen},point||{x:viewport.x+viewport.width/2,y:viewport.y+viewport.height/2});
   };
   const endpoint=(n:SceneNode)=>{
-    if(editingDisabled)return;const node=n.owner?scene?.nodes.find(v=>v.id===n.owner):n;if(!node)return;
+    if(editingDisabled)return;if(n.kind==='residual'&&tool!=='covariance'){notify(en.builder.residualCovarianceOnly);return;}const node=n.owner?scene?.nodes.find(v=>v.id===n.owner):n;if(!node)return;
     const start=scene?.nodes.find(v=>v.id===linkSource);
     if(!start){setLinkSource(node.id);return;}if(start.id===node.id){setLinkSource(undefined);return;}
     if(start.group!==node.group){notify(en.builder.crossGroup);return;}

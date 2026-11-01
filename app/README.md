@@ -2,9 +2,10 @@
 
 Forma is being built as a complete dataset-based SEM application, including a
 spreadsheet-style data viewer, lavaan estimation, results and diagrams. The
-current [Phase 2 review build](../docs/phase-2.md) implements dataset import,
-a virtualised viewer, model specification, fitting, result tables and annotated
-diagrams. The data-free converter remains available.
+current [Phase 3 review build](../docs/phase-3.md) implements dataset import,
+a virtualised viewer, visual and syntax model editing, fitting, result tables,
+annotated diagrams and dataset-aware projects. The data-free converter remains
+available. [Phase 3 diagrams and generated syntax](../docs/phase-3-gallery.html).
 
 React/TypeScript provide the workspace, CodeMirror the editor, lavaan the
 scientific model, and ELK plus SEM-specific placement/routing the diagram.
@@ -38,6 +39,19 @@ and analysis take place in the browser worker.
   This is an inspection viewer; it does not edit cell values.
 - Write lavaan syntax or choose one of seven fixed examples. Changes compile
   automatically; Ctrl+Enter also updates the diagram.
+- In **Model**, choose Observed or Latent and click the canvas. Use Regression,
+  Loading, Covariance or Formative, selecting the source and then the target.
+  Formative inputs point into the composite. A new latent is marked as having no
+  indicators until connected; fitting/identification remains lavaan's responsibility.
+- Select a variable or parameter to rename/delete it or change its fixed/free
+  status, value or label. The right-hand inspector lists related parameters.
+  Data-derived fitted parameters absent from the syntax are read-only; declare
+  them explicitly in syntax to edit them. Structure edits apply to all groups;
+  parameter edits can target one group or all groups.
+- Select Dataset variables in the library to search, drag or click to add them.
+  Visual edits regenerate grouped syntax and replace custom comments/formatting.
+  lavaan checks round-trip meaning before commit; unsupported editing constructs
+  and dangling parameter-label dependencies receive a clear message.
 - Choose SEM, CFA or Path analysis, group count, means and exogenous-variable
   treatment. SEM is the initial preset. The mediation and observed-path examples
   select Path analysis, which uses SEM defaults and accepts observed variables
@@ -56,10 +70,16 @@ and analysis take place in the browser worker.
 - Drag nodes, Shift-click to select several, align/distribute, zoom/pan or fit.
   The canvas routes edges after a drag is released. Reflow regenerates all
   positions and can be undone. Ordinary syntax edits preserve existing positions.
+  Model undo/redo also restores valid syntax and options, with the latest 100
+  transactions retained in memory. Ctrl/Cmd+Z and redo shortcuts work in the
+  editor/canvas; an invalid draft can be returned to the last valid model.
 - Save/open `.forma.json` projects. The file retains the canonical table,
-  current draft, model/analysis options and positions. Dataset files and fit results
-  are kept separately; reattach the source dataset and review variable types after
-  reopening. Browser autosave likewise stores the model, not dataset contents.
+  current draft, model/analysis options and positions. Version 2 includes the
+  original dataset source and measurement-type choices by default; Model options
+  can exclude the dataset from exported projects. Version 1 files remain readable.
+  IndexedDB autosave retains the matching model/source/type settings locally and
+  restores them after reload. Fitted results must be rerun after reopening; analysis
+  JSON and R scripts remain separate exports. Dataset contents are not uploaded.
   On opening, lavaan recompiles the draft;
   an invalid draft leaves the last valid canonical model intact.
 - Inspect the complete parameter table or copy the equivalent R script.
@@ -149,6 +169,29 @@ python scripts/compare-phase2.py evidence/phase-2/browser-<timestamp>.json
 The development fixture/evidence routes are absent from the static production
 build. A Firefox 159 run has passed; the other release browsers remain to verify.
 
+For Phase 3, run `Rscript --vanilla scripts/check-editing.R` from `app/`.
+From the root, run `node spike/phase3-editing.mjs` followed by
+`python scripts/compare-phase3.py`. These compare all seven fixed models plus
+eight extra specifications through actual native and WASM edit/format operations.
+They also check dependency guards, group-specific editing and transactional data
+restore. The GUI-created mediation specification is numerically compared with
+the reference model.
+
+With the development server running, open
+<http://127.0.0.1:5173/?verify=editing>. Its persistent status badge reports
+**Editing and project verification: 15/15** on success. It additionally checks
+portable source bytes, SPSS type/label/missing-code restoration, real IndexedDB,
+worker restart recovery and a drawn model's fit. Compare its saved report from
+the root:
+
+```powershell
+python scripts/compare-phase3.py evidence/phase-3/browser-<timestamp>.json
+```
+
+This check has passed in Firefox 159. The browser harness invokes real editing
+and storage APIs; manual drag/drop and file-dialog coverage remains limited.
+The [Phase 3 notes](../docs/phase-3.md) describe the coverage boundaries.
+
 ## Build and deploy
 
 ```powershell
@@ -164,9 +207,11 @@ Do not deploy the workspace root or the research harness's separate `dist/`.
 
 ## Boundaries for the next phases
 
-Data import, viewing, fitting and annotated estimates are implemented in Phase 2;
-see its [validation and limits](../docs/phase-2.md). Drawing new statistical
-relationships with two-way syntax sync is Phase 3; dragging currently changes
-geometry only. Advanced estimation, full exports and typography polish are
-Phase 4. Dense diagrams may retain edge crossings; manual locks can also create
-geometry conflicts, which are reported rather than silently reinterpreted.
+Data import, viewing, fitting and annotated estimates are implemented in Phase 2.
+Visual relationships, parameter editing, model undo/redo, portable data attachments
+and browser workspace recovery are implemented in Phase 3. Advanced estimation,
+full exports and typography polish remain Phase 4. See the
+[current validation and limits](../docs/phase-3.md), including unsupported visual
+syntax families, per-origin autosave, source-file/model size limits and remaining
+browser checks. Dense diagrams/manual placement may still create crossings or
+geometry conflicts; these are reported rather than silently reinterpreted.

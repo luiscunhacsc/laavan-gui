@@ -179,6 +179,7 @@
     "renameDataHint": "Observed names must match dataset columns for fitting. Renaming the model variable leaves the dataset unchanged.",
     "wait": "Wait for a valid model before editing the diagram.",
     "crossGroup": "Connect variables within the same group panel.",
+    "residualCovarianceOnly": "Residual circles support covariance connections. Select the model variable for a regression or measurement path.",
     "sections": {"measurement":"Measurement model","structural":"Structural model","covariance":"Variances and covariances","means":"Means and thresholds","definitions":"Defined parameters","constraints":"Constraints"}
   },
   "projectData": {

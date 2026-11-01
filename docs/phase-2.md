@@ -1,5 +1,8 @@
 # Phase 2 · data, estimation and results
 
+Historical Phase 2 review. The current [Phase 3 build](phase-3.md) adds visual
+editing and projects/autosave that retain datasets and variable settings.
+
 Status: implemented and ready for Phase 2 review. Open
 [Forma](http://127.0.0.1:8000/app/dist/) and the
 [seven-model plus fitted-diagram gallery](phase-2-gallery.html).
