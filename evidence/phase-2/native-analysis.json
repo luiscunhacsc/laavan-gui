@@ -1585,15 +1585,22 @@
       "estimator": "ML",
       "missing": "listwise",
       "ordered": [],
-      "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- lavaan::HolzingerSwineford1939\n\n\nfit <- cfa(\n  model = \"visual =~ x1 + x2 + x3\\ntextual =~ x4 + x5 + x6\\nspeed =~ x7 + x8 + x9\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+      "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- lavaan::HolzingerSwineford1939\n\n\nfit <- cfa(\n  model = \"visual =~ x1 + x2 + x3\\ntextual =~ x4 + x5 + x6\\nspeed =~ x7 + x8 + x9\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
       "versions": {
         "lavaan": "0.7.3",
         "R": "R version 4.4.3 (2025-02-28 ucrt)",
+        "semTools": null,
         "readxl": "1.4.5",
         "haven": "2.5.4"
       },
       "datasetId": "01-holzinger-swineford",
       "datasetRevision": 1,
+      "bootstrap": null,
+      "modifications": null,
+      "reliability": null,
+      "invariance": null,
+      "confidence": 0.94999999999999996,
+      "groupLabels": [],
       "warnings": []
     },
     "02-political-democracy": {
@@ -3465,15 +3472,22 @@
       "estimator": "ML",
       "missing": "listwise",
       "ordered": [],
-      "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- lavaan::PoliticalDemocracy\n\n\nfit <- sem(\n  model = \"ind60 =~ x1 + x2 + x3\\ndem60 =~ y1 + y2 + y3 + y4\\ndem65 =~ y5 + y6 + y7 + y8\\ndem60 ~ ind60\\ndem65 ~ ind60 + dem60\\ny1 ~~ y5\\ny2 ~~ y4 + y6\\ny3 ~~ y7\\ny4 ~~ y8\\ny6 ~~ y8\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+      "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- lavaan::PoliticalDemocracy\n\n\nfit <- sem(\n  model = \"ind60 =~ x1 + x2 + x3\\ndem60 =~ y1 + y2 + y3 + y4\\ndem65 =~ y5 + y6 + y7 + y8\\ndem60 ~ ind60\\ndem65 ~ ind60 + dem60\\ny1 ~~ y5\\ny2 ~~ y4 + y6\\ny3 ~~ y7\\ny4 ~~ y8\\ny6 ~~ y8\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
       "versions": {
         "lavaan": "0.7.3",
         "R": "R version 4.4.3 (2025-02-28 ucrt)",
+        "semTools": null,
         "readxl": "1.4.5",
         "haven": "2.5.4"
       },
       "datasetId": "02-political-democracy",
       "datasetRevision": 1,
+      "bootstrap": null,
+      "modifications": null,
+      "reliability": null,
+      "invariance": null,
+      "confidence": 0.94999999999999996,
+      "groupLabels": [],
       "warnings": []
     },
     "03-mediation": {
@@ -4057,15 +4071,22 @@
       "estimator": "ML",
       "missing": "listwise",
       "ordered": [],
-      "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ni <- seq_len(400)\nX <- sin(i*.37) + cos(i*.11)\nM <- .6*X + sin(i*.71) + .4*cos(i*.17)\nY <- .45*M + .2*X + cos(i*.53) + .2*sin(i*.29)\ndata <- data.frame(X, M, Y)\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+      "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ni <- seq_len(400)\nX <- sin(i*.37) + cos(i*.11)\nM <- .6*X + sin(i*.71) + .4*cos(i*.17)\nY <- .45*M + .2*X + cos(i*.53) + .2*sin(i*.29)\ndata <- data.frame(X, M, Y)\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
       "versions": {
         "lavaan": "0.7.3",
         "R": "R version 4.4.3 (2025-02-28 ucrt)",
+        "semTools": null,
         "readxl": "1.4.5",
         "haven": "2.5.4"
       },
       "datasetId": "03-mediation",
       "datasetRevision": 1,
+      "bootstrap": null,
+      "modifications": null,
+      "reliability": null,
+      "invariance": null,
+      "confidence": 0.94999999999999996,
+      "groupLabels": [],
       "warnings": []
     }
   },
@@ -4650,15 +4671,22 @@
     "estimator": "ML",
     "missing": "listwise",
     "ordered": [],
-    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- as.data.frame(readxl::read_excel(\"workbook.xlsx\", sheet = \"Mediation\", na = c(\"\", \"NA\"), guess_max = 200000, .name_repair = 'minimal', trim_ws = FALSE))\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- as.data.frame(readxl::read_excel(\"workbook.xlsx\", sheet = \"Mediation\", na = c(\"\", \"NA\"), guess_max = 200000, .name_repair = 'minimal', trim_ws = FALSE))\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
     "versions": {
       "lavaan": "0.7.3",
       "R": "R version 4.4.3 (2025-02-28 ucrt)",
+      "semTools": null,
       "readxl": "1.4.5",
       "haven": "2.5.4"
     },
     "datasetId": "workbook.xlsx",
     "datasetRevision": 1,
+    "bootstrap": null,
+    "modifications": null,
+    "reliability": null,
+    "invariance": null,
+    "confidence": 0.94999999999999996,
+    "groupLabels": [],
     "warnings": []
   },
   "spss": {
@@ -5242,15 +5270,22 @@
     "estimator": "ML",
     "missing": "listwise",
     "ordered": [],
-    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- as.data.frame(haven::read_sav(\"mediation-labelled.sav\", user_na = TRUE, .name_repair = 'minimal'))\ndata <- as.data.frame(lapply(data, haven::zap_missing))\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- as.data.frame(haven::read_sav(\"mediation-labelled.sav\", user_na = TRUE, .name_repair = 'minimal'))\ndata <- as.data.frame(lapply(data, haven::zap_missing))\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
     "versions": {
       "lavaan": "0.7.3",
       "R": "R version 4.4.3 (2025-02-28 ucrt)",
+      "semTools": null,
       "readxl": "1.4.5",
       "haven": "2.5.4"
     },
     "datasetId": "mediation-labelled.sav",
     "datasetRevision": 2,
+    "bootstrap": null,
+    "modifications": null,
+    "reliability": null,
+    "invariance": null,
+    "confidence": 0.94999999999999996,
+    "groupLabels": [],
     "warnings": []
   },
   "missing": {
@@ -5972,15 +6007,22 @@
     "estimator": "MLR",
     "missing": "fiml",
     "ordered": [],
-    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- read.table(\"missing.csv\", header = TRUE, sep = \",\", quote = '\"', na.strings = c(\"\", \"NA\"), check.names = FALSE, stringsAsFactors = FALSE, comment.char = '', fileEncoding = 'UTF-8-BOM', fill = FALSE)\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"MLR\",\n  missing = \"fiml\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- read.table(\"missing.csv\", header = TRUE, sep = \",\", quote = '\"', na.strings = c(\"\", \"NA\"), check.names = FALSE, stringsAsFactors = FALSE, comment.char = '', fileEncoding = 'UTF-8-BOM', fill = FALSE)\n\n\nfit <- sem(\n  model = \"M ~ a*X\\nY ~ b*M + cp*X\\nind := a*b\\ntotal := cp + ind\",\n  data = data,\n  estimator = \"MLR\",\n  missing = \"fiml\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
     "versions": {
       "lavaan": "0.7.3",
       "R": "R version 4.4.3 (2025-02-28 ucrt)",
+      "semTools": null,
       "readxl": "1.4.5",
       "haven": "2.5.4"
     },
     "datasetId": "missing.csv",
     "datasetRevision": 1,
+    "bootstrap": null,
+    "modifications": null,
+    "reliability": null,
+    "invariance": null,
+    "confidence": 0.94999999999999996,
+    "groupLabels": [],
     "warnings": [
       "lavaan->lav_options_set():  \n   missing argument ml forces meanstructure = TRUE",
       "lavaan->lav_fit_cfi_lavobject():  \n   computation of robust CFI resulted in NA values.",
@@ -9440,15 +9482,22 @@
       "x8",
       "x9"
     ],
-    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- read.table(\"ordinal.csv\", header = TRUE, sep = \",\", quote = '\"', na.strings = c(\"\", \"NA\"), check.names = FALSE, stringsAsFactors = FALSE, comment.char = '', fileEncoding = 'UTF-8-BOM', fill = FALSE)\ndata[[\"x1\"]] <- ordered(data[[\"x1\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x2\"]] <- ordered(data[[\"x2\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x3\"]] <- ordered(data[[\"x3\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x4\"]] <- ordered(data[[\"x4\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x5\"]] <- ordered(data[[\"x5\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x6\"]] <- ordered(data[[\"x6\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x7\"]] <- ordered(data[[\"x7\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x8\"]] <- ordered(data[[\"x8\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x9\"]] <- ordered(data[[\"x9\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\n\nfit <- cfa(\n  model = \"visual =~ x1 + x2 + x3\\ntextual =~ x4 + x5 + x6\\nspeed =~ x7 + x8 + x9\",\n  data = data,\n  estimator = \"WLSMV\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE,\n  ordered = c(\"x1\", \"x2\", \"x3\", \"x4\", \"x5\", \"x6\", \"x7\", \"x8\", \"x9\")\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\ndata <- read.table(\"ordinal.csv\", header = TRUE, sep = \",\", quote = '\"', na.strings = c(\"\", \"NA\"), check.names = FALSE, stringsAsFactors = FALSE, comment.char = '', fileEncoding = 'UTF-8-BOM', fill = FALSE)\ndata[[\"x1\"]] <- ordered(data[[\"x1\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x2\"]] <- ordered(data[[\"x2\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x3\"]] <- ordered(data[[\"x3\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x4\"]] <- ordered(data[[\"x4\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x5\"]] <- ordered(data[[\"x5\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x6\"]] <- ordered(data[[\"x6\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x7\"]] <- ordered(data[[\"x7\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x8\"]] <- ordered(data[[\"x8\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\ndata[[\"x9\"]] <- ordered(data[[\"x9\"]], levels = c(\"1\", \"2\", \"3\", \"4\"))\n\nfit <- cfa(\n  model = \"visual =~ x1 + x2 + x3\\ntextual =~ x4 + x5 + x6\\nspeed =~ x7 + x8 + x9\",\n  data = data,\n  estimator = \"WLSMV\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE,\n  ordered = c(\"x1\", \"x2\", \"x3\", \"x4\", \"x5\", \"x6\", \"x7\", \"x8\", \"x9\")\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
     "versions": {
       "lavaan": "0.7.3",
       "R": "R version 4.4.3 (2025-02-28 ucrt)",
+      "semTools": null,
       "readxl": "1.4.5",
       "haven": "2.5.4"
     },
     "datasetId": "ordinal.csv",
     "datasetRevision": 10,
+    "bootstrap": null,
+    "modifications": null,
+    "reliability": null,
+    "invariance": null,
+    "confidence": 0.94999999999999996,
+    "groupLabels": [],
     "warnings": []
   },
   "matrix": {
@@ -10781,15 +10830,22 @@
     "estimator": "ML",
     "missing": "listwise",
     "ordered": [],
-    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\nsample_cov <- matrix(c(1.36289774499779, 0.408729234586545, 0.581832320084842, 0.506517779495859, 0.442084255837265, 0.456324157747872, 0.0850479859266197, 0.264717143301711, 0.459866342229125, 0.408729234586545, 1.38638981173865, 0.452567483388704, 0.20961978157046, 0.211794712070875, 0.248369719902796, -0.0970735209820044, 0.110024916943522, 0.244822815733666, 0.581832320084842, 0.452567483388704, 1.279114410299, 0.208863511622148, 0.112670611849391, 0.244922678128433, 0.0886363107638427, 0.21303038482835, 0.375098746170127, \n0.506517779495859, 0.20961978157046, 0.208863511622148, 1.35516672288466, 1.10141195751168, 0.898500761763255, 0.220475065103346, 0.126011994480742, 0.244173946304369, 0.442084255837265, 0.211794712070875, 0.112670611849391, 1.10141195751168, 1.66531838316722, 1.01790578892339, 0.143476213267719, 0.181207225913621, 0.296225467421096, 0.456324157747872, 0.248369719902796, 0.244922678128433, 0.898500761763255, 1.01790578892339, 1.20034623928604, 0.144558650507976, 0.165982441580498, 0.236783605912182, \n0.0850479859266197, -0.0970735209820044, 0.0886363107638427, 0.220475065103346, 0.143476213267719, 0.144558650507976, 1.18708326254085, 0.53702937198588, 0.374541543306881, 0.264717143301711, 0.110024916943522, 0.21303038482835, 0.126011994480742, 0.181207225913621, 0.165982441580498, 0.53702937198588, 1.02538942414175, 0.45884094830897, 0.459866342229125, 0.244822815733666, 0.375098746170127, 0.244173946304369, 0.296225467421096, 0.236783605912182, 0.374541543306881, 0.45884094830897, 1.01838721619292\n), nrow = 9, byrow = TRUE, dimnames = list(c(\"x1\", \"x2\", \"x3\", \"x4\", \"x5\", \"x6\", \"x7\", \"x8\", \"x9\"), c(\"x1\", \"x2\", \"x3\", \"x4\", \"x5\", \"x6\", \"x7\", \"x8\", \"x9\")))\nsample_n <- 301\n\nfit <- cfa(\n  model = \"visual =~ x1 + x2 + x3\\ntextual =~ x4 + x5 + x6\\nspeed =~ x7 + x8 + x9\",\n  sample.cov = sample_cov,\n  sample.nobs = sample_n,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\n",
+    "script": "# Forma analysis; lavaan 0.7.3\n# R version 4.4.3 (2025-02-28 ucrt)\n# Place the original source file in the working directory.\nlibrary(lavaan)\n\nsample_cov <- matrix(c(1.36289774499779, 0.408729234586545, 0.581832320084842, 0.506517779495859, 0.442084255837265, 0.456324157747872, 0.0850479859266197, 0.264717143301711, 0.459866342229125, 0.408729234586545, 1.38638981173865, 0.452567483388704, 0.20961978157046, 0.211794712070875, 0.248369719902796, -0.0970735209820044, 0.110024916943522, 0.244822815733666, 0.581832320084842, 0.452567483388704, 1.279114410299, 0.208863511622148, 0.112670611849391, 0.244922678128433, 0.0886363107638427, 0.21303038482835, 0.375098746170127, \n0.506517779495859, 0.20961978157046, 0.208863511622148, 1.35516672288466, 1.10141195751168, 0.898500761763255, 0.220475065103346, 0.126011994480742, 0.244173946304369, 0.442084255837265, 0.211794712070875, 0.112670611849391, 1.10141195751168, 1.66531838316722, 1.01790578892339, 0.143476213267719, 0.181207225913621, 0.296225467421096, 0.456324157747872, 0.248369719902796, 0.244922678128433, 0.898500761763255, 1.01790578892339, 1.20034623928604, 0.144558650507976, 0.165982441580498, 0.236783605912182, \n0.0850479859266197, -0.0970735209820044, 0.0886363107638427, 0.220475065103346, 0.143476213267719, 0.144558650507976, 1.18708326254085, 0.53702937198588, 0.374541543306881, 0.264717143301711, 0.110024916943522, 0.21303038482835, 0.126011994480742, 0.181207225913621, 0.165982441580498, 0.53702937198588, 1.02538942414175, 0.45884094830897, 0.459866342229125, 0.244822815733666, 0.375098746170127, 0.244173946304369, 0.296225467421096, 0.236783605912182, 0.374541543306881, 0.45884094830897, 1.01838721619292\n), nrow = 9, byrow = TRUE, dimnames = list(c(\"x1\", \"x2\", \"x3\", \"x4\", \"x5\", \"x6\", \"x7\", \"x8\", \"x9\"), c(\"x1\", \"x2\", \"x3\", \"x4\", \"x5\", \"x6\", \"x7\", \"x8\", \"x9\")))\nsample_n <- 301\n\nfit <- cfa(\n  model = \"visual =~ x1 + x2 + x3\\ntextual =~ x4 + x5 + x6\\nspeed =~ x7 + x8 + x9\",\n  sample.cov = sample_cov,\n  sample.nobs = sample_n,\n  estimator = \"ML\",\n  missing = \"listwise\",\n  fixed.x = FALSE,\n  meanstructure = FALSE\n)\nsummary(fit, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)\nparameterEstimates(fit, standardized = TRUE, level = 0.95, boot.ci.type = \"perc\")\n",
     "versions": {
       "lavaan": "0.7.3",
       "R": "R version 4.4.3 (2025-02-28 ucrt)",
+      "semTools": null,
       "readxl": "1.4.5",
       "haven": "2.5.4"
     },
     "datasetId": "cov",
     "datasetRevision": 1,
+    "bootstrap": null,
+    "modifications": null,
+    "reliability": null,
+    "invariance": null,
+    "confidence": 0.94999999999999996,
+    "groupLabels": [],
     "warnings": []
   }
 }
