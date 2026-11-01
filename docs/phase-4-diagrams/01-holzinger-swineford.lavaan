@@ -1,0 +1,10 @@
+# Measurement model
+visual =~ x1
+visual =~ x2
+visual =~ x3
+textual =~ x4
+textual =~ x5
+textual =~ x6
+speed =~ x7
+speed =~ x8
+speed =~ x9

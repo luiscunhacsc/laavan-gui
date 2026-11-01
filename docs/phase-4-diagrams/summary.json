@@ -1,0 +1,98 @@
+[
+  {
+    "id": "01-holzinger-swineford",
+    "title": "Holzinger–Swineford three-factor CFA",
+    "nodes": 21,
+    "width": 890.2420000000001,
+    "height": 1384,
+    "diagnostics": []
+  },
+  {
+    "id": "02-political-democracy",
+    "title": "PoliticalDemocracy full SEM",
+    "nodes": 27,
+    "width": 2059.3816731770835,
+    "height": 1259.1,
+    "diagnostics": []
+  },
+  {
+    "id": "03-mediation",
+    "title": "Labelled mediation",
+    "nodes": 5,
+    "width": 904,
+    "height": 635.5,
+    "diagnostics": []
+  },
+  {
+    "id": "04-second-order",
+    "title": "Second-order CFA",
+    "nodes": 25,
+    "width": 982.7620000000002,
+    "height": 1247,
+    "diagnostics": []
+  },
+  {
+    "id": "05-two-group",
+    "title": "Two groups with shared loading labels",
+    "nodes": 14,
+    "width": 1716.7620000000002,
+    "height": 719,
+    "diagnostics": []
+  },
+  {
+    "id": "06-observed-path",
+    "title": "Observed-only path model",
+    "nodes": 6,
+    "width": 990.55,
+    "height": 461,
+    "diagnostics": []
+  },
+  {
+    "id": "07-large",
+    "title": "Eight factors and forty indicators",
+    "nodes": 95,
+    "width": 3654.524,
+    "height": 932,
+    "diagnostics": []
+  },
+  {
+    "id": "01-holzinger-swineford-fitted",
+    "title": "Holzinger–Swineford three-factor CFA · standardised estimates",
+    "nodes": 21,
+    "width": 977.5406316358053,
+    "height": 1389,
+    "diagnostics": []
+  },
+  {
+    "id": "02-political-democracy-fitted",
+    "title": "PoliticalDemocracy full SEM · standardised estimates",
+    "nodes": 27,
+    "width": 2108.0939532511284,
+    "height": 1286.596747260737,
+    "diagnostics": []
+  },
+  {
+    "id": "03-mediation-fitted",
+    "title": "Labelled mediation · standardised estimates",
+    "nodes": 5,
+    "width": 927.72,
+    "height": 635.5,
+    "diagnostics": []
+  },
+  {
+    "id": "greek-cfa",
+    "title": "Three-factor CFA · parameter notation",
+    "nodes": 21,
+    "width": 916.9569342335403,
+    "height": 1384,
+    "diagnostics": []
+  },
+  {
+    "id": "invariance-configural",
+    "title": "Two-group CFA · configural estimates",
+    "nodes": 42,
+    "width": 1945.8794210905369,
+    "height": 1452,
+    "diagnostics": []
+  }
+]

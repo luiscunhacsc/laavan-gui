@@ -1,0 +1,107 @@
+% Compile with LuaLaTeX or XeLaTeX.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec,booktabs,longtable,pdflscape}
+\setmainfont{TeX Gyre Termes}
+\begin{document}
+\section*{Analysis report}
+Labelled mediation · ML · listwise · N = 400 · lavaan 0.7.3\par
+
+\begin{landscape}
+\small
+\begin{longtable}{llllrrrrrrrr}
+\caption{Parameter estimates}\\
+\toprule
+Group & Left & Relation & Right & Label / value & Estimate & SE & z & p & 95\% CI lower & 95\% CI upper & std.all \\
+\midrule
+\endfirsthead
+\multicolumn{12}{l}{Table 1 (Parameter estimates)} \\
+\toprule
+Group & Left & Relation & Right & Label / value & Estimate & SE & z & p & 95\% CI lower & 95\% CI upper & std.all \\
+\midrule
+\endhead
+1 & M & \textasciitilde{} & X & a & 0.596 & 0.038 & 15.683 & < .001 & 0.518 & 0.685 & 0.620 \\
+1 & Y & \textasciitilde{} & M & b & 0.473 & 0.038 & 12.342 & < .001 & 0.379 & 0.541 & 0.494 \\
+1 & Y & \textasciitilde{} & X & cp & 0.183 & 0.037 & 4.929 & < .001 & 0.098 & 0.243 & 0.199 \\
+1 & M & \textasciitilde{}\textasciitilde{} & M &  & 0.584 & 0.027 & 21.976 & < .001 & 0.543 & 0.647 & 0.615 \\
+1 & Y & \textasciitilde{}\textasciitilde{} & Y &  & 0.517 & 0.021 & 24.765 & < .001 & 0.473 & 0.558 & 0.594 \\
+1 & X & \textasciitilde{}\textasciitilde{} & X &  & 1.027 & 0.056 & 18.439 & < .001 & 0.917 & 1.137 & 1.000 \\
+1 & ind & := & a*b & ind & 0.282 & 0.029 & 9.585 & < .001 & 0.229 & 0.350 & 0.307 \\
+1 & total & := & cp+ind & total & 0.465 & 0.039 & 11.861 & < .001 & 0.383 & 0.550 & 0.505 \\
+\bottomrule
+\end{longtable}
+\noindent Note. Estimates and intervals are unstandardised; Std. all is fully standardised. Values are rounded only for display. A dash indicates unavailable output. 95\% CI. Percentile confidence intervals are unstandardised. SEs are bootstrap SEs; z and p remain normal approximations. lavaan excludes failed draws from the intervals and reports inadmissible draws separately.\par
+\end{landscape}
+
+\small
+\begin{longtable}{lr}
+\caption{Fit measures}\\
+\toprule
+Measure & Value \\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{Table 2 (Fit measures)} \\
+\toprule
+Measure & Value \\
+\midrule
+\endhead
+$\chi$$^{2}$ & 0.000 \\
+df & 0.000 \\
+p ($\chi$$^{2}$) & — \\
+CFI & 1.000 \\
+TLI & 1.000 \\
+RMSEA & 0.000 \\
+RMSEA 90\% CI lower & 0.000 \\
+RMSEA 90\% CI upper & 0.000 \\
+SRMR & 0.000 \\
+Scaled $\chi$$^{2}$ & — \\
+Scaled df & — \\
+p (scaled $\chi$$^{2}$) & — \\
+Robust CFI & — \\
+Robust TLI & — \\
+Robust RMSEA & — \\
+Robust RMSEA 90\% CI lower & — \\
+Robust RMSEA 90\% CI upper & — \\
+Scaled CFI & — \\
+Scaled TLI & — \\
+Scaled RMSEA & — \\
+Scaled RMSEA 90\% CI lower & — \\
+Scaled RMSEA 90\% CI upper & — \\
+\bottomrule
+\end{longtable}
+\noindent Note. Scaled and robust statistics are labelled explicitly. Compare the appropriate version for your estimator.\par
+
+\small
+\begin{longtable}{llr}
+\caption{Explained variance (R$^{2}$)}\\
+\toprule
+Group & Left & R$^{2}$ \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{Table 3 (Explained variance (R$^{2}$))} \\
+\toprule
+Group & Left & R$^{2}$ \\
+\midrule
+\endhead
+1 & M & 0.385 \\
+1 & Y & 0.406 \\
+\bottomrule
+\end{longtable}
+
+\small
+\begin{longtable}{llllrr}
+\caption{Bootstrap summary}\\
+\toprule
+Requested & Returned draws & Failed draws & Inadmissible draws & Random seed & Confidence level \\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{Table 4 (Bootstrap summary)} \\
+\toprule
+Requested & Returned draws & Failed draws & Inadmissible draws & Random seed & Confidence level \\
+\midrule
+\endhead
+100 & 100 & 0 & 0 & 12345 & 95\% \\
+\bottomrule
+\end{longtable}
+\noindent Note. Percentile confidence intervals are unstandardised. SEs are bootstrap SEs; z and p remain normal approximations. lavaan excludes failed draws from the intervals and reports inadmissible draws separately.\par
+\end{document}

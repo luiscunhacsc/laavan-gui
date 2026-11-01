@@ -1,0 +1,1630 @@
+{
+  "nodes": [
+    {
+      "id": "g1:F",
+      "name": "F",
+      "group": 1,
+      "kind": "latent",
+      "x": 220,
+      "y": 302,
+      "width": 114,
+      "height": 58,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 7,
+        "lhs": "F",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 0,
+        "ustart": 0,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p7.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 7
+      },
+      "variance": {
+        "id": 11,
+        "lhs": "F",
+        "op": "~~",
+        "rhs": "F",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 9,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p11.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 11
+      }
+    },
+    {
+      "id": "g1:x1",
+      "name": "x1",
+      "group": 1,
+      "kind": "observed",
+      "x": 544,
+      "y": 172,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 4,
+        "lhs": "x1",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 3,
+        "ustart": null,
+        "exo": 0,
+        "label": "i1",
+        "plabel": ".p4.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 4
+      }
+    },
+    {
+      "id": "g1:x2",
+      "name": "x2",
+      "group": 1,
+      "kind": "observed",
+      "x": 544,
+      "y": 302,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 5,
+        "lhs": "x2",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 4,
+        "ustart": null,
+        "exo": 0,
+        "label": "i2",
+        "plabel": ".p5.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 5
+      }
+    },
+    {
+      "id": "g1:x3",
+      "name": "x3",
+      "group": 1,
+      "kind": "observed",
+      "x": 544,
+      "y": 432,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 6,
+        "lhs": "x3",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 5,
+        "ustart": null,
+        "exo": 0,
+        "label": "i3",
+        "plabel": ".p6.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 6
+      }
+    },
+    {
+      "id": "res:g1:x1",
+      "name": "e1",
+      "owner": "g1:x1",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 696,
+      "y": 172,
+      "group": 1,
+      "implicit": true,
+      "variance": {
+        "id": 8,
+        "lhs": "x1",
+        "op": "~~",
+        "rhs": "x1",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 6,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p8.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 8
+      },
+      "thresholds": []
+    },
+    {
+      "id": "res:g1:x2",
+      "name": "e2",
+      "owner": "g1:x2",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 696,
+      "y": 302,
+      "group": 1,
+      "implicit": true,
+      "variance": {
+        "id": 9,
+        "lhs": "x2",
+        "op": "~~",
+        "rhs": "x2",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 7,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p9.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 9
+      },
+      "thresholds": []
+    },
+    {
+      "id": "res:g1:x3",
+      "name": "e3",
+      "owner": "g1:x3",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 696,
+      "y": 432,
+      "group": 1,
+      "implicit": true,
+      "variance": {
+        "id": 10,
+        "lhs": "x3",
+        "op": "~~",
+        "rhs": "x3",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 8,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p10.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 10
+      },
+      "thresholds": []
+    },
+    {
+      "id": "g2:F",
+      "name": "F",
+      "group": 2,
+      "kind": "latent",
+      "x": 1223,
+      "y": 302,
+      "width": 114,
+      "height": 58,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 18,
+        "lhs": "F",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 15,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p18.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 7
+      },
+      "variance": {
+        "id": 22,
+        "lhs": "F",
+        "op": "~~",
+        "rhs": "F",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 19,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p22.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 22
+      }
+    },
+    {
+      "id": "g2:x1",
+      "name": "x1",
+      "group": 2,
+      "kind": "observed",
+      "x": 1547,
+      "y": 172,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 15,
+        "lhs": "x1",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 12,
+        "ustart": null,
+        "exo": 0,
+        "label": "i1",
+        "plabel": ".p15.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 4
+      }
+    },
+    {
+      "id": "g2:x2",
+      "name": "x2",
+      "group": 2,
+      "kind": "observed",
+      "x": 1547,
+      "y": 302,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 16,
+        "lhs": "x2",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 13,
+        "ustart": null,
+        "exo": 0,
+        "label": "i2",
+        "plabel": ".p16.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 5
+      }
+    },
+    {
+      "id": "g2:x3",
+      "name": "x3",
+      "group": 2,
+      "kind": "observed",
+      "x": 1547,
+      "y": 432,
+      "width": 96,
+      "height": 44,
+      "implicit": false,
+      "thresholds": [],
+      "mean": {
+        "id": 17,
+        "lhs": "x3",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 14,
+        "ustart": null,
+        "exo": 0,
+        "label": "i3",
+        "plabel": ".p17.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 6
+      }
+    },
+    {
+      "id": "res:g2:x1",
+      "name": "e1",
+      "owner": "g2:x1",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 1699,
+      "y": 172,
+      "group": 2,
+      "implicit": true,
+      "variance": {
+        "id": 19,
+        "lhs": "x1",
+        "op": "~~",
+        "rhs": "x1",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 16,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p19.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 19
+      },
+      "thresholds": []
+    },
+    {
+      "id": "res:g2:x2",
+      "name": "e2",
+      "owner": "g2:x2",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 1699,
+      "y": 302,
+      "group": 2,
+      "implicit": true,
+      "variance": {
+        "id": 20,
+        "lhs": "x2",
+        "op": "~~",
+        "rhs": "x2",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 17,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p20.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 20
+      },
+      "thresholds": []
+    },
+    {
+      "id": "res:g2:x3",
+      "name": "e3",
+      "owner": "g2:x3",
+      "kind": "residual",
+      "width": 34,
+      "height": 34,
+      "x": 1699,
+      "y": 432,
+      "group": 2,
+      "implicit": true,
+      "variance": {
+        "id": 21,
+        "lhs": "x3",
+        "op": "~~",
+        "rhs": "x3",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 18,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p21.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 21
+      },
+      "thresholds": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "g1:p1",
+      "source": "g1:F",
+      "target": "g1:x1",
+      "kind": "directed",
+      "label": "1",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 1,
+      "fixed": true,
+      "points": [
+        {
+          "x": 264.75660101764197,
+          "y": 284.04210452995846
+        },
+        {
+          "x": 496,
+          "y": 191.25925925925927
+        }
+      ],
+      "labelBox": {
+        "x": 378.99073002438996,
+        "y": 242.92806007187306,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": false,
+        "rowId": 1
+      }
+    },
+    {
+      "id": "g1:p2",
+      "source": "g1:F",
+      "target": "g1:x2",
+      "kind": "directed",
+      "label": "l2",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 2,
+      "fixed": false,
+      "points": [
+        {
+          "x": 277,
+          "y": 302
+        },
+        {
+          "x": 496,
+          "y": 302
+        }
+      ],
+      "labelBox": {
+        "x": 377.105,
+        "y": 308.5,
+        "width": 18.79,
+        "height": 21,
+        "text": "l2",
+        "implicit": false,
+        "rowId": 2
+      }
+    },
+    {
+      "id": "g1:p3",
+      "source": "g1:F",
+      "target": "g1:x3",
+      "kind": "directed",
+      "label": "l3",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 3,
+      "fixed": false,
+      "points": [
+        {
+          "x": 264.75660101764197,
+          "y": 319.95789547004154
+        },
+        {
+          "x": 496,
+          "y": 412.74074074074076
+        }
+      ],
+      "labelBox": {
+        "x": 364.652870993252,
+        "y": 371.62669628265536,
+        "width": 18.79,
+        "height": 21,
+        "text": "l3",
+        "implicit": false,
+        "rowId": 3
+      }
+    },
+    {
+      "id": "attach:res:g1:x1",
+      "source": "res:g1:x1",
+      "target": "g1:x1",
+      "kind": "residual",
+      "label": "1",
+      "implicit": true,
+      "fixed": true,
+      "points": [
+        {
+          "x": 679,
+          "y": 172
+        },
+        {
+          "x": 592,
+          "y": 172
+        }
+      ],
+      "labelBox": {
+        "x": 627.782,
+        "y": 144.5,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": true
+      }
+    },
+    {
+      "id": "attach:res:g1:x2",
+      "source": "res:g1:x2",
+      "target": "g1:x2",
+      "kind": "residual",
+      "label": "1",
+      "implicit": true,
+      "fixed": true,
+      "points": [
+        {
+          "x": 679,
+          "y": 302
+        },
+        {
+          "x": 592,
+          "y": 302
+        }
+      ],
+      "labelBox": {
+        "x": 627.782,
+        "y": 274.5,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": true
+      }
+    },
+    {
+      "id": "attach:res:g1:x3",
+      "source": "res:g1:x3",
+      "target": "g1:x3",
+      "kind": "residual",
+      "label": "1",
+      "implicit": true,
+      "fixed": true,
+      "points": [
+        {
+          "x": 679,
+          "y": 432
+        },
+        {
+          "x": 592,
+          "y": 432
+        }
+      ],
+      "labelBox": {
+        "x": 627.782,
+        "y": 404.5,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": true
+      }
+    },
+    {
+      "id": "g2:p12",
+      "source": "g2:F",
+      "target": "g2:x1",
+      "kind": "directed",
+      "label": "1",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 12,
+      "fixed": true,
+      "points": [
+        {
+          "x": 1267.756601017642,
+          "y": 284.04210452995846
+        },
+        {
+          "x": 1499,
+          "y": 191.25925925925927
+        }
+      ],
+      "labelBox": {
+        "x": 1381.99073002439,
+        "y": 242.92806007187306,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": false,
+        "rowId": 12
+      }
+    },
+    {
+      "id": "g2:p13",
+      "source": "g2:F",
+      "target": "g2:x2",
+      "kind": "directed",
+      "label": "l2",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 13,
+      "fixed": false,
+      "points": [
+        {
+          "x": 1280,
+          "y": 302
+        },
+        {
+          "x": 1499,
+          "y": 302
+        }
+      ],
+      "labelBox": {
+        "x": 1380.105,
+        "y": 308.5,
+        "width": 18.79,
+        "height": 21,
+        "text": "l2",
+        "implicit": false,
+        "rowId": 13
+      }
+    },
+    {
+      "id": "g2:p14",
+      "source": "g2:F",
+      "target": "g2:x3",
+      "kind": "directed",
+      "label": "l3",
+      "implicit": false,
+      "defaultFixed": false,
+      "rowId": 14,
+      "fixed": false,
+      "points": [
+        {
+          "x": 1267.756601017642,
+          "y": 319.95789547004154
+        },
+        {
+          "x": 1499,
+          "y": 412.74074074074076
+        }
+      ],
+      "labelBox": {
+        "x": 1367.652870993252,
+        "y": 371.62669628265536,
+        "width": 18.79,
+        "height": 21,
+        "text": "l3",
+        "implicit": false,
+        "rowId": 14
+      }
+    },
+    {
+      "id": "attach:res:g2:x1",
+      "source": "res:g2:x1",
+      "target": "g2:x1",
+      "kind": "residual",
+      "label": "1",
+      "implicit": true,
+      "fixed": true,
+      "points": [
+        {
+          "x": 1682,
+          "y": 172
+        },
+        {
+          "x": 1595,
+          "y": 172
+        }
+      ],
+      "labelBox": {
+        "x": 1630.782,
+        "y": 144.5,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": true
+      }
+    },
+    {
+      "id": "attach:res:g2:x2",
+      "source": "res:g2:x2",
+      "target": "g2:x2",
+      "kind": "residual",
+      "label": "1",
+      "implicit": true,
+      "fixed": true,
+      "points": [
+        {
+          "x": 1682,
+          "y": 302
+        },
+        {
+          "x": 1595,
+          "y": 302
+        }
+      ],
+      "labelBox": {
+        "x": 1630.782,
+        "y": 274.5,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": true
+      }
+    },
+    {
+      "id": "attach:res:g2:x3",
+      "source": "res:g2:x3",
+      "target": "g2:x3",
+      "kind": "residual",
+      "label": "1",
+      "implicit": true,
+      "fixed": true,
+      "points": [
+        {
+          "x": 1682,
+          "y": 432
+        },
+        {
+          "x": 1595,
+          "y": 432
+        }
+      ],
+      "labelBox": {
+        "x": 1630.782,
+        "y": 404.5,
+        "width": 15.436,
+        "height": 21,
+        "text": "1",
+        "implicit": true
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "x": 194.238,
+      "y": 236,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 11
+    },
+    {
+      "x": 117.51999999999998,
+      "y": 292,
+      "width": 35.480000000000004,
+      "height": 20,
+      "text": "μ = 0",
+      "implicit": false,
+      "rowId": 7
+    },
+    {
+      "x": 447.424,
+      "y": 162,
+      "width": 38.576,
+      "height": 20,
+      "text": "μ = i1",
+      "implicit": false,
+      "rowId": 4
+    },
+    {
+      "x": 524.712,
+      "y": 341,
+      "width": 38.576,
+      "height": 20,
+      "text": "μ = i2",
+      "implicit": false,
+      "rowId": 5
+    },
+    {
+      "x": 447.424,
+      "y": 422,
+      "width": 38.576,
+      "height": 20,
+      "text": "μ = i3",
+      "implicit": false,
+      "rowId": 6
+    },
+    {
+      "x": 670.238,
+      "y": 118,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 8
+    },
+    {
+      "x": 670.238,
+      "y": 248,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 9
+    },
+    {
+      "x": 670.238,
+      "y": 378,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 10
+    },
+    {
+      "x": 1197.238,
+      "y": 236,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 22
+    },
+    {
+      "x": 1104.7640000000001,
+      "y": 292,
+      "width": 51.236000000000004,
+      "height": 20,
+      "text": "μ = free",
+      "implicit": false,
+      "rowId": 18
+    },
+    {
+      "x": 1450.424,
+      "y": 162,
+      "width": 38.576,
+      "height": 20,
+      "text": "μ = i1",
+      "implicit": false,
+      "rowId": 15
+    },
+    {
+      "x": 1527.712,
+      "y": 341,
+      "width": 38.576,
+      "height": 20,
+      "text": "μ = i2",
+      "implicit": false,
+      "rowId": 16
+    },
+    {
+      "x": 1450.424,
+      "y": 422,
+      "width": 38.576,
+      "height": 20,
+      "text": "μ = i3",
+      "implicit": false,
+      "rowId": 17
+    },
+    {
+      "x": 1673.238,
+      "y": 118,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 19
+    },
+    {
+      "x": 1673.238,
+      "y": 248,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 20
+    },
+    {
+      "x": 1673.238,
+      "y": 378,
+      "width": 51.524,
+      "height": 20,
+      "text": "var free",
+      "implicit": true,
+      "rowId": 21
+    },
+    {
+      "x": 117.51999999999998,
+      "y": 519,
+      "width": 79.536,
+      "height": 26,
+      "text": "l2: g1 = g2",
+      "implicit": false,
+      "rowId": 23
+    },
+    {
+      "x": 117.51999999999998,
+      "y": 550,
+      "width": 79.536,
+      "height": 26,
+      "text": "l3: g1 = g2",
+      "implicit": false,
+      "rowId": 24
+    },
+    {
+      "x": 117.51999999999998,
+      "y": 581,
+      "width": 79.536,
+      "height": 26,
+      "text": "i1: g1 = g2",
+      "implicit": false,
+      "rowId": 25
+    },
+    {
+      "x": 117.51999999999998,
+      "y": 612,
+      "width": 79.536,
+      "height": 26,
+      "text": "i2: g1 = g2",
+      "implicit": false,
+      "rowId": 26
+    },
+    {
+      "x": 117.51999999999998,
+      "y": 643,
+      "width": 79.536,
+      "height": 26,
+      "text": "i3: g1 = g2",
+      "implicit": false,
+      "rowId": 27
+    }
+  ],
+  "panels": [
+    {
+      "x": 108,
+      "y": 95,
+      "width": 660,
+      "height": 414,
+      "group": 1,
+      "title": "Group 1"
+    },
+    {
+      "x": 1111,
+      "y": 95,
+      "width": 660,
+      "height": 414,
+      "group": 2,
+      "title": "Group 2"
+    }
+  ],
+  "width": 1716.7620000000002,
+  "height": 719,
+  "minX": 58,
+  "minY": 0,
+  "coveredRows": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "diagnostics": [],
+  "model": {
+    "ok": true,
+    "table": [
+      {
+        "id": 1,
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x1",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 0,
+        "ustart": 1,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p1.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 1
+      },
+      {
+        "id": 2,
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x2",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 1,
+        "ustart": null,
+        "exo": 0,
+        "label": "l2",
+        "plabel": ".p2.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 2
+      },
+      {
+        "id": 3,
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x3",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 2,
+        "ustart": null,
+        "exo": 0,
+        "label": "l3",
+        "plabel": ".p3.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 3
+      },
+      {
+        "id": 4,
+        "lhs": "x1",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 3,
+        "ustart": null,
+        "exo": 0,
+        "label": "i1",
+        "plabel": ".p4.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 4
+      },
+      {
+        "id": 5,
+        "lhs": "x2",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 4,
+        "ustart": null,
+        "exo": 0,
+        "label": "i2",
+        "plabel": ".p5.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 5
+      },
+      {
+        "id": 6,
+        "lhs": "x3",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 5,
+        "ustart": null,
+        "exo": 0,
+        "label": "i3",
+        "plabel": ".p6.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 6
+      },
+      {
+        "id": 7,
+        "lhs": "F",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 1,
+        "group": 1,
+        "free": 0,
+        "ustart": 0,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p7.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 7
+      },
+      {
+        "id": 8,
+        "lhs": "x1",
+        "op": "~~",
+        "rhs": "x1",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 6,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p8.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 8
+      },
+      {
+        "id": 9,
+        "lhs": "x2",
+        "op": "~~",
+        "rhs": "x2",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 7,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p9.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 9
+      },
+      {
+        "id": 10,
+        "lhs": "x3",
+        "op": "~~",
+        "rhs": "x3",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 8,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p10.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 10
+      },
+      {
+        "id": 11,
+        "lhs": "F",
+        "op": "~~",
+        "rhs": "F",
+        "user": 0,
+        "block": 1,
+        "group": 1,
+        "free": 9,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p11.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 11
+      },
+      {
+        "id": 12,
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x1",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 0,
+        "ustart": 1,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p12.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 1
+      },
+      {
+        "id": 13,
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x2",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 10,
+        "ustart": null,
+        "exo": 0,
+        "label": "l2",
+        "plabel": ".p13.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 2
+      },
+      {
+        "id": 14,
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x3",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 11,
+        "ustart": null,
+        "exo": 0,
+        "label": "l3",
+        "plabel": ".p14.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 3
+      },
+      {
+        "id": 15,
+        "lhs": "x1",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 12,
+        "ustart": null,
+        "exo": 0,
+        "label": "i1",
+        "plabel": ".p15.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 4
+      },
+      {
+        "id": 16,
+        "lhs": "x2",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 13,
+        "ustart": null,
+        "exo": 0,
+        "label": "i2",
+        "plabel": ".p16.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 5
+      },
+      {
+        "id": 17,
+        "lhs": "x3",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 14,
+        "ustart": null,
+        "exo": 0,
+        "label": "i3",
+        "plabel": ".p17.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 6
+      },
+      {
+        "id": 18,
+        "lhs": "F",
+        "op": "~1",
+        "rhs": "",
+        "user": 1,
+        "block": 2,
+        "group": 2,
+        "free": 15,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p18.",
+        "origin": "explicit",
+        "defaultFixed": false,
+        "sourceOrder": 7
+      },
+      {
+        "id": 19,
+        "lhs": "x1",
+        "op": "~~",
+        "rhs": "x1",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 16,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p19.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 19
+      },
+      {
+        "id": 20,
+        "lhs": "x2",
+        "op": "~~",
+        "rhs": "x2",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 17,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p20.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 20
+      },
+      {
+        "id": 21,
+        "lhs": "x3",
+        "op": "~~",
+        "rhs": "x3",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 18,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p21.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 21
+      },
+      {
+        "id": 22,
+        "lhs": "F",
+        "op": "~~",
+        "rhs": "F",
+        "user": 0,
+        "block": 2,
+        "group": 2,
+        "free": 19,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": ".p22.",
+        "origin": "implicit",
+        "defaultFixed": false,
+        "sourceOrder": 22
+      },
+      {
+        "id": 23,
+        "lhs": ".p2.",
+        "op": "==",
+        "rhs": ".p13.",
+        "user": 2,
+        "block": 0,
+        "group": 0,
+        "free": 0,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": "",
+        "origin": "constraint",
+        "defaultFixed": false,
+        "sourceOrder": 23
+      },
+      {
+        "id": 24,
+        "lhs": ".p3.",
+        "op": "==",
+        "rhs": ".p14.",
+        "user": 2,
+        "block": 0,
+        "group": 0,
+        "free": 0,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": "",
+        "origin": "constraint",
+        "defaultFixed": false,
+        "sourceOrder": 24
+      },
+      {
+        "id": 25,
+        "lhs": ".p4.",
+        "op": "==",
+        "rhs": ".p15.",
+        "user": 2,
+        "block": 0,
+        "group": 0,
+        "free": 0,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": "",
+        "origin": "constraint",
+        "defaultFixed": false,
+        "sourceOrder": 25
+      },
+      {
+        "id": 26,
+        "lhs": ".p5.",
+        "op": "==",
+        "rhs": ".p16.",
+        "user": 2,
+        "block": 0,
+        "group": 0,
+        "free": 0,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": "",
+        "origin": "constraint",
+        "defaultFixed": false,
+        "sourceOrder": 26
+      },
+      {
+        "id": 27,
+        "lhs": ".p6.",
+        "op": "==",
+        "rhs": ".p17.",
+        "user": 2,
+        "block": 0,
+        "group": 0,
+        "free": 0,
+        "ustart": null,
+        "exo": 0,
+        "label": "",
+        "plabel": "",
+        "origin": "constraint",
+        "defaultFixed": false,
+        "sourceOrder": 27
+      }
+    ],
+    "latent": [
+      "F"
+    ],
+    "observed": [
+      "x1",
+      "x2",
+      "x3"
+    ],
+    "source": [
+      {
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x1",
+        "block": 1,
+        "fixed": "1;1",
+        "label": "",
+        "mod.idx": 1
+      },
+      {
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x2",
+        "block": 1,
+        "fixed": "",
+        "label": "l2;l2",
+        "mod.idx": 2
+      },
+      {
+        "lhs": "F",
+        "op": "=~",
+        "rhs": "x3",
+        "block": 1,
+        "fixed": "",
+        "label": "l3;l3",
+        "mod.idx": 3
+      },
+      {
+        "lhs": "x1",
+        "op": "~1",
+        "rhs": "",
+        "block": 1,
+        "fixed": "",
+        "label": "i1;i1",
+        "mod.idx": 4
+      },
+      {
+        "lhs": "x2",
+        "op": "~1",
+        "rhs": "",
+        "block": 1,
+        "fixed": "",
+        "label": "i2;i2",
+        "mod.idx": 5
+      },
+      {
+        "lhs": "x3",
+        "op": "~1",
+        "rhs": "",
+        "block": 1,
+        "fixed": "",
+        "label": "i3;i3",
+        "mod.idx": 6
+      },
+      {
+        "lhs": "F",
+        "op": "~1",
+        "rhs": "",
+        "block": 1,
+        "fixed": "0;NA",
+        "label": "",
+        "mod.idx": 7
+      }
+    ],
+    "constraints": [],
+    "modifiers": [
+      {
+        "fixed": [
+          1,
+          1
+        ]
+      },
+      {
+        "label": [
+          "l2",
+          "l2"
+        ]
+      },
+      {
+        "label": [
+          "l3",
+          "l3"
+        ]
+      },
+      {
+        "label": [
+          "i1",
+          "i1"
+        ]
+      },
+      {
+        "label": [
+          "i2",
+          "i2"
+        ]
+      },
+      {
+        "label": [
+          "i3",
+          "i3"
+        ]
+      },
+      {
+        "fixed": [
+          0,
+          null
+        ]
+      }
+    ],
+    "warnings": [],
+    "options": {
+      "preset": "cfa",
+      "groups": 2,
+      "fixedX": false,
+      "meanstructure": true
+    },
+    "versions": {
+      "lavaan": "0.7.3",
+      "R": "R version 4.4.3 (2025-02-28 ucrt)"
+    }
+  }
+}
