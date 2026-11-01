@@ -1,0 +1,76 @@
+{
+  "importFidelityExact": true,
+  "environment": "Native R versus Node.js webR/WASM; not a browser UI check",
+  "models": [
+    {
+      "model": "01-holzinger-swineford",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 1.6653345369377348e-16
+    },
+    {
+      "model": "02-political-democracy",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 3.273834356387617e-09
+    },
+    {
+      "model": "03-mediation",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 0
+    },
+    {
+      "model": "excel",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 0
+    },
+    {
+      "model": "spss",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 0
+    },
+    {
+      "model": "missing",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 0
+    },
+    {
+      "model": "ordinal",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 5.648479739495116e-10
+    },
+    {
+      "model": "matrix",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 1.6653345369377348e-16
+    }
+  ],
+  "measureAvailabilityDifferences": [
+    {
+      "model": "missing",
+      "measure": "cfi.robust",
+      "native": null,
+      "comparison": 1,
+      "reason": "zero degrees of freedom"
+    },
+    {
+      "model": "missing",
+      "measure": "tli.robust",
+      "native": null,
+      "comparison": 1,
+      "reason": "zero degrees of freedom"
+    },
+    {
+      "model": "missing",
+      "measure": "rmsea.ci.lower.robust",
+      "native": null,
+      "comparison": 0,
+      "reason": "zero degrees of freedom"
+    },
+    {
+      "model": "missing",
+      "measure": "rmsea.ci.upper.robust",
+      "native": null,
+      "comparison": 0,
+      "reason": "zero degrees of freedom"
+    }
+  ]
+}

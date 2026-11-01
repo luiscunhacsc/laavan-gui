@@ -1,0 +1,17 @@
+{
+  "galleryTitle": "SEM reference studies · Phase 0",
+  "overviewTitle": "Seven fixed SEM reference studies",
+  "overviewNote": "Phase 0 · specified positions · open the gallery for full-size SVG and PNG",
+  "galleryIntro": "Seven fixed models, rendered from native lavaan parameter tables with deliberately specified reference positions. These are review studies, not output from the proposed automatic layout engine. No estimates are displayed.",
+  "diagramNote": "REFERENCE STUDY · specified positions · no fitted estimates",
+  "legend": "Solid: specified path   |   Grey dashed: implicit row or default fixed loading   |   free: unknown parameter",
+  "variance": "var",
+  "free": "free",
+  "group": "Group",
+  "mean": "mean",
+  "constraints": "Shared across groups: l2, l3, i1, i2, i3",
+  "openSVG": "Open vector SVG",
+  "openPNG": "Open PNG",
+  "syntax": "Fixed lavaan syntax",
+  "detail": "Inspect each diagram at its original size. Dense residual covariances and large models are layout challenges for Phase 1; these studies make no collision-free claim."
+}

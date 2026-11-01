@@ -1,0 +1,65 @@
+[
+  {
+    "id": "01-holzinger-swineford",
+    "parameterRows": 24,
+    "coveredRows": 24,
+    "nodes": 21,
+    "width": 820,
+    "height": 1160,
+    "placement": "specified reference positions"
+  },
+  {
+    "id": "02-political-democracy",
+    "parameterRows": 34,
+    "coveredRows": 34,
+    "nodes": 27,
+    "width": 1880,
+    "height": 1160,
+    "placement": "specified reference positions"
+  },
+  {
+    "id": "03-mediation",
+    "parameterRows": 8,
+    "coveredRows": 8,
+    "nodes": 5,
+    "width": 1000,
+    "height": 700,
+    "placement": "specified reference positions"
+  },
+  {
+    "id": "04-second-order",
+    "parameterRows": 25,
+    "coveredRows": 25,
+    "nodes": 25,
+    "width": 1190,
+    "height": 1080,
+    "placement": "specified reference positions"
+  },
+  {
+    "id": "05-two-group",
+    "parameterRows": 27,
+    "coveredRows": 27,
+    "nodes": 14,
+    "width": 1500,
+    "height": 700,
+    "placement": "specified reference positions"
+  },
+  {
+    "id": "06-observed-path",
+    "parameterRows": 10,
+    "coveredRows": 10,
+    "nodes": 6,
+    "width": 1130,
+    "height": 850,
+    "placement": "specified reference positions"
+  },
+  {
+    "id": "07-large",
+    "parameterRows": 95,
+    "coveredRows": 95,
+    "nodes": 95,
+    "width": 4460,
+    "height": 860,
+    "placement": "specified reference positions"
+  }
+]

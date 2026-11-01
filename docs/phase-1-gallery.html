@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Forma · Phase 1 diagrams</title><style>body{background:#f2f5ee;color:#294133;font:16px/1.55 system-ui;margin:0}main{max-width:1400px;margin:auto;padding:40px}h1{font-size:36px;letter-spacing:-1px}article{background:white;border:1px solid #dce6d3;border-radius:9px;margin:30px 0;padding:26px}h2{font-size:20px}header p{font-size:12px;color:#7b9070}img{display:block;max-width:100%;max-height:1000px;object-fit:contain;margin:20px auto}a{color:#347252}pre{white-space:pre-wrap;background:#f7faf3;padding:20px}</style><main><h1>Forma · seven automatic diagrams</h1><p>Phase 1 output from the application layout engine, using lavaan parameter tables. No per-fixture node coordinates are supplied. Open the SVG or PNG at its original size to inspect details.</p><article><header><h2>Holzinger–Swineford three-factor CFA</h2><p>21 nodes · 24 parameter rows · automatic layout · no node/edge diagnostics</p></header><img src="phase-1-diagrams/01-holzinger-swineford.svg" alt="Holzinger–Swineford three-factor CFA"><p><a href="phase-1-diagrams/01-holzinger-swineford.svg">Vector SVG</a> · <a href="phase-1-diagrams/01-holzinger-swineford.png">PNG preview</a></p><details><summary>Lavaan syntax</summary><pre>visual =~ x1 + x2 + x3
+textual =~ x4 + x5 + x6
+speed =~ x7 + x8 + x9</pre></details></article><article><header><h2>PoliticalDemocracy full SEM</h2><p>27 nodes · 34 parameter rows · automatic layout · no node/edge diagnostics</p></header><img src="phase-1-diagrams/02-political-democracy.svg" alt="PoliticalDemocracy full SEM"><p><a href="phase-1-diagrams/02-political-democracy.svg">Vector SVG</a> · <a href="phase-1-diagrams/02-political-democracy.png">PNG preview</a></p><details><summary>Lavaan syntax</summary><pre>ind60 =~ x1 + x2 + x3
+dem60 =~ y1 + y2 + y3 + y4
+dem65 =~ y5 + y6 + y7 + y8
+dem60 ~ ind60
+dem65 ~ ind60 + dem60
+y1 ~~ y5
+y2 ~~ y4 + y6
+y3 ~~ y7
+y4 ~~ y8
+y6 ~~ y8</pre></details></article><article><header><h2>Labelled mediation</h2><p>5 nodes · 8 parameter rows · automatic layout · no node/edge diagnostics</p></header><img src="phase-1-diagrams/03-mediation.svg" alt="Labelled mediation"><p><a href="phase-1-diagrams/03-mediation.svg">Vector SVG</a> · <a href="phase-1-diagrams/03-mediation.png">PNG preview</a></p><details><summary>Lavaan syntax</summary><pre>M ~ a*X
+Y ~ b*M + cp*X
+ind := a*b
+total := cp + ind</pre></details></article><article><header><h2>Second-order CFA</h2><p>25 nodes · 25 parameter rows · automatic layout · no node/edge diagnostics</p></header><img src="phase-1-diagrams/04-second-order.svg" alt="Second-order CFA"><p><a href="phase-1-diagrams/04-second-order.svg">Vector SVG</a> · <a href="phase-1-diagrams/04-second-order.png">PNG preview</a></p><details><summary>Lavaan syntax</summary><pre>F1 =~ x1 + x2 + x3
+F2 =~ x4 + x5 + x6
+F3 =~ x7 + x8 + x9
+G =~ F1 + F2 + F3</pre></details></article><article><header><h2>Two groups with shared loading labels</h2><p>14 nodes · 27 parameter rows · automatic layout · no node/edge diagnostics</p></header><img src="phase-1-diagrams/05-two-group.svg" alt="Two groups with shared loading labels"><p><a href="phase-1-diagrams/05-two-group.svg">Vector SVG</a> · <a href="phase-1-diagrams/05-two-group.png">PNG preview</a></p><details><summary>Lavaan syntax</summary><pre>F =~ c(1,1)*x1 + c(l2,l2)*x2 + c(l3,l3)*x3
+x1 ~ c(i1,i1)*1
+x2 ~ c(i2,i2)*1
+x3 ~ c(i3,i3)*1
+F ~ c(0,NA)*1</pre></details></article><article><header><h2>Observed-only path model</h2><p>6 nodes · 10 parameter rows · automatic layout · no node/edge diagnostics</p></header><img src="phase-1-diagrams/06-observed-path.svg" alt="Observed-only path model"><p><a href="phase-1-diagrams/06-observed-path.svg">Vector SVG</a> · <a href="phase-1-diagrams/06-observed-path.png">PNG preview</a></p><details><summary>Lavaan syntax</summary><pre>M ~ a1*X1 + a2*X2
+Y ~ b*M + c1*X1 + c2*X2
+X1 ~~ X2</pre></details></article><article><header><h2>Eight factors and forty indicators</h2><p>95 nodes · 95 parameter rows · automatic layout · no node/edge diagnostics</p></header><img src="phase-1-diagrams/07-large.svg" alt="Eight factors and forty indicators"><p><a href="phase-1-diagrams/07-large.svg">Vector SVG</a> · <a href="phase-1-diagrams/07-large.png">PNG preview</a></p><details><summary>Lavaan syntax</summary><pre>F1 =~ x01 + x02 + x03 + x04 + x05
+F2 =~ x06 + x07 + x08 + x09 + x10
+F3 =~ x11 + x12 + x13 + x14 + x15
+F4 =~ x16 + x17 + x18 + x19 + x20
+F5 =~ x21 + x22 + x23 + x24 + x25
+F6 =~ x26 + x27 + x28 + x29 + x30
+F7 =~ x31 + x32 + x33 + x34 + x35
+F8 =~ x36 + x37 + x38 + x39 + x40
+F2 ~ F1
+F3 ~ F2
+F4 ~ F3
+F5 ~ F4
+F6 ~ F5
+F7 ~ F6
+F8 ~ F7</pre></details></article></main></html>

@@ -1,0 +1,15 @@
+{
+  "title": "SEM · Phase 0 feasibility lab",
+  "intro": "Browser-local lavaan experiment. Public fixture data only. This is a feasibility harness, not the application.",
+  "starting": "Loading pinned webR 0.6.0…",
+  "packages": "Installing lavaan into the browser virtual filesystem…",
+  "evidencePackage": "Installing the JSON evidence writer…",
+  "running": "Parsing seven fixtures and fitting three models in browser R…",
+  "done": "Experiment complete. Download the evidence below.",
+  "doneLocal": "Experiment complete. Evidence saved in the workspace and available to download.",
+  "download": "Download JSON evidence",
+  "failed": "Experiment failed. See the diagnostic below.",
+  "gallery": "Open the seven reference diagrams",
+  "runAgain": "Run again with a fresh R worker",
+  "notice": "Static hosting uses PostMessage. Stop requires terminating and restarting the worker. First visit needs network access to the official webR CDN and package repository."
+}

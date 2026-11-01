@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01-holzinger-swineford",
+    "title": "Holzinger–Swineford three-factor CFA",
+    "fitted": false,
+    "nodes": 21,
+    "rows": 24,
+    "width": 893.26,
+    "height": 1384,
+    "diagnostics": []
+  },
+  {
+    "id": "02-political-democracy",
+    "title": "PoliticalDemocracy full SEM",
+    "fitted": false,
+    "nodes": 27,
+    "rows": 34,
+    "width": 2059.3816731770835,
+    "height": 1259.1,
+    "diagnostics": []
+  },
+  {
+    "id": "03-mediation",
+    "title": "Labelled mediation",
+    "fitted": false,
+    "nodes": 5,
+    "rows": 8,
+    "width": 904,
+    "height": 635.5,
+    "diagnostics": []
+  },
+  {
+    "id": "04-second-order",
+    "title": "Second-order CFA",
+    "fitted": false,
+    "nodes": 25,
+    "rows": 25,
+    "width": 985.78,
+    "height": 1247,
+    "diagnostics": []
+  },
+  {
+    "id": "05-two-group",
+    "title": "Two groups with shared loading labels",
+    "fitted": false,
+    "nodes": 14,
+    "rows": 27,
+    "width": 1719.78,
+    "height": 719,
+    "diagnostics": []
+  },
+  {
+    "id": "06-observed-path",
+    "title": "Observed-only path model",
+    "fitted": false,
+    "nodes": 6,
+    "rows": 10,
+    "width": 990.55,
+    "height": 461,
+    "diagnostics": []
+  },
+  {
+    "id": "07-large",
+    "title": "Eight factors and forty indicators",
+    "fitted": false,
+    "nodes": 95,
+    "rows": 95,
+    "width": 3660.56,
+    "height": 932,
+    "diagnostics": []
+  },
+  {
+    "id": "01-holzinger-swineford-fitted",
+    "title": "Holzinger–Swineford three-factor CFA · std.all, SE and R²",
+    "fitted": true,
+    "nodes": 21,
+    "rows": 24,
+    "width": 918.22,
+    "height": 1389,
+    "diagnostics": []
+  },
+  {
+    "id": "02-political-democracy-fitted",
+    "title": "PoliticalDemocracy full SEM · std.all, SE and R²",
+    "fitted": true,
+    "nodes": 27,
+    "rows": 34,
+    "width": 2152.36,
+    "height": 1286.596747260737,
+    "diagnostics": []
+  },
+  {
+    "id": "03-mediation-fitted",
+    "title": "Labelled mediation · std.all, SE and R²",
+    "fitted": true,
+    "nodes": 5,
+    "rows": 8,
+    "width": 932.3799999999999,
+    "height": 635.5,
+    "diagnostics": []
+  }
+]

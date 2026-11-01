@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-01",
+  "source": "User-reported browser check in this conversation",
+  "url": "http://127.0.0.1:8000/app/dist/",
+  "browser": "Not identified by this report",
+  "workflow": "Model > New model > place two observed variables > Regression > select source and target",
+  "arrowAppears": true,
+  "syntaxUpdates": true,
+  "limits": "This observation does not establish coverage of all drawing tools, drag-and-drop, project file dialogs or all browsers."
+}

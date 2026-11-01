@@ -1,0 +1,51 @@
+{
+  "01-holzinger-swineford": {
+    "ok": false,
+    "error": "missing value where TRUE/FALSE needed",
+    "warnings": [],
+    "seconds": 0.01,
+    "input": "syntax"
+  },
+  "02-political-democracy": {
+    "ok": false,
+    "error": "missing value where TRUE/FALSE needed",
+    "warnings": [],
+    "seconds": 0,
+    "input": "syntax"
+  },
+  "03-mediation": {
+    "ok": false,
+    "error": "wrong sign in 'by' argument",
+    "warnings": [],
+    "seconds": 0.01,
+    "input": "syntax"
+  },
+  "04-second-order": {
+    "ok": false,
+    "error": "missing value where TRUE/FALSE needed",
+    "warnings": [],
+    "seconds": 0.02,
+    "input": "syntax"
+  },
+  "05-two-group": {
+    "ok": true,
+    "error": {},
+    "warnings": [],
+    "seconds": 0.03,
+    "input": "syntax"
+  },
+  "06-observed-path": {
+    "ok": true,
+    "error": {},
+    "warnings": [],
+    "seconds": 0.03,
+    "input": "syntax"
+  },
+  "07-large": {
+    "ok": false,
+    "error": "missing value where TRUE/FALSE needed",
+    "warnings": [],
+    "seconds": 0.02,
+    "input": "syntax"
+  }
+}

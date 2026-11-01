@@ -1,0 +1,343 @@
+<svg width="4500" height="900" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="100%" height="100%" fill="white" />
+<defs>
+  <marker id="arr" markerWidth="6" markerHeight="6"
+          refX="6" refY="2.5" orient="auto">
+    <path d="M 0 0 L 6 2.5 L 0 5 L 2 2.5 z" fill="black" />
+  </marker>
+  <marker id="sarr" markerWidth="6" markerHeight="6"
+          refX="0" refY="2.5" orient="auto">
+    <path d="M 0 2.5 L 6 0 L 4 2.5 L 6 5 z" fill="black" />
+  </marker>
+</defs>
+<path d="M 370 400 L 321.213203435596 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L1" d="M 321.213203435596 200 L 370 400" stroke-width="0" stroke="none" fill="none" />
+<text x="345.606601717798" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  text-anchor="end">1</text>
+<path d="M 370 400 L 321.213203435596 300" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L2" d="M 321.213203435596 300 L 370 400" stroke-width="0" stroke="none" fill="none" />
+<path d="M 370 400 L 321.213203435596 400" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L3" d="M 321.213203435596 400 L 370 400" stroke-width="0" stroke="none" fill="none" />
+<path d="M 370 400 L 321.213203435596 500" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L4" d="M 321.213203435596 500 L 370 400" stroke-width="0" stroke="none" fill="none" />
+<path d="M 370 400 L 321.213203435596 700" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L5" d="M 321.213203435596 700 L 370 400" stroke-width="0" stroke="none" fill="none" />
+<path d="M 700 230 L 500 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L6" d="M 500 278.786796564404 L 700 230" stroke-width="0" stroke="none" fill="none" />
+<text x="600" y="254.393398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path d="M 700 230 L 600 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L7" d="M 600 278.786796564404 L 700 230" stroke-width="0" stroke="none" fill="none" />
+<path id="L8" d="M 700 230 L 700 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L9" d="M 700 230 L 800 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L10" d="M 700 230 L 1000 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 1300 230 L 1100 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L11" d="M 1100 278.786796564404 L 1300 230" stroke-width="0" stroke="none" fill="none" />
+<text x="1200" y="254.393398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path d="M 1300 230 L 1200 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L12" d="M 1200 278.786796564404 L 1300 230" stroke-width="0" stroke="none" fill="none" />
+<path id="L13" d="M 1300 230 L 1300 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L14" d="M 1300 230 L 1400 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L15" d="M 1300 230 L 1600 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 1900 230 L 1700 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L16" d="M 1700 278.786796564404 L 1900 230" stroke-width="0" stroke="none" fill="none" />
+<text x="1800" y="254.393398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path d="M 1900 230 L 1800 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L17" d="M 1800 278.786796564404 L 1900 230" stroke-width="0" stroke="none" fill="none" />
+<path id="L18" d="M 1900 230 L 1900 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L19" d="M 1900 230 L 2000 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L20" d="M 1900 230 L 2200 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 2500 230 L 2300 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L21" d="M 2300 278.786796564404 L 2500 230" stroke-width="0" stroke="none" fill="none" />
+<text x="2400" y="254.393398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path d="M 2500 230 L 2400 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L22" d="M 2400 278.786796564404 L 2500 230" stroke-width="0" stroke="none" fill="none" />
+<path id="L23" d="M 2500 230 L 2500 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L24" d="M 2500 230 L 2600 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L25" d="M 2500 230 L 2800 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 3100 230 L 2900 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L26" d="M 2900 278.786796564404 L 3100 230" stroke-width="0" stroke="none" fill="none" />
+<text x="3000" y="254.393398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path d="M 3100 230 L 3000 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L27" d="M 3000 278.786796564404 L 3100 230" stroke-width="0" stroke="none" fill="none" />
+<path id="L28" d="M 3100 230 L 3100 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L29" d="M 3100 230 L 3200 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L30" d="M 3100 230 L 3400 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 3700 230 L 3500 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L31" d="M 3500 278.786796564404 L 3700 230" stroke-width="0" stroke="none" fill="none" />
+<text x="3600" y="254.393398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path d="M 3700 230 L 3600 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L32" d="M 3600 278.786796564404 L 3700 230" stroke-width="0" stroke="none" fill="none" />
+<path id="L33" d="M 3700 230 L 3700 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L34" d="M 3700 230 L 3800 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L35" d="M 3700 230 L 4000 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L36" d="M 4130 400 L 4178.7867965644 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<text x="4154.3933982822" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path id="L37" d="M 4130 400 L 4178.7867965644 300" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L38" d="M 4130 400 L 4178.7867965644 400" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L39" d="M 4130 400 L 4178.7867965644 500" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L40" d="M 4130 400 L 4178.7867965644 700" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L41" d="M 421.213203435596 378.786796564404 L 678.786796564404 221.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L42" d="M 730 200 L 1270 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L43" d="M 1330 200 L 1870 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L44" d="M 1930 200 L 2470 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L45" d="M 2530 200 L 3070 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L46" d="M 3130 200 L 3670 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L47" d="M 3721.2132034356 221.213203435596 L 4078.7867965644 378.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L48" d="M 224 200 L 278.786796564404 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L49" d="M 224 300 L 278.786796564404 300" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L50" d="M 224 400 L 278.786796564404 400" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L51" d="M 216.970562748477 583.029437251523 L 278.786796564404 521.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L52" d="M 224 700 L 278.786796564404 700" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L53" d="M 500 376 L 500 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L54" d="M 600 376 L 600 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L55" d="M 700 376 L 700 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 883.029437251523 383.029437251523 L 821.213203435596 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L56" d="M 821.213203435596 321.213203435596 L 883.029437251523 383.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path id="L57" d="M 1000 376 L 1000 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L58" d="M 1100 376 L 1100 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L59" d="M 1200 376 L 1200 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L60" d="M 1300 376 L 1300 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 1483.02943725152 383.029437251523 L 1421.2132034356 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L61" d="M 1421.2132034356 321.213203435596 L 1483.02943725152 383.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path id="L62" d="M 1600 376 L 1600 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L63" d="M 1700 376 L 1700 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L64" d="M 1800 376 L 1800 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L65" d="M 1900 376 L 1900 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 2083.02943725152 383.029437251523 L 2021.2132034356 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L66" d="M 2021.2132034356 321.213203435596 L 2083.02943725152 383.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path id="L67" d="M 2200 376 L 2200 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L68" d="M 2300 376 L 2300 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L69" d="M 2400 376 L 2400 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L70" d="M 2500 376 L 2500 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 2683.02943725152 383.029437251523 L 2621.2132034356 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L71" d="M 2621.2132034356 321.213203435596 L 2683.02943725152 383.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path id="L72" d="M 2800 376 L 2800 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L73" d="M 2900 376 L 2900 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L74" d="M 3000 376 L 3000 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L75" d="M 3100 376 L 3100 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 3283.02943725152 383.029437251523 L 3221.2132034356 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L76" d="M 3221.2132034356 321.213203435596 L 3283.02943725152 383.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path id="L77" d="M 3400 376 L 3400 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L78" d="M 3500 376 L 3500 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L79" d="M 3600 376 L 3600 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L80" d="M 3700 376 L 3700 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 3883.02943725152 383.029437251523 L 3821.2132034356 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L81" d="M 3821.2132034356 321.213203435596 L 3883.02943725152 383.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path id="L82" d="M 4000 376 L 4000 321.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 4276 200 L 4221.2132034356 200" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L83" d="M 4221.2132034356 200 L 4276 200" stroke-width="0" stroke="none" fill="none" />
+<path d="M 4276 300 L 4221.2132034356 300" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L84" d="M 4221.2132034356 300 L 4276 300" stroke-width="0" stroke="none" fill="none" />
+<path d="M 4276 400 L 4221.2132034356 400" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L85" d="M 4221.2132034356 400 L 4276 400" stroke-width="0" stroke="none" fill="none" />
+<path d="M 4283.02943725152 583.029437251523 L 4221.2132034356 521.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L86" d="M 4221.2132034356 521.213203435596 L 4283.02943725152 583.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path d="M 4276 700 L 4221.2132034356 700" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L87" d="M 4221.2132034356 700 L 4276 700" stroke-width="0" stroke="none" fill="none" />
+<path id="L88" d="M 316.970562748477 583.029437251523 L 378.786796564404 421.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path d="M 883.029437251523 283.029437251523 L 721.213203435596 221.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L89" d="M 721.213203435596 221.213203435596 L 883.029437251523 283.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path d="M 1483.02943725152 283.029437251523 L 1321.2132034356 221.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L90" d="M 1321.2132034356 221.213203435596 L 1483.02943725152 283.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path d="M 2083.02943725152 283.029437251523 L 1921.2132034356 221.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L91" d="M 1921.2132034356 221.213203435596 L 2083.02943725152 283.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path d="M 2683.02943725152 283.029437251523 L 2521.2132034356 221.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L92" d="M 2521.2132034356 221.213203435596 L 2683.02943725152 283.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path d="M 3283.02943725152 283.029437251523 L 3121.2132034356 221.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L93" d="M 3121.2132034356 221.213203435596 L 3283.02943725152 283.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path d="M 3883.02943725152 283.029437251523 L 3721.2132034356 221.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L94" d="M 3721.2132034356 221.213203435596 L 3883.02943725152 283.029437251523" stroke-width="0" stroke="none" fill="none" />
+<path d="M 4183.02943725152 583.029437251523 L 4121.2132034356 421.213203435596" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<path id="L95" d="M 4121.2132034356 421.213203435596 L 4183.02943725152 583.029437251523" stroke-width="0" stroke="none" fill="none" />
+<circle cx="400" cy="400" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="400" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">1</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="278.786796564404" y="178.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="300" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">01</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="278.786796564404" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="300" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">02</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="278.786796564404" y="378.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="300" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">03</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="278.786796564404" y="478.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="300" y="500" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">04</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="278.786796564404" y="678.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="300" y="700" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">05</tspan></text>
+<circle cx="700" cy="200" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="700" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">2</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="478.786796564404" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="500" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">06</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="578.786796564404" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="600" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">07</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="678.786796564404" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="700" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">08</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="778.786796564404" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="800" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">09</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="978.786796564404" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1000" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">10</tspan></text>
+<circle cx="1300" cy="200" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="1300" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">3</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1078.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1100" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">11</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1178.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1200" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">12</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1278.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1300" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">13</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1378.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1400" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">14</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1578.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1600" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">15</tspan></text>
+<circle cx="1900" cy="200" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="1900" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">4</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1678.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1700" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">16</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1778.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1800" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">17</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1878.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="1900" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">18</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="1978.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2000" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">19</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2178.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2200" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">20</tspan></text>
+<circle cx="2500" cy="200" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="2500" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">5</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2278.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2300" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">21</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2378.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2400" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">22</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2478.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2500" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">23</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2578.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2600" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">24</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2778.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2800" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">25</tspan></text>
+<circle cx="3100" cy="200" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="3100" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">6</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2878.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="2900" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">26</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="2978.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3000" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">27</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3078.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3100" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">28</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3178.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3200" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">29</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3378.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3400" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">30</tspan></text>
+<circle cx="3700" cy="200" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="3700" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">7</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3478.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3500" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">31</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3578.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3600" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">32</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3678.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3700" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">33</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3778.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="3800" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">34</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="3978.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="4000" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">35</tspan></text>
+<circle cx="4100" cy="400" r="30" stroke-width="2" stroke="black" fill="white"/>
+<text x="4100" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">F<tspan dy="5" font-size="15">8</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="4178.7867965644" y="178.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="4200" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">36</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="4178.7867965644" y="278.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="4200" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">37</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="4178.7867965644" y="378.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="4200" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">38</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="4178.7867965644" y="478.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="4200" y="500" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">39</tspan></text>
+<rect width="42.4264068711929" height="42.4264068711929" x="4178.7867965644" y="678.786796564404" stroke-width="2" stroke="black" fill="white" />
+<text x="4200" y="700" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">x<tspan dy="5" font-size="15">40</tspan></text>
+<circle cx="200" cy="200" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="200" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">01</tspan></text>
+<circle cx="200" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="200" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">02</tspan></text>
+<circle cx="200" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="200" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">03</tspan></text>
+<circle cx="200" cy="600" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="200" y="600" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">04</tspan></text>
+<circle cx="200" cy="700" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="200" y="700" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">05</tspan></text>
+<circle cx="500" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="500" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">06</tspan></text>
+<circle cx="600" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="600" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">07</tspan></text>
+<circle cx="700" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="700" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">08</tspan></text>
+<circle cx="900" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="900" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">09</tspan></text>
+<circle cx="1000" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1000" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">10</tspan></text>
+<circle cx="1100" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1100" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">11</tspan></text>
+<circle cx="1200" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1200" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">12</tspan></text>
+<circle cx="1300" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1300" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">13</tspan></text>
+<circle cx="1500" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1500" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">14</tspan></text>
+<circle cx="1600" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1600" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">15</tspan></text>
+<circle cx="1700" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1700" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">16</tspan></text>
+<circle cx="1800" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1800" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">17</tspan></text>
+<circle cx="1900" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1900" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">18</tspan></text>
+<circle cx="2100" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2100" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">19</tspan></text>
+<circle cx="2200" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2200" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">20</tspan></text>
+<circle cx="2300" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2300" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">21</tspan></text>
+<circle cx="2400" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2400" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">22</tspan></text>
+<circle cx="2500" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2500" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">23</tspan></text>
+<circle cx="2700" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2700" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">24</tspan></text>
+<circle cx="2800" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2800" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">25</tspan></text>
+<circle cx="2900" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2900" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">26</tspan></text>
+<circle cx="3000" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3000" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">27</tspan></text>
+<circle cx="3100" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3100" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">28</tspan></text>
+<circle cx="3300" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3300" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">29</tspan></text>
+<circle cx="3400" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3400" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">30</tspan></text>
+<circle cx="3500" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3500" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">31</tspan></text>
+<circle cx="3600" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3600" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">32</tspan></text>
+<circle cx="3700" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3700" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">33</tspan></text>
+<circle cx="3900" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3900" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">34</tspan></text>
+<circle cx="4000" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="4000" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">35</tspan></text>
+<circle cx="4300" cy="200" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="4300" y="200" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">36</tspan></text>
+<circle cx="4300" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="4300" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">37</tspan></text>
+<circle cx="4300" cy="400" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="4300" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">38</tspan></text>
+<circle cx="4300" cy="600" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="4300" y="600" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">39</tspan></text>
+<circle cx="4300" cy="700" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="4300" y="700" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varx<tspan dy="5" font-size="15">40</tspan></text>
+<circle cx="300" cy="600" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="300" y="600" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">1</tspan></text>
+<circle cx="900" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="900" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">2</tspan></text>
+<circle cx="1500" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="1500" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">3</tspan></text>
+<circle cx="2100" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2100" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">4</tspan></text>
+<circle cx="2700" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="2700" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">5</tspan></text>
+<circle cx="3300" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3300" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">6</tspan></text>
+<circle cx="3900" cy="300" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="3900" y="300" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">7</tspan></text>
+<circle cx="4200" cy="600" r="24" stroke-width="2" stroke="black" fill="white"/>
+<text x="4200" y="600" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  dominant-baseline="central" text-anchor="middle">varF<tspan dy="5" font-size="15">8</tspan></text>
+</svg>

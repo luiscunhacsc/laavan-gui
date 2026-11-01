@@ -1,0 +1,144 @@
+{
+  "runId": "2026-11-01T15-18-43-334Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+  "crossOriginIsolated": false,
+  "hardwareConcurrency": 12,
+  "timingsMs": {
+    "moduleImport": 102,
+    "runtimeInit": 948,
+    "lavaanInstall": 1517,
+    "jsonliteInstall": 855,
+    "sevenTablesThreeFitsAndProbes": 2500,
+    "total": 5966
+  },
+  "events": [
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "R version 4.6.0 (2026-04-24) -- \"Because it was There\""
+    },
+    {
+      "type": "stdout",
+      "data": "Copyright (C) 2026 The R Foundation for Statistical Computing"
+    },
+    {
+      "type": "stdout",
+      "data": "Platform: wasm32-unknown-emscripten (32-bit)"
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "R is free software and comes with ABSOLUTELY NO WARRANTY."
+    },
+    {
+      "type": "stdout",
+      "data": "You are welcome to redistribute it under certain conditions."
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'license()' or 'licence()' for distribution details."
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "R is a collaborative project with many contributors."
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'contributors()' for more information and"
+    },
+    {
+      "type": "stdout",
+      "data": "'citation()' on how to cite R or R packages in publications."
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'demo()' for some demos, 'help()' for on-line help, or"
+    },
+    {
+      "type": "stdout",
+      "data": "'help.start()' for an HTML browser interface to help."
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'q()' to quit R."
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    }
+  ],
+  "status": "complete",
+  "channel": "PostMessage",
+  "versions": "R version 4.6.0 (2026-04-24)",
+  "lavaan": "0.7.3",
+  "resources": [
+    {
+      "name": "http://127.0.0.1:8000/spike/spike.js",
+      "duration": 30,
+      "transferSize": 5000,
+      "encodedBodySize": 4700
+    },
+    {
+      "name": "http://127.0.0.1:8000/spike/en.json",
+      "duration": 45,
+      "transferSize": 1279,
+      "encodedBodySize": 979
+    },
+    {
+      "name": "http://127.0.0.1:8000/favicon.ico",
+      "duration": 138,
+      "transferSize": 635,
+      "encodedBodySize": 335
+    },
+    {
+      "name": "http://127.0.0.1:8000/__evidence/",
+      "duration": 92,
+      "transferSize": 316,
+      "encodedBodySize": 16
+    },
+    {
+      "name": "https://webr.r-wasm.org/v0.6.0/webr.mjs",
+      "duration": 95,
+      "transferSize": 0,
+      "encodedBodySize": 18491
+    },
+    {
+      "name": "https://webr.r-wasm.org/v0.6.0/webr-worker.js",
+      "duration": 23,
+      "transferSize": 0,
+      "encodedBodySize": 40382
+    },
+    {
+      "name": "http://127.0.0.1:8000/__evidence/2026-11-01T15-18-43-334Z/progress.json",
+      "duration": 11,
+      "transferSize": 300,
+      "encodedBodySize": 0
+    },
+    {
+      "name": "http://127.0.0.1:8000/fixtures/models.json",
+      "duration": 10,
+      "transferSize": 2141,
+      "encodedBodySize": 1841
+    },
+    {
+      "name": "http://127.0.0.1:8000/spike/run.R",
+      "duration": 10,
+      "transferSize": 3823,
+      "encodedBodySize": 3523
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "01-holzinger-swineford": {
+    "ok": false,
+    "error": "argument is of length zero",
+    "warnings": [],
+    "seconds": 0.01,
+    "input": "residuals"
+  },
+  "02-political-democracy": {
+    "ok": false,
+    "error": "argument is of length zero",
+    "warnings": [],
+    "seconds": 0.02,
+    "input": "residuals"
+  },
+  "03-mediation": {
+    "ok": false,
+    "error": "wrong sign in 'by' argument",
+    "warnings": [],
+    "seconds": 0,
+    "input": "residuals"
+  },
+  "04-second-order": {
+    "ok": true,
+    "error": {},
+    "warnings": [],
+    "seconds": 0.02,
+    "input": "residuals"
+  },
+  "05-two-group": {
+    "ok": false,
+    "error": "the condition has length > 1",
+    "warnings": [],
+    "seconds": 0.01,
+    "input": "residuals"
+  },
+  "06-observed-path": {
+    "ok": false,
+    "error": "argument is of length zero",
+    "warnings": [],
+    "seconds": 0.01,
+    "input": "residuals"
+  },
+  "07-large": {
+    "ok": true,
+    "error": {},
+    "warnings": [],
+    "seconds": 0.11,
+    "input": "residuals"
+  }
+}

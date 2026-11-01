@@ -1,0 +1,5 @@
+{
+  "roundTripModels": 15,
+  "nativeWasmExact": true,
+  "environment": "Native R versus Node.js webR/WASM; not a browser UI check"
+}

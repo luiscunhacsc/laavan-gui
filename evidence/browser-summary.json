@@ -1,0 +1,47 @@
+{
+  "phase0BrowserGate": "pass",
+  "verifiedRuns": 2,
+  "targetBrowsersWithNumericalPass": [
+    "Firefox"
+  ],
+  "targetBrowsersOutstanding": [
+    "Chrome",
+    "Edge",
+    "Safari"
+  ],
+  "measurementScope": "Numerical browser workload; embedded Chromium does not count as standalone Chrome",
+  "runs": [
+    {
+      "runId": "2026-11-01T15-12-52-356Z",
+      "browser": "Embedded Chromium / Electron",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "status": "complete",
+      "verified": true,
+      "timingsMs": {
+        "moduleImport": 98.90000000037253,
+        "runtimeInit": 996,
+        "lavaanInstall": 1416.3999999985099,
+        "jsonliteInstall": 811.3999999985099,
+        "sevenTablesThreeFitsAndProbes": 1853.5,
+        "total": 5213.9000000003725
+      },
+      "cacheCondition": "not recorded"
+    },
+    {
+      "runId": "2026-11-01T15-18-43-334Z",
+      "browser": "Firefox",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "status": "complete",
+      "verified": true,
+      "timingsMs": {
+        "moduleImport": 102,
+        "runtimeInit": 948,
+        "lavaanInstall": 1517,
+        "jsonliteInstall": 855,
+        "sevenTablesThreeFitsAndProbes": 2500,
+        "total": 5966
+      },
+      "cacheCondition": "not recorded"
+    }
+  ]
+}

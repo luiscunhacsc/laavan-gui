@@ -1,0 +1,25 @@
+<svg width="500" height="1400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="100%" height="100%" fill="white" />
+<defs>
+  <marker id="arr" markerWidth="6" markerHeight="6"
+          refX="6" refY="2.5" orient="auto">
+    <path d="M 0 0 L 6 2.5 L 0 5 L 2 2.5 z" fill="black" />
+  </marker>
+  <marker id="sarr" markerWidth="6" markerHeight="6"
+          refX="0" refY="2.5" orient="auto">
+    <path d="M 0 2.5 L 6 0 L 4 2.5 L 6 5 z" fill="black" />
+  </marker>
+</defs>
+<path d="M 1 700 L 400 700" stroke="black"/>
+<path id="L1" d="M 230 400 L 278.786796564404 300" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<text x="254.393398282202" y="350" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >1</text>
+<path id="L2" d="M 230 400 L 278.786796564404 400" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<text x="254.393398282202" y="400" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  text-anchor="end">l<tspan dy="5" font-size="15">2</tspan></text>
+<path id="L3" d="M 230 400 L 278.786796564404 500" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<text x="254.393398282202" y="450" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  text-anchor="end">l<tspan dy="5" font-size="15">3</tspan></text>
+<path id="L4" d="M 225.980762113533 215 L 278.786796564404 278.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<text x="252.383779338968" y="246.893398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  text-anchor="end">i<tspan dy="5" font-size="15">1</tspan></text>
+<path id="L5" d="M 225.980762113533 315 L 278.786796564404 378.786796564404" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<text x="252.383779338968" y="346.893398282202" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"  text-anchor="end">i<tspan dy="5" font-size="15">2</tspan></text>
+<path id="L6" d="M 225.980762113533 515 L 278.786796564404 500" stroke-width="2" stroke="black" marker-end="url(#arr)" />
+<text x="252.383779338968" y="507.5" fill="black" font-size="20" font-family="Latin Modern Math, arial, Arial, sans"   >i<tspan dy="5" font-size="15">3</tspan></text>

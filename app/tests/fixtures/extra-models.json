@@ -1,0 +1,10 @@
+[
+  {"id":"formative","syntax":"F <~ x1 + x2 + x3\nY ~ a*F","groups":1},
+  {"id":"single-indicator","syntax":"F =~ 1*x\nx ~~ 0*x\nY ~ F","groups":1},
+  {"id":"free-first","syntax":"F =~ NA*x1 + x2 + x3\nF ~~ 1*F","groups":1},
+  {"id":"thresholds","syntax":"F =~ u1 + u2 + u3\nu1 | t1 + t2\nu2 | t1 + t2\nu3 | t1 + t2","groups":1},
+  {"id":"bounds-and-definitions","syntax":"M ~ a*X\nY ~ b*M + cp*X\nind := a*b\na > 0\na < 2\na*b == cp","groups":1},
+  {"id":"cross-loading","syntax":"F1 =~ x1 + x2 + x3\nF2 =~ x4 + x5 + x3","groups":1},
+  {"id":"long-names","syntax":"Psychological_wellbeing =~ life_satisfaction + positive_emotion + meaningful_life","groups":1},
+  {"id":"group-specific","syntax":"F =~ c(1,1)*x1 + c(a1,a2)*x2 + c(b1,b2)*x3\na1 == a2","groups":2}
+]

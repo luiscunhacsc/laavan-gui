@@ -1,0 +1,11 @@
+{
+  "environment": "Node.js WASM (not a browser)",
+  "date": "2026-11-01T17:28:00.691Z",
+  "webR": "0.6.0",
+  "packages": {
+    "readxl": "1.5.0.1",
+    "haven": "2.5.5",
+    "jsonlite": "2.0.0"
+  },
+  "ok": true
+}

@@ -1,0 +1,85 @@
+{
+  "runId": "2026-11-01T15-12-52-356Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+  "crossOriginIsolated": false,
+  "hardwareConcurrency": 12,
+  "timingsMs": {
+    "moduleImport": 98.90000000037253,
+    "runtimeInit": 996,
+    "lavaanInstall": 1416.3999999985099
+  },
+  "events": [
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "R version 4.6.0 (2026-04-24) -- \"Because it was There\""
+    },
+    {
+      "type": "stdout",
+      "data": "Copyright (C) 2026 The R Foundation for Statistical Computing"
+    },
+    {
+      "type": "stdout",
+      "data": "Platform: wasm32-unknown-emscripten (32-bit)"
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "R is free software and comes with ABSOLUTELY NO WARRANTY."
+    },
+    {
+      "type": "stdout",
+      "data": "You are welcome to redistribute it under certain conditions."
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'license()' or 'licence()' for distribution details."
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "R is a collaborative project with many contributors."
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'contributors()' for more information and"
+    },
+    {
+      "type": "stdout",
+      "data": "'citation()' on how to cite R or R packages in publications."
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'demo()' for some demos, 'help()' for on-line help, or"
+    },
+    {
+      "type": "stdout",
+      "data": "'help.start()' for an HTML browser interface to help."
+    },
+    {
+      "type": "stdout",
+      "data": "Type 'q()' to quit R."
+    },
+    {
+      "type": "stdout",
+      "data": ""
+    }
+  ],
+  "status": "running",
+  "channel": "PostMessage",
+  "versions": "R version 4.6.0 (2026-04-24)",
+  "lavaan": "0.7.3"
+}

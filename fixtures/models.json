@@ -1,0 +1,51 @@
+[
+  {
+    "id": "01-holzinger-swineford",
+    "title": "Holzinger–Swineford three-factor CFA",
+    "preset": "cfa",
+    "groups": 1,
+    "syntax": "visual =~ x1 + x2 + x3\ntextual =~ x4 + x5 + x6\nspeed =~ x7 + x8 + x9"
+  },
+  {
+    "id": "02-political-democracy",
+    "title": "PoliticalDemocracy full SEM",
+    "preset": "sem",
+    "groups": 1,
+    "syntax": "ind60 =~ x1 + x2 + x3\ndem60 =~ y1 + y2 + y3 + y4\ndem65 =~ y5 + y6 + y7 + y8\ndem60 ~ ind60\ndem65 ~ ind60 + dem60\ny1 ~~ y5\ny2 ~~ y4 + y6\ny3 ~~ y7\ny4 ~~ y8\ny6 ~~ y8"
+  },
+  {
+    "id": "03-mediation",
+    "title": "Labelled mediation",
+    "preset": "sem",
+    "groups": 1,
+    "syntax": "M ~ a*X\nY ~ b*M + cp*X\nind := a*b\ntotal := cp + ind"
+  },
+  {
+    "id": "04-second-order",
+    "title": "Second-order CFA",
+    "preset": "cfa",
+    "groups": 1,
+    "syntax": "F1 =~ x1 + x2 + x3\nF2 =~ x4 + x5 + x6\nF3 =~ x7 + x8 + x9\nG =~ F1 + F2 + F3"
+  },
+  {
+    "id": "05-two-group",
+    "title": "Two groups with shared loading labels",
+    "preset": "cfa",
+    "groups": 2,
+    "syntax": "F =~ c(1,1)*x1 + c(l2,l2)*x2 + c(l3,l3)*x3\nx1 ~ c(i1,i1)*1\nx2 ~ c(i2,i2)*1\nx3 ~ c(i3,i3)*1\nF ~ c(0,NA)*1"
+  },
+  {
+    "id": "06-observed-path",
+    "title": "Observed-only path model",
+    "preset": "sem",
+    "groups": 1,
+    "syntax": "M ~ a1*X1 + a2*X2\nY ~ b*M + c1*X1 + c2*X2\nX1 ~~ X2"
+  },
+  {
+    "id": "07-large",
+    "title": "Eight factors and forty indicators",
+    "preset": "sem",
+    "groups": 1,
+    "syntax": "F1 =~ x01 + x02 + x03 + x04 + x05\nF2 =~ x06 + x07 + x08 + x09 + x10\nF3 =~ x11 + x12 + x13 + x14 + x15\nF4 =~ x16 + x17 + x18 + x19 + x20\nF5 =~ x21 + x22 + x23 + x24 + x25\nF6 =~ x26 + x27 + x28 + x29 + x30\nF7 =~ x31 + x32 + x33 + x34 + x35\nF8 =~ x36 + x37 + x38 + x39 + x40\nF2 ~ F1\nF3 ~ F2\nF4 ~ F3\nF5 ~ F4\nF6 ~ F5\nF7 ~ F6\nF8 ~ F7"
+  }
+]

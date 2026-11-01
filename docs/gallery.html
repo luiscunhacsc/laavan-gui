@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SEM reference studies · Phase 0</title><style>body{margin:0;background:#f2f5f7;color:#172b36;font:16px/1.55 system-ui,sans-serif}main{max-width:1200px;padding:40px;margin:auto}h1{font-size:36px;letter-spacing:-1px}article{margin:32px 0;padding:28px;background:white;border:1px solid #dce3e7;border-radius:10px}h2{font-size:22px}.figure{overflow:auto;border:1px solid #edf0f2}img{display:block;max-width:100%;height:auto}a{color:#08776c}pre{white-space:pre-wrap;background:#f4f7f8;padding:20px}p{max-width:90ch}</style><main><h1>SEM reference studies · Phase 0</h1><p>Seven fixed models, rendered from native lavaan parameter tables with deliberately specified reference positions. These are review studies, not output from the proposed automatic layout engine. No estimates are displayed.</p><p>Inspect each diagram at its original size. Dense residual covariances and large models are layout challenges for Phase 1; these studies make no collision-free claim.</p><article id="01-holzinger-swineford"><h2>Holzinger–Swineford three-factor CFA</h2><div class="figure"><img src="references/01-holzinger-swineford.svg" alt="Holzinger–Swineford three-factor CFA"></div><p><a href="references/01-holzinger-swineford.svg">Open vector SVG</a> · <a href="references/01-holzinger-swineford.png">Open PNG</a></p><details><summary>Fixed lavaan syntax</summary><pre>visual =~ x1 + x2 + x3
+textual =~ x4 + x5 + x6
+speed =~ x7 + x8 + x9</pre></details></article><article id="02-political-democracy"><h2>PoliticalDemocracy full SEM</h2><div class="figure"><img src="references/02-political-democracy.svg" alt="PoliticalDemocracy full SEM"></div><p><a href="references/02-political-democracy.svg">Open vector SVG</a> · <a href="references/02-political-democracy.png">Open PNG</a></p><details><summary>Fixed lavaan syntax</summary><pre>ind60 =~ x1 + x2 + x3
+dem60 =~ y1 + y2 + y3 + y4
+dem65 =~ y5 + y6 + y7 + y8
+dem60 ~ ind60
+dem65 ~ ind60 + dem60
+y1 ~~ y5
+y2 ~~ y4 + y6
+y3 ~~ y7
+y4 ~~ y8
+y6 ~~ y8</pre></details></article><article id="03-mediation"><h2>Labelled mediation</h2><div class="figure"><img src="references/03-mediation.svg" alt="Labelled mediation"></div><p><a href="references/03-mediation.svg">Open vector SVG</a> · <a href="references/03-mediation.png">Open PNG</a></p><details><summary>Fixed lavaan syntax</summary><pre>M ~ a*X
+Y ~ b*M + cp*X
+ind := a*b
+total := cp + ind</pre></details></article><article id="04-second-order"><h2>Second-order CFA</h2><div class="figure"><img src="references/04-second-order.svg" alt="Second-order CFA"></div><p><a href="references/04-second-order.svg">Open vector SVG</a> · <a href="references/04-second-order.png">Open PNG</a></p><details><summary>Fixed lavaan syntax</summary><pre>F1 =~ x1 + x2 + x3
+F2 =~ x4 + x5 + x6
+F3 =~ x7 + x8 + x9
+G =~ F1 + F2 + F3</pre></details></article><article id="05-two-group"><h2>Two groups with shared loading labels</h2><div class="figure"><img src="references/05-two-group.svg" alt="Two groups with shared loading labels"></div><p><a href="references/05-two-group.svg">Open vector SVG</a> · <a href="references/05-two-group.png">Open PNG</a></p><details><summary>Fixed lavaan syntax</summary><pre>F =~ c(1,1)*x1 + c(l2,l2)*x2 + c(l3,l3)*x3
+x1 ~ c(i1,i1)*1
+x2 ~ c(i2,i2)*1
+x3 ~ c(i3,i3)*1
+F ~ c(0,NA)*1</pre></details></article><article id="06-observed-path"><h2>Observed-only path model</h2><div class="figure"><img src="references/06-observed-path.svg" alt="Observed-only path model"></div><p><a href="references/06-observed-path.svg">Open vector SVG</a> · <a href="references/06-observed-path.png">Open PNG</a></p><details><summary>Fixed lavaan syntax</summary><pre>M ~ a1*X1 + a2*X2
+Y ~ b*M + c1*X1 + c2*X2
+X1 ~~ X2</pre></details></article><article id="07-large"><h2>Eight factors and forty indicators</h2><div class="figure"><img src="references/07-large.svg" alt="Eight factors and forty indicators"></div><p><a href="references/07-large.svg">Open vector SVG</a> · <a href="references/07-large.png">Open PNG</a></p><details><summary>Fixed lavaan syntax</summary><pre>F1 =~ x01 + x02 + x03 + x04 + x05
+F2 =~ x06 + x07 + x08 + x09 + x10
+F3 =~ x11 + x12 + x13 + x14 + x15
+F4 =~ x16 + x17 + x18 + x19 + x20
+F5 =~ x21 + x22 + x23 + x24 + x25
+F6 =~ x26 + x27 + x28 + x29 + x30
+F7 =~ x31 + x32 + x33 + x34 + x35
+F8 =~ x36 + x37 + x38 + x39 + x40
+F2 ~ F1
+F3 ~ F2
+F4 ~ F3
+F5 ~ F4
+F6 ~ F5
+F7 ~ F6
+F8 ~ F7</pre></details></article></main></html>

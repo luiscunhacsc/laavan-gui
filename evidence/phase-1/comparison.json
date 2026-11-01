@@ -1,0 +1,845 @@
+{
+  "status": "pass",
+  "runs": [
+    {
+      "file": "browser-2026-11-01T16-06-12-552Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 5.49489999999851
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.2435
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.06819999999925494
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.05840000000223517
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.07489999999850988
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.06389999999850988
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.14120000000298022
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-10-37-960Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.256800000000745
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.245
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.06910000000149012
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.0645
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.08030000000074505
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.07
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.1518999999985099
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-13-29-213Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.878
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.321
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.103
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.104
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.114
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.106
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.193
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-14-36-092Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.542199999999255
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.2661000000014901
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.07139999999850988
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.07710000000149012
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.09889999999850989
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.07040000000223517
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.177
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-14-46-822Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 3.272
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.758
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.945
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.095
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.122
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.805
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.033
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-18-08-647Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 3.12460000000149
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.39929999999701976
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.116
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.1
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.12630000000074507
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.09339999999850988
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.23119999999925495
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-18-21-099Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 4.469
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.356
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.003
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.11
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.135
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.776
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.035
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-27-54-060Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.9853000000007452
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.3563000000007451
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.08309999999776482
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.07460000000149011
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.09160000000149011
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.08580000000074506
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.2628999999985099
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-28-02-853Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.884
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.22
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.968
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.094
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.114
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.813
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.043
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-30-23-488Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 3.196300000000745
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.49859999999776483
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.10090000000223517
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.0735
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.09089999999850988
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.08730000000074506
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.26580000000074505
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-31-07-385Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 14.375
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.654
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.012
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.097
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.123
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.796
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.03
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-34-29-618Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 3.23679999999702
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.4238000000007451
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.09230000000074506
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.085
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.16480000000074504
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.11789999999850988
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.2921000000014901
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-34-37-686Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 3.381
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.663
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.026
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.121
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.135
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.766
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.045
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-39-21-141Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 3.037800000000745
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.35190000000223515
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.09039999999850988
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.1035
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.11119999999925494
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.08219999999925494
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.26160000000149014
+        }
+      ],
+      "status": "pass"
+    },
+    {
+      "file": "browser-2026-11-01T16-39-28-588Z.json",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+      "models": [
+        {
+          "id": "01-holzinger-swineford",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 3.152
+        },
+        {
+          "id": "02-political-democracy",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.833
+        },
+        {
+          "id": "03-mediation",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.013
+        },
+        {
+          "id": "04-second-order",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.126
+        },
+        {
+          "id": "05-two-group",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 0.13
+        },
+        {
+          "id": "06-observed-path",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 1.759
+        },
+        {
+          "id": "07-large",
+          "tableIdentical": true,
+          "allRowsRepresented": true,
+          "edgeNodeDiagnostics": 0,
+          "seconds": 2.035
+        }
+      ],
+      "status": "pass"
+    }
+  ]
+}

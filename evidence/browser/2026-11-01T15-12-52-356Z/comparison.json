@@ -1,0 +1,53 @@
+{
+  "nativeR": "R version 4.4.3 (2025-02-28 ucrt)",
+  "wasmR": "R version 4.6.0 (2026-04-24)",
+  "lavaan": "0.7.3",
+  "wasmEvidence": "evidence\\browser\\2026-11-01T15-12-52-356Z",
+  "models": {
+    "01-holzinger-swineford": {
+      "est": {
+        "maxAbsDifference": 0,
+        "rounded4dpMatch": true
+      },
+      "std.all": {
+        "maxAbsDifference": 0.0,
+        "rounded4dpMatch": true
+      },
+      "se": {
+        "maxAbsDifference": 1.6653345369377348e-16,
+        "rounded4dpMatch": true
+      }
+    },
+    "02-political-democracy": {
+      "est": {
+        "maxAbsDifference": 5.329070518200751e-15,
+        "rounded4dpMatch": true
+      },
+      "std.all": {
+        "maxAbsDifference": 7.216449660063518e-16,
+        "rounded4dpMatch": true
+      },
+      "se": {
+        "maxAbsDifference": 1.5543122344752192e-15,
+        "rounded4dpMatch": true
+      }
+    },
+    "03-mediation": {
+      "est": {
+        "maxAbsDifference": 0.0,
+        "rounded4dpMatch": true
+      },
+      "std.all": {
+        "maxAbsDifference": 0.0,
+        "rounded4dpMatch": true
+      },
+      "se": {
+        "maxAbsDifference": 0.0,
+        "rounded4dpMatch": true
+      }
+    }
+  },
+  "status": "pass",
+  "parameterTablesIdentical": 7,
+  "semanticAssertions": "pass"
+}

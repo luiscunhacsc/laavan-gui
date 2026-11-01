@@ -1,0 +1,23 @@
+{
+  "importFidelityExact": true,
+  "environment": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:159.0) Gecko/20100101 Firefox/159.0",
+  "models": [
+    {
+      "model": "01-holzinger-swineford",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 1.6653345369377348e-16
+    },
+    {
+      "model": "02-political-democracy",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 3.273834356387617e-09
+    },
+    {
+      "model": "03-mediation",
+      "pass4Decimals": true,
+      "maxAbsoluteDifference": 0
+    }
+  ],
+  "measureAvailabilityDifferences": [],
+  "source": "browser-2026-11-01T18-16-41-477Z.json"
+}

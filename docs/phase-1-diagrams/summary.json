@@ -1,0 +1,65 @@
+[
+  {
+    "id": "01-holzinger-swineford",
+    "seconds": 0.9759757,
+    "nodes": 21,
+    "rows": 24,
+    "width": 893.26,
+    "height": 1384,
+    "diagnostics": []
+  },
+  {
+    "id": "02-political-democracy",
+    "seconds": 0.7930783999999999,
+    "nodes": 27,
+    "rows": 34,
+    "width": 2059.3816731770835,
+    "height": 1259.1,
+    "diagnostics": []
+  },
+  {
+    "id": "03-mediation",
+    "seconds": 0.4214614999999999,
+    "nodes": 5,
+    "rows": 8,
+    "width": 904,
+    "height": 635.5,
+    "diagnostics": []
+  },
+  {
+    "id": "04-second-order",
+    "seconds": 0.44918589999999997,
+    "nodes": 25,
+    "rows": 25,
+    "width": 985.78,
+    "height": 1247,
+    "diagnostics": []
+  },
+  {
+    "id": "05-two-group",
+    "seconds": 0.5047418000000002,
+    "nodes": 14,
+    "rows": 27,
+    "width": 1719.78,
+    "height": 719,
+    "diagnostics": []
+  },
+  {
+    "id": "06-observed-path",
+    "seconds": 0.5334409999999998,
+    "nodes": 6,
+    "rows": 10,
+    "width": 990.55,
+    "height": 461,
+    "diagnostics": []
+  },
+  {
+    "id": "07-large",
+    "seconds": 0.7218131999999996,
+    "nodes": 95,
+    "rows": 95,
+    "width": 3660.56,
+    "height": 932,
+    "diagnostics": []
+  }
+]

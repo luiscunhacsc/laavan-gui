@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-01",
+  "source": "User-reported browser check in this conversation",
+  "url": "http://127.0.0.1:8000/app/dist/",
+  "browser": "Not identified by this report",
+  "workflow": "Data > Labelled mediation > Run analysis",
+  "gridCases": 400,
+  "converged": true,
+  "limits": "This report does not establish all-browser compatibility, import-dialog coverage, numerical agreement or performance on large datasets."
+}
