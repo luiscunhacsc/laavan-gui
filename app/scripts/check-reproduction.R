@@ -2,7 +2,8 @@
 evidence<-jsonlite::fromJSON('../evidence/phase-4/native.json')
 checked<-character()
 for(key in c('single','invariance','bootstrap')){
-  reference<-evidence[[key]];environment<-new.env()
+  # This check itself runs in a fresh Rscript process, as exported scripts do.
+  reference<-evidence[[key]];environment<-.GlobalEnv
   invisible(capture.output(eval(parse(text=reference$script),envir=environment)))
   actual<-lavaan::parameterEstimates(environment$fit,standardized=TRUE,level=reference$confidence,boot.ci.type='perc')
   for(column in c('est','se','ci.lower','ci.upper','std.all'))stopifnot(max(abs(actual[[column]]-reference$parameters[[column]]),na.rm=TRUE)<1e-8)

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "scripts": [
+    "single",
+    "invariance",
+    "bootstrap"
+  ],
+  "tolerance": 1e-08
+}
