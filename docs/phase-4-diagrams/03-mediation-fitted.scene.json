@@ -319,18 +319,18 @@
     {
       "x": 151,
       "y": 572.5,
-      "width": 127.16400000000002,
+      "width": 150.306,
       "height": 26,
-      "text": "ind := a*b = 0.307",
+      "text": "ind := a*b = 0.307***",
       "implicit": false,
       "rowId": 7
     },
     {
       "x": 151,
       "y": 603.5,
-      "width": 156.368,
+      "width": 179.51,
       "height": 26,
-      "text": "total := cp+ind = 0.505",
+      "text": "total := cp+ind = 0.505***",
       "implicit": false,
       "rowId": 8
     }
@@ -508,7 +508,7 @@
         "origin": "explicit",
         "defaultFixed": false,
         "sourceOrder": 7,
-        "displayText": "0.307"
+        "displayText": "0.307***"
       },
       {
         "id": 8,
@@ -529,7 +529,7 @@
         "origin": "explicit",
         "defaultFixed": false,
         "sourceOrder": 8,
-        "displayText": "0.505"
+        "displayText": "0.505***"
       }
     ],
     "latent": [],

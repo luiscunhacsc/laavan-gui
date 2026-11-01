@@ -193,6 +193,20 @@ export async function layoutModel(model:CompiledModel,previous:Positions={},meas
     for(const r of graph.rows)covered.add(r.id);
     const bounds=union(graph.nodes.map(n=>nodeBox(n,90)));offset=Math.max(offset,bounds.x+bounds.width+200);
   }
+  if(model.displayVariances==='loops')for(const n of nodes)if(n.variance){
+    const row=n.variance,candidates:Position[][]=[];
+    for(const angle of [-Math.PI/2,Math.PI/2,Math.PI,0])for(const reach of [65,100,145]){
+      const dx=Math.cos(angle),dy=Math.sin(angle),sx=-dy,sy=dx;
+      const a=port(n,{x:n.x+dx*80-sx*35,y:n.y+dy*80-sy*35}),b=port(n,{x:n.x+dx*80+sx*35,y:n.y+dy*80+sy*35});
+      const cp={x:a.x+dx*reach-sx*reach*.8,y:a.y+dy*reach-sy*reach*.8},cq={x:b.x+dx*reach+sx*reach*.8,y:b.y+dy*reach+sy*reach*.8};
+      const points=cubic(a,cp,cq,b);if(!nodeHits(points,nodes,n.id,n.id))candidates.push(points);
+    }
+    if(!candidates.length)throw new Error('layout.labels');
+    const coarse=(points:Position[])=>points.length>12?points.filter((_,i)=>i%6===0||i===points.length-1):points;
+    const obstacles=edges.map(e=>({...e,points:coarse(e.points)}));
+    const ranked=candidates.map(points=>({points,score:crossingCost(coarse(points),obstacles)*1000+polyLength(points)})).sort((a,b)=>a.score-b.score);
+    edges.push({id:`variance:${n.group}:${row.id}`,source:n.id,target:n.id,kind:'covariance',rowId:row.id,label:textFor(row,true),implicit:row.origin==='implicit',fixed:row.free===0,points:ranked[0].points});
+  }
   const occupied:Box[]=[];
   const placeLabel=(text:string,candidates:Position[],size:number,implicit:boolean,rowId?:number):Annotation=>{
     const width=measure(text,size)+8,height=size+8;
@@ -228,7 +242,7 @@ export async function layoutModel(model:CompiledModel,previous:Positions={},meas
     const candidates=(text:string)=>[
       {x:n.x,y:n.y-n.height/2-27},{x:n.x,y:n.y+n.height/2+27},
       {x:n.x+n.width/2+measure(text,12)/2+14,y:n.y},{x:n.x-n.width/2-measure(text,12)/2-14,y:n.y}];
-    if(n.variance){const r=n.variance,text=`${en.varianceNotation} ${textFor(r,true)}`;annotations.push(placeLabel(text,candidates(text),12,r.origin==='implicit',r.id));}
+    if(n.variance&&model.displayVariances!=='loops'){const r=n.variance,text=`${en.varianceNotation} ${textFor(r,true)}`;annotations.push(placeLabel(text,candidates(text),12,r.origin==='implicit',r.id));}
     if(n.mean){const r=n.mean,text=`μ = ${textFor(r,true)}`;annotations.push(placeLabel(text,candidates(text).reverse(),12,r.origin==='implicit',r.id));}
     if(n.kind==='composite')annotations.push(placeLabel(en.composite,candidates(en.composite),11,false));
     const declaration=model.table.find(r=>r.group===n.group&&r.lhs===n.name&&isUnmeasured(r));
@@ -250,6 +264,7 @@ export async function layoutModel(model:CompiledModel,previous:Positions={},meas
     if(lower!==undefined||upper!==undefined){const text=`${lower!==undefined?lower+' < ':''}${row.label||row.plabel}${upper!==undefined?' < '+upper:''}`;
       annotations.push({x:bounds.x,y:footerY,width:measure(text,14)+12,height:26,text,implicit:false,rowId:row.id});footerY+=31;}
   }
+  for(const note of model.displayNotes||[]){annotations.push({x:bounds.x,y:footerY,width:measure(note,12)+12,height:24,text:note,implicit:false});footerY+=29;}
   bounds=union([...nodes.map(n=>nodeBox(n,0)),...edges.flatMap(e=>e.points.map(p=>({...p,width:0,height:0}))),...annotations,...occupied]);
   for(const e of edges.filter(e=>e.kind!=='covariance'))if(nodeHits(e.points,nodes,e.source,e.target))diagnostics.push(`edge-node:${e.id}`);
   for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)if(overlaps(nodeBox(nodes[i],1),nodeBox(nodes[j],1)))diagnostics.push(`node-node:${nodes[i].id},${nodes[j].id}`);

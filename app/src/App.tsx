@@ -52,6 +52,7 @@ export default function App(){
   const skipCompile=useRef<string|undefined>(undefined);
   const verificationStarted=useRef(false);
   const [verificationStatus,setVerificationStatus]=useState('');
+  const [verifying,setVerifying]=useState(false);
   const [exportDialog,setExportDialog]=useState(false);
   const [,setHistoryRevision]=useState(0);
   const runtime=useRef<LavaanRuntime|null>(null);if(!runtime.current)runtime.current=new LavaanRuntime(s=>setStage(s));
@@ -61,15 +62,15 @@ export default function App(){
   const synced=!!scene&&!error&&!working&&validSyntax===syntax&&JSON.stringify(committed.current?.inputOptions)===JSON.stringify(options);
   const currentKey=analysisKey(syntax,options,analysis,dataset),fresh=fit?.key===currentKey;
   const canAnnotate=!!fit&&fresh&&fit.result.converged&&fit.result.admissible&&synced;
-  const projectionKey=JSON.stringify([fit?.at,annotation,display.notation,scene&&savedPositions(scene)]);
+  const projectionKey=JSON.stringify([fit?.at,annotation,display.notation,display.varianceStyle,scene&&savedPositions(scene)]);
   const viewScene=canAnnotate&&fitScene?.key===projectionKey?fitScene.scene:scene;
   const exportReady=synced&&(!canAnnotate||fitScene?.key===projectionKey);
   const notify=(message:string)=>{setNotice(message);window.setTimeout(()=>setNotice(''),3600);};
   const commitScene=(next:Scene)=>{sceneRef.current=next;setScene(next);positions.current=savedPositions(next);
     if(needsFit.current){setViewport(fitBox(next));needsFit.current=false;}};
   const model=committed.current?.model;
-  const layOut=(m:CompiledModel,p:Positions)=>layoutModel(display.notation?notationModel(m):m,p,measureText);
-  useEffect(()=>{setRevision(n=>n+1);},[display.notation]);
+  const layOut=(m:CompiledModel,p:Positions)=>layoutModel({...(display.notation?notationModel(m):m),displayVariances:display.varianceStyle||'amos'},p,measureText);
+  useEffect(()=>{setRevision(n=>n+1);},[display.notation,display.varianceStyle]);
   const selectedNode=selection.length===1?viewScene?.nodes.find(n=>n.id===selection[0]&&n.kind!=='residual'):undefined;
   const chosenParameter=selectedParameter?(model?.table.find(r=>parameterKey(r)===selectedParameter)||viewScene?.model.table.find(r=>parameterKey(r)===selectedParameter)):undefined;
   const editingDisabled=restoring||fitting||working||!!syntax.trim()&&!synced;
@@ -107,10 +108,11 @@ export default function App(){
     if(!sessionReady||restoring||verificationStarted.current)return;
     if(import.meta.env.DEV&&new URLSearchParams(location.search).has('verify')){
       verificationStarted.current=true;
-      setVerificationStatus(en.verificationRunning);
-      const done=(label:string,total:number)=>(count:number)=>{const message=`${label}: ${count}/${total}`;setVerificationStatus(message);notify(message);};
-      const failed=(error:unknown)=>{setVerificationStatus(String(error));notify(String(error));};
-      if(new URLSearchParams(location.search).get('verify')==='editing')void import('./verify-editing').then(({verifyEditing})=>verifyEditing(runtime.current!,measureText)).then(done(en.editingVerification,15)).catch(failed);
+      setVerificationStatus(en.verificationRunning);setVerifying(true);
+      const done=(label:string,total:number)=>(count:number)=>{setVerifying(false);const message=`${label}: ${count}/${total}`;setVerificationStatus(message);notify(message);};
+      const failed=(error:unknown)=>{setVerifying(false);setVerificationStatus(String(error));notify(String(error));};
+      if(new URLSearchParams(location.search).get('verify')==='advanced')void import('./verify-advanced').then(({verifyAdvanced})=>verifyAdvanced(runtime.current!,measureText,n=>setVerificationStatus(`${en.advanced.verification}: ${n}/12`))).then(done(en.advanced.verification,12)).catch(failed);
+      else if(new URLSearchParams(location.search).get('verify')==='editing')void import('./verify-editing').then(({verifyEditing})=>verifyEditing(runtime.current!,measureText)).then(done(en.editingVerification,15)).catch(failed);
       else if(new URLSearchParams(location.search).get('verify')==='analysis')void import('./verify-analysis').then(({verifyAnalysis})=>verifyAnalysis(runtime.current!,measureText)).then(done(en.analysisVerification,3)).catch(failed);
       else void import('./verify').then(({verifyBrowser})=>verifyBrowser(runtime.current!,measureText)).then(done(en.verification,7)).catch(failed);
     }
@@ -126,7 +128,7 @@ export default function App(){
   const showExample=(i:number)=>{const f=fixtures[i];positions.current={};needsFit.current=true;
     committed.current=undefined;sceneRef.current=undefined;setScene(undefined);setValidSyntax('');
     setSelection([]);setSelectedParameter(undefined);setLinkSource(undefined);setTool('select');setActiveExample(f.id);setSyntax(f.syntax);setOptions({...defaultOptions,preset:examplePreset(f),groups:f.groups,meanstructure:f.groups>1});setDisplay(d=>({...d,title:en.exampleNames[i]}));};
-  const changeSyntax=(text:string)=>{setSyntax(text);setAutosaved(false);};
+  const changeSyntax=(text:string)=>{serial.current++;setSyntax(text);setAutosaved(false);};
   const applyPositions=async(next:Positions,record=true)=>{
     if(!committed.current)return;
     const model=committed.current.model,request=++geometryRevision.current;
@@ -215,7 +217,7 @@ export default function App(){
   const canRedo=history.current.canRedo&&syntax===history.current.current.syntax&&JSON.stringify(options)===JSON.stringify(history.current.current.options);
   const resetModel=()=>{if(working||restoring||fitting)return;serial.current++;needsFit.current=true;acceptModel('',defaultOptions,undefined,undefined);history.current.record({syntax:'',options:defaultOptions,positions:{}});setHistoryRevision(n=>n+1);setTool('select');setDisplay({...defaultDisplay});};
   useEffect(()=>{const handle=(e:KeyboardEvent)=>{if(!(e.ctrlKey||e.metaKey)||(e.target as Element)?.closest?.('input,textarea,select,.cm-editor'))return;const key=e.key.toLowerCase();if(key==='z'||key==='y'){e.preventDefault();void undo(key==='y'||e.shiftKey?1:-1);}};document.addEventListener('keydown',handle);return()=>document.removeEventListener('keydown',handle);});
-  return <div className="app-shell">
+  return <><div className="app-shell" inert={verifying||undefined}>
     <header className="topbar">
       <a className="brand" href="#" onClick={e=>e.preventDefault()} aria-label={`${en.brand} ${en.tagline}`}><span className="brand-mark"><i/><b/></span><span>{en.brand}<small>{en.tagline}</small></span></a>
       <div className="document-name"><span className="document-dot"/><input aria-label={en.defaultTitle} value={display.title} onChange={e=>setDisplay(d=>({...d,title:e.target.value.slice(0,250)}))}/><span className="document-divider"/><span className="phase-label">{en.phase}</span></div>
@@ -240,7 +242,7 @@ export default function App(){
         <div className="pane-heading"><div><span className="pane-eyebrow"><Icon name="code" size={16}/>{en.syntax}</span><p>{en.syntaxHint}</p></div><button className={`tool ${settings?'active':''}`} title={en.modelOptions} aria-label={en.modelOptions} onClick={()=>setSettings(s=>!s)}><Icon name="settings"/></button></div>
         <div className="editor-settings"><div className="segmented" role="group" aria-label={en.preset}>{(['sem','cfa','path'] as const).map(p=><button key={p} className={options.preset===p?'chosen':''} aria-pressed={options.preset===p} onClick={()=>setOptions(o=>({...o,preset:p}))}>{en[p]}</button>)}</div><label>{en.groups}<select value={options.groups} onChange={e=>{needsFit.current=true;setOptions(o=>({...o,groups:Number(e.target.value)}));}}>{Array.from({length:16},(_,i)=><option key={i} value={i+1}>{i+1}</option>)}</select></label></div>
         {options.preset==='path'&&<div className="preset-hint"><p>{en.pathHint}</p><button onClick={()=>showExample(pathExampleIndex)}>{en.pathExample}<Icon name="chevron" size={12}/></button></div>}
-        {settings&&<div className="settings-panel"><label><input type="checkbox" checked={options.meanstructure} onChange={e=>setOptions(o=>({...o,meanstructure:e.target.checked}))}/>{en.meanstructure}</label><label><input type="checkbox" checked={options.fixedX} onChange={e=>setOptions(o=>({...o,fixedX:e.target.checked}))}/>{en.fixedX}</label><label><input type="checkbox" checked={includeDataset} onChange={e=>setIncludeDataset(e.target.checked)}/>{en.projectData.include}</label><label><input type="checkbox" checked={!!display.notation} onChange={e=>setDisplay(d=>({...d,notation:e.target.checked}))}/>{en.advanced.notation}</label></div>}
+        {settings&&<div className="settings-panel"><label><input type="checkbox" checked={options.meanstructure} onChange={e=>setOptions(o=>({...o,meanstructure:e.target.checked}))}/>{en.meanstructure}</label><label><input type="checkbox" checked={options.fixedX} onChange={e=>setOptions(o=>({...o,fixedX:e.target.checked}))}/>{en.fixedX}</label><label><input type="checkbox" checked={includeDataset} onChange={e=>setIncludeDataset(e.target.checked)}/>{en.projectData.include}</label><label><input type="checkbox" checked={!!display.notation} onChange={e=>setDisplay(d=>({...d,notation:e.target.checked}))}/>{en.advanced.notation}</label><label>{en.advanced.varianceStyle}<select value={display.varianceStyle||'amos'} onChange={e=>setDisplay(d=>({...d,varianceStyle:e.target.value as 'amos'|'loops'}))}>{(['amos','loops'] as const).map(v=><option key={v} value={v}>{en.advanced[v]}</option>)}</select></label></div>}
         <Editor value={syntax} onChange={changeSyntax} onConvert={()=>setRevision(n=>n+1)} onUndo={()=>void undo(-1)} onRedo={()=>void undo(1)} error={errorKind==='syntax'?error:''} names={names} readOnly={restoring}/>
         {error&&<div className="syntax-error" role="alert"><div><Icon name="info" size={15}/><strong>{errorKind==='runtime'?en.runtimeFailed:errorKind==='layout'?en.layoutFailed:en.invalid}</strong></div><pre>{error}</pre>{scene&&<p>{en.lastValid}</p>}{errorKind==='runtime'&&<button className="button" onClick={async()=>{await runtime.current?.restart();setRevision(n=>n+1);}}>{en.retry}</button>}</div>}
         <div className="editor-footer"><div className={`sync-state ${error?'error':working?'waiting':''}`}><span/>{error?en.invalid:working?stage==='ready'?en.compiling:stageText:en.synced}</div><button className="button convert" onClick={()=>setRevision(n=>n+1)}>{en.convert}<kbd>{en.shortcut}</kbd></button></div>
@@ -274,5 +276,5 @@ export default function App(){
     <input ref={file} hidden type="file" accept=".json,application/json" onChange={e=>{const f=e.target.files?.[0];if(f)void open(f);e.target.value='';}}/>
     {notice&&<div className="toast" role="status"><Icon name="check" size={16}/>{notice}</div>}
     {import.meta.env.DEV&&new URLSearchParams(location.search).has('verify')&&<div className="verification-status" role="status">{verificationStatus||en.verificationRunning}</div>}
-  </div>;
+  </div>{verifying&&<div className="verification-overlay" role="status"><strong>{verificationStatus}</strong><p>{en.advanced.verifying}</p></div>}</>;
 }

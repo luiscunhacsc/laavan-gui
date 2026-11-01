@@ -242,11 +242,13 @@ forma_fit <- function(q) {
   reliability<-if(isTRUE(a$reliability))forma_reliability(fit,args,q,admissible)else NULL
   invariance<-if(isTRUE(a$invariance))forma_invariance(fit,args,fun)else NULL
   if(isTRUE(a$modificationIndices))script<-paste0(script,'modindices(fit, sort. = TRUE)\n')
-  if(isTRUE(a$reliability))script<-paste0(script,'\n# semTools ',versions$semTools,'; observed-variance denominator; HTMT2 uses absolute correlations\n',
+  if(isTRUE(a$reliability)&&reliability$status=='ok')script<-paste0(script,'\n# semTools ',versions$semTools,'; observed-variance denominator; HTMT2 uses absolute correlations\n',
     'semTools::compRelSEM(fit, obs.var = TRUE, tau.eq = FALSE, ord.scale = TRUE, simplify = TRUE)\nsemTools::AVE(fit, obs.var = TRUE, return.df = FALSE)\n',
-    if(is.null(args$data))paste0('semTools::htmt(',forma_quote(q$text),', sample.cov = sample_cov, absolute = TRUE, htmt2 = TRUE)\n')else paste0(
-    'cases <- lavInspect(fit, "case.idx")\nif (!is.list(cases)) cases <- list(cases)\nlapply(cases, function(i) semTools::htmt(',forma_quote(q$text),', data = data[i, , drop = FALSE], missing = ',forma_quote(a$missing),
+    '\nmeasurement <- ',forma_quote(forma_measurement_syntax),'\n',
+    if(is.null(args$data))'semTools::htmt(measurement(fit, 1), sample.cov = sample_cov, absolute = TRUE, htmt2 = TRUE)\n'else paste0(
+    'cases <- lavInspect(fit, "case.idx")\nif (!is.list(cases)) cases <- list(cases)\nlapply(seq_along(cases), function(g) semTools::htmt(measurement(fit, g), data = data[cases[[g]], , drop = FALSE], missing = ',forma_quote(a$missing),
     if(length(ordered))paste0(', ordered = ',forma_quote(ordered))else '',', absolute = TRUE, htmt2 = TRUE))\n'))
+  if(isTRUE(a$reliability)&&reliability$status!='ok')script<-paste0(script,'\n# Reliability unavailable for this model: ',reliability$status,'\n')
   if(isTRUE(a$invariance))script<-paste0(script,'\nconfigural <- fit\nmetric <- update(fit, group.equal = "loadings")\nscalar <- update(fit, group.equal = c("loadings", "intercepts"))\nstrict <- update(fit, group.equal = c("loadings", "intercepts", "residuals"))\nlavTestLRT(configural, metric, scalar, strict)\nsapply(list(configural, metric, scalar, strict), fitMeasures)\n')
   list(ok=TRUE,converged=converged,admissible=admissible,model=base,parameters=pe,standardized=standardized,
     measures=measures,rsquared=if(is.null(r2))list()else r2,nobs=forma_array(nobs),

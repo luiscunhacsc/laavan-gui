@@ -20,7 +20,7 @@ export default function ResultsWorkspace({snapshot,stale,error,onModel,onNotice,
     return candidates.map(name=>fit.measures.find(m=>m.name===name&&m.value!==null)).find(Boolean)||fit.measures.find(m=>m.name===base);
   };
   const name=(key:string)=>(t.measureNames as Record<string,string>)[key]||key;
-  const headers:[keyof Estimate,string][]=[['lhs',en.lhs],['op',en.operator],['rhs',en.rhs],['group',en.group],['label',en.label],['est',t.estimate],['se',t.se],['z',t.z],['pvalue',t.pvalue],['ci.lower',t.ciLower],['ci.upper',t.ciUpper],['std.all',t.stdAll]];
+  const headers:[keyof Estimate,string][]=[['lhs',en.lhs],['op',en.operator],['rhs',en.rhs],['group',en.group],['label',en.label],['est',t.estimate],['se',t.se],['z',t.z],['pvalue',t.pvalue],['ci.lower',`${Math.round((fit?.confidence??.95)*100)}% ${en.advanced.ciLower}`],['ci.upper',`${Math.round((fit?.confidence??.95)*100)}% ${en.advanced.ciUpper}`],['std.all',t.stdAll]];
   return <main className="results-workspace"><header className="workspace-heading"><div><span className="data-eyebrow">{t.workspace}</span><h1>{snapshot.datasetName}</h1><p>{fit.estimator} · {en.workspace[fit.missing as 'listwise'|'fiml'|'pairwise']} · lavaan {fit.versions.lavaan}</p></div><span className={`fit-badge ${!fit.converged||!fit.admissible?'problem':''}`}>{fit.converged?t.converged:t.notConverged}</span></header>
     {stale&&<div className="analysis-alert stale" role="status">{en.workspace.stale}</div>}
     {error&&<div className="analysis-alert" role="alert"><strong>{t.failed}</strong><p>{error}</p></div>}

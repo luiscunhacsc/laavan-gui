@@ -22,7 +22,7 @@ export function numberText(value:number|null|undefined,digits=3){return value==n
 export function estimateFor(row:{lhs:string;op:string;rhs:string;group:number},values:Estimate[]){return values.find(v=>v.lhs===row.lhs&&v.op===row.op&&v.rhs===row.rhs&&(v.group||1)===(row.group||1));}
 // This is a display projection; the canonical fitted parameter table stays intact.
 export function annotatedModel(fit:FitResult,view:AnnotationOptions):CompiledModel {
-  const base={...fit.model,displayRSquared:view.rsquared?fit.rsquared:[],analysisDisplay:{estimator:fit.estimator,missing:fit.missing,datasetId:fit.datasetId,mode:view.mode,extra:view.extra}};
+  const base={...fit.model,displayRSquared:view.rsquared?fit.rsquared:[],displayNotes:view.mode!=='specification'&&view.extra==='stars'?[en.advanced.starsNote]:[],analysisDisplay:{estimator:fit.estimator,missing:fit.missing,datasetId:fit.datasetId,mode:view.mode,extra:view.extra}};
   if(view.mode==='specification')return base;
   return {...base,table:fit.model.table.map(row=>{
     if(['==','<','>'].includes(row.op))return row;
@@ -32,7 +32,7 @@ export function annotatedModel(fit:FitResult,view:AnnotationOptions):CompiledMod
     let text=numberText(value);
     if(view.extra==='se'&&estimate?.se!=null)text+=` (${numberText(estimate.se)})`;
     if(view.extra==='pvalue'&&estimate?.pvalue!=null)text+=` ${estimate.pvalue<.001?'p < .001':`p = ${numberText(estimate.pvalue)}`}`;
-    if(view.extra==='stars'&&row.free>0&&estimate?.pvalue!=null)text+=estimate.pvalue<.001?'***':estimate.pvalue<.01?'**':estimate.pvalue<.05?'*':'';
+    if(view.extra==='stars'&&(row.free>0||row.op===':=')&&estimate?.pvalue!=null)text+=estimate.pvalue<.001?'***':estimate.pvalue<.01?'**':estimate.pvalue<.05?'*':'';
     return {...row,displayText:text};
   })};
 }

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.144.0 Chrome/150.0.7871.250 Electron/43.8.3 Safari/537.36",
+  "checks": [
+    "01-holzinger-swineford",
+    "02-political-democracy",
+    "03-mediation",
+    "invariance",
+    "reliability",
+    "modification",
+    "bootstrap",
+    "notation-svg",
+    "png",
+    "pdf",
+    "word-latex-tikz",
+    "guards-and-restoration"
+  ],
+  "comparedNumbers": 2242,
+  "maxAbsoluteDifference": 2.850844687429799e-06,
+  "precision": 4,
+  "source": "evidence/phase-4/browser-2026-11-01T22-07-17-250Z/results.json"
+}

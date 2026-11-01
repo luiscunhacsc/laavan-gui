@@ -3,7 +3,7 @@ import {Resvg} from '@resvg/resvg-js';
 import {jsPDF} from 'jspdf';
 import {layoutModel} from '../src/layout';
 import {renderSvg} from '../src/svg';
-import {diagramPdf,diagramTikz,pngResolution} from '../src/exports';
+import {diagramPdf,diagramTikz,pngResolution,portableSvg} from '../src/exports';
 import {notationModel} from '../src/notation';
 import {reportWord} from '../src/report-word';
 import {reportLatex} from '../src/report';
@@ -20,13 +20,14 @@ const measure=(text:string,size:number)=>{metric.setFontSize(size);return metric
 const tasks=[...fixtures.map(f=>({...f,model:editing.roundtrips[f.id].model,syntax:editing.roundtrips[f.id].syntax})),
  ...fixtures.slice(0,3).map(f=>({id:f.id+'-fitted',title:f.title+' · standardised estimates',syntax:editing.roundtrips[f.id].syntax,model:annotatedModel(fits.core[f.id],{mode:'standardized',extra:'stars',rsquared:true})})),
  {id:'greek-cfa',title:'Three-factor CFA · parameter notation',syntax:fixtures[0].id,model:notationModel(normalizeModel(editing.roundtrips[fixtures[0].id].model))},
+ {id:'ram-cfa',title:'Three-factor CFA ? RAM variance loops',syntax:'',model:{...advanced.single.model,displayVariances:'loops'}},
  {id:'invariance-configural',title:'Two-group CFA · configural estimates',syntax:'',model:annotatedModel(advanced.invariance,{mode:'estimates',extra:'none',rsquared:false})}];
 const output='../docs/phase-4-diagrams';await mkdir(output,{recursive:true});const summary=[];
 for(const f of tasks){const model=normalizeModel(f.model as CompiledModel),scene=await layoutModel(model,{},measure),display={...defaultDisplay,title:f.title};
  if(scene.diagnostics.length)throw new Error(`${f.id}: ${scene.diagnostics.join(', ')}`);
- const svg=renderSvg(scene,display),png=new Resvg(svg,{font:{fontFiles:fontPaths,loadSystemFonts:false}}).render().asPng();
+ const svg=await portableSvg(scene,display,{regular,bold}),png=new Resvg(svg,{font:{fontFiles:fontPaths,loadSystemFonts:false}}).render().asPng();
  await writeFile(`${output}/${f.id}.svg`,svg);await writeFile(`${output}/${f.id}.png`,pngResolution(png,96));
- await writeFile(`${output}/${f.id}.pdf`,new Uint8Array(await (await diagramPdf(scene,display,6.5,{regular,bold})).arrayBuffer()));
+ await writeFile(`${output}/${f.id}.pdf`,new Uint8Array(await (await diagramPdf(scene,display,Math.min(40,Math.max(6.5,Math.ceil(scene.width/96*2)/2)),{regular,bold})).arrayBuffer()));
  await writeFile(`${output}/${f.id}.tex`,diagramTikz(scene,display));await writeFile(`${output}/${f.id}.lavaan`,f.syntax);await writeFile(`${output}/${f.id}.scene.json`,JSON.stringify(scene,null,2));
  summary.push({id:f.id,title:f.title,nodes:scene.nodes.length,width:scene.width,height:scene.height,diagnostics:scene.diagnostics});
 }

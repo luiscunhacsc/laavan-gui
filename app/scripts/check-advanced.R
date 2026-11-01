@@ -14,10 +14,13 @@ omega<-semTools::compRelSEM(direct,simplify=TRUE);ave<-semTools::AVE(direct);htm
 for(s in result$reliability$scales)stopifnot(abs(s$omega-omega[s$factor])<1e-10,abs(s$ave-ave[s$factor])<1e-10)
 for(p in result$reliability$pairs)stopifnot(abs(p$htmt2-htmt[p$first,p$second])<1e-10)
 single<-result
+q90<-q;q90$analysis$confidence<-.9
+ninety<-forma_request(q90);stopifnot(ninety$ok,max(abs(ninety$parameters$ci.lower-lavaan::parameterEstimates(direct,level=.9)$ci.lower))<1e-10)
 q$options$groups<-2;q$options$meanstructure<-TRUE;q$analysis$group<-'school';q$analysis$invariance<-TRUE;q$analysis$estimator<-'MLR'
 result<-forma_request(q);if(!result$ok)stop(result$message)
 stopifnot(length(result$invariance)==4,length(result$reliability$scales)==6)
 invariance<-result
+bad_scaling<-q;bad_scaling$text<-paste0(q$text,'\nx1 ~~ 1*x1');stopifnot(!forma_request(bad_scaling)$ok)
 reference<-lapply(list(character(),'loadings',c('loadings','intercepts'),c('loadings','intercepts','residuals')),function(equal)lavaan::cfa(q$text,data=lavaan::HolzingerSwineford1939,group='school',group.equal=equal,estimator='MLR',meanstructure=TRUE,fixed.x=FALSE))
 for(i in 1:4){fm<-lavaan::fitMeasures(reference[[i]]);stopifnot(abs(result$invariance[[i]]$cfi-fm['cfi.robust'])<1e-7);if(i>1){lr<-lavaan::lavTestLRT(reference[[i-1]],reference[[i]]);stopifnot(abs(result$invariance[[i]]$difference$chisq-lr[2,'Chisq diff'])<1e-7)}}
 q$analysis$bootstrap<-100;stopifnot(!forma_request(q)$ok)

@@ -21,6 +21,7 @@ export function readProject(value:unknown):Project{
   for(const key of ['invariance','reliability','modificationIndices'] as const)if(analysis[key]!==undefined&&typeof analysis[key]!=='boolean')throw new Error('badProject');
   if(typeof display.title!=='string'||display.title.length>250||!['journal','presentation'].includes(display.theme)||typeof display.implicit!=='boolean')throw new Error('badProject');
   if(display.notation!==undefined&&typeof display.notation!=='boolean')throw new Error('badProject');
+  if(display.varianceStyle!==undefined&&!['amos','loops'].includes(display.varianceStyle))throw new Error('badProject');
   let canonical:CompiledModel|undefined;
   if(p.canonical){
     const model=p.canonical,ids=new Set<number>(),ops=new Set(['=~','<~','~','~~','~1',':=','==','<','>','|','~*~']);

@@ -4,7 +4,7 @@ import {distance} from './geometry';
 import {texEscape} from './report';
 import en from './en.json';
 export const exportDimensions=(scene:Scene,inches:number,dpi:number)=>{
- if(!Number.isFinite(inches)||inches<2||inches>20||![150,300,600].includes(dpi))throw new Error(en.advanced.exportFailed);
+ if(!Number.isFinite(inches)||inches<2||inches>40||![150,300,600].includes(dpi))throw new Error(en.advanced.exportFailed);
  const width=Math.round(inches*dpi),height=Math.round(width*(scene.height+46)/scene.width);
  if(width>16384||height>16384||width*height>64000000)throw new Error(en.advanced.exportFailed);
  return {width,height};
@@ -15,8 +15,8 @@ export function exportFonts(){return fonts??=Promise.all(['Regular','Bold'].map(
  const response=await fetch(`${import.meta.env.BASE_URL}fonts/NotoSans-${weight}.ttf`);if(!response.ok)throw new Error(en.advanced.exportFailed);
  return base64(new Uint8Array(await response.arrayBuffer()));
 })).then(([regular,bold])=>({regular,bold})).catch(e=>{fonts=undefined;throw e;});}
-export async function portableSvg(scene:Scene,display:Display){
- const f=await exportFonts();
+export async function portableSvg(scene:Scene,display:Display,fontData?:{regular:string;bold:string}){
+ const f=fontData||await exportFonts();
  const css=`<style>@font-face{font-family:'Forma Sans';src:url(data:font/ttf;base64,${f.regular}) format('truetype');font-weight:400}@font-face{font-family:'Forma Sans';src:url(data:font/ttf;base64,${f.bold}) format('truetype');font-weight:600}</style>`;
  return renderSvg(scene,display).replace('<defs>','<defs>'+css);
 }
@@ -37,7 +37,7 @@ export async function diagramPng(scene:Scene,display:Display,inches:number,dpi:n
  } finally {URL.revokeObjectURL(url);}
 }
 export async function diagramPdf(scene:Scene,display:Display,inches:number,fontData?:{regular:string;bold:string}):Promise<Blob>{
- if(!Number.isFinite(inches)||inches<2||inches>20)throw new Error(en.advanced.exportFailed);
+ if(!Number.isFinite(inches)||inches<2||inches>40)throw new Error(en.advanced.exportFailed);
  const [{jsPDF},f]=await Promise.all([import('jspdf'),fontData?Promise.resolve(fontData):exportFonts()]);
  const width=inches*72,height=width*(scene.height+46)/scene.width;
  if(height>14000)throw new Error(en.advanced.exportFailed);
@@ -89,14 +89,14 @@ function tikzPath(points:Position[],rounded:boolean){
 export function diagramTikz(scene:Scene,display:Display){
  const normal=display.theme==='presentation'?'17635D':'222A30',muted=display.theme==='presentation'?'7B9B96':'788187',nodes=scene.nodes.filter(n=>display.implicit||!n.implicit),ids=new Set(nodes.map(n=>n.id));
  const text=(x:number,y:number,value:string,size:number,color='ink')=>`\\node[text=${color},font=\\sffamily\\fontsize{${size*.75}}{${size*.95}}\\selectfont,inner sep=0pt] at ${xy({x,y})} {${texEscape(value)}};`;
- const lines=[`% Generated from the same scene as Forma's SVG. Compile with LuaLaTeX or XeLaTeX.`, '\\documentclass[border=4pt]{standalone}','\\usepackage{fontspec,tikz}','\\usetikzlibrary{arrows.meta}','\\setsansfont{TeX Gyre Heros}',`\\definecolor{ink}{HTML}{${normal}}`,`\\definecolor{muted}{HTML}{${muted}}`,'\\definecolor{latentfill}{HTML}{E8F2EF}','\\begin{document}','\\begin{tikzpicture}[x=0.75pt,y=-0.75pt,line width=1.2375pt,>={Latex[length=5.25pt,width=4pt]}]',
+ const lines=[`% Generated from the same scene as Forma's SVG. Compile with LuaLaTeX or XeLaTeX.`, '\\documentclass[border=4pt]{standalone}','\\usepackage{fontspec,tikz}','\\usetikzlibrary{arrows.meta}','\\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf]',`\\definecolor{ink}{HTML}{${normal}}`,`\\definecolor{muted}{HTML}{${muted}}`,'\\definecolor{latentfill}{HTML}{E8F2EF}','\\begin{document}','\\begin{tikzpicture}[x=0.75pt,y=-0.75pt,line width=1.2375pt,>={Latex[length=5.25pt,width=4pt]}]',
   `\\path[use as bounding box] ${xy({x:scene.minX,y:scene.minY-46})} rectangle ${xy({x:scene.minX+scene.width,y:scene.minY+scene.height})};`,text(scene.minX+scene.width/2,scene.minY-15,display.title||en.defaultTitle,20)];
  for(const p of scene.panels)if(scene.model.options.groups>1)lines.push(text(p.x+25,p.y-28,`${en.group} ${p.group}`,15));
  for(const e of scene.edges){if(e.implicit&&!display.implicit||!ids.has(e.source)||!ids.has(e.target))continue;const implicit=e.implicit||!!e.defaultFixed&&display.implicit;
   lines.push(`\\draw[${e.kind==='covariance'?'<->':'->'},${implicit?'muted,dash pattern=on 3.75pt off 3pt':'ink'}] ${tikzPath(e.points,e.kind==='covariance'&&e.points.length<20)};`);
  }
  for(const n of nodes){const fill=display.theme==='presentation'&&(n.kind==='latent'||n.kind==='composite')?'latentfill':'white',stroke=n.implicit?'muted,dashed':'ink';
-  lines.push(n.kind==='observed'?`\\draw[${stroke},fill=${fill}] ${xy({x:n.x-n.width/2,y:n.y-n.height/2})} rectangle ${xy({x:n.x+n.width/2,y:n.y+n.height/2})};`:`\\draw[${stroke},fill=${fill}] ${xy(n)} ellipse [x radius=${n.width/2},y radius=${n.height/2}];`);lines.push(text(n.x,n.y,n.name,n.kind==='residual'?12:16,n.implicit?'muted':'ink'));
+  lines.push(n.kind==='observed'?`\\draw[${stroke},fill=${fill}] ${xy({x:n.x-n.width/2,y:n.y-n.height/2})} rectangle ${xy({x:n.x+n.width/2,y:n.y+n.height/2})};`:`\\draw[${stroke},fill=${fill}] ${xy(n)} ellipse [x radius=${n.width*.375}pt,y radius=${n.height*.375}pt];`);lines.push(text(n.x,n.y,n.name,n.kind==='residual'?12:16,n.implicit?'muted':'ink'));
  }
  for(const e of scene.edges)if(e.labelBox&&!(e.implicit&&!display.implicit)){const row=scene.model.table.find(r=>r.id===e.rowId),value=e.defaultFixed&&!display.implicit&&typeof row?.displayText!=='string'?row?.label||'':e.label;if(value)lines.push(text(e.labelBox.x+e.labelBox.width/2,e.labelBox.y+e.labelBox.height/2,value,13,e.implicit||e.defaultFixed&&display.implicit?'muted':'ink'));}
  for(const a of scene.annotations)if(display.implicit||!a.implicit)lines.push(text(a.x+a.width/2,a.y+a.height/2,a.text,a.rowId&&scene.model.table.find(r=>r.id===a.rowId)?.op===':='?14:12,a.implicit?'muted':'ink'));

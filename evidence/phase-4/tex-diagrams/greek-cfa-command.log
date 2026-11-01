@@ -1,0 +1,10 @@
+note: Running TeX ...
+note: downloading lmroman7-regular.otf
+note: Rerunning TeX because "greek-cfa.aux" changed ...
+note: Running xdvipdfmx ...
+note: downloading cmmi10.pfb
+note: downloading cmr7.pfb
+note: Writing `C:\Users\luisl\Desktop\Amos\evidence\phase-4\tex-diagrams\greek-cfa.pdf` (14.2373046875 KiB)
+note: Writing `C:\Users\luisl\Desktop\Amos\evidence\phase-4\tex-diagrams\greek-cfa.log` (16.6435546875 KiB)
+note: Skipped writing 1 intermediate files (use --keep-intermediates to keep them)
+Fontconfig error: Cannot load default config file: No such file: (null)

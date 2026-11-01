@@ -110,6 +110,7 @@ forma_edit <- function(q) {
     matching<-model$table[model$table$op==op&((model$table$lhs==lhs&model$table$rhs==rhs)|(op=='~~'&model$table$lhs==rhs&model$table$rhs==lhs)),,drop=FALSE]
     target<-matching[matching$group==g,,drop=FALSE]
     if(nrow(target)>0 && (nrow(target)!=1 || target$free!=0 || is.na(target$ustart) || target$ustart!=0))stop('edit.exists')
+    if(nrow(target)&&nzchar(target$label)&&sum(model$table$label==target$label)>1)stop('advanced.miConstraint')
     index<-forma_row_index(spec,lhs,op,rhs)
     if(!length(index)&&op=='~~')index<-forma_row_index(spec,rhs,op,lhs)
     if(length(index)>1)stop('edit.ambiguous')

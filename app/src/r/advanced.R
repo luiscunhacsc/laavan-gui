@@ -26,6 +26,13 @@ forma_invariance_guard <- function(q,compiled,ordered,d) {
   if(length(ordered) || q$analysis$estimator=='WLSMV')stop('advanced.invarianceOrdinal')
   pt <- compiled$table
   if(any(nzchar(pt$label)) || any(pt$op %in% c('==','<','>','~','<~',':=')) || any(pt$op=='=~' & pt$rhs %in% unlist(compiled$latent)))stop('advanced.invarianceSyntax')
+  # The automated sequence assumes lavaan's marker-variable identification.
+  # Explicit fixed variances/means would prevent the required later releases.
+  if(any(pt$op=='~1'&pt$user!=0) || any(pt$op=='~~'&pt$lhs==pt$rhs&pt$free==0))stop('advanced.invarianceScaling')
+  for(g in seq_len(q$options$groups))for(f in unlist(compiled$latent)) {
+    load<-pt[pt$group==g&pt$op=='=~'&pt$lhs==f,,drop=FALSE]
+    if(nrow(load)<2 || load$free[1]!=0 || is.na(load$ustart[1]) || load$ustart[1]!=1 || any(load$free[-1]==0))stop('advanced.invarianceScaling')
+  }
   if(!isTRUE(q$options$meanstructure))stop('advanced.invarianceMeans')
 }
 forma_invariance <- function(fit,args,fun) {

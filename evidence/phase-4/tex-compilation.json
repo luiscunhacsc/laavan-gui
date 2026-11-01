@@ -1,0 +1,92 @@
+[
+  {
+    "file": "01-holzinger-swineford-fitted.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "01-holzinger-swineford.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "02-political-democracy-fitted.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "02-political-democracy.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "03-mediation-fitted.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "03-mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "04-second-order.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "05-two-group.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "06-observed-path.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "07-large.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "greek-cfa.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "invariance-configural.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "bootstrap-tables.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "invariance-tables.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "single-tables.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  }
+]

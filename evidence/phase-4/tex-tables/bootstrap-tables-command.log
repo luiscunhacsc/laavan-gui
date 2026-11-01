@@ -1,0 +1,18 @@
+note: Running TeX ...
+note: downloading size11.clo
+note: downloading geometry.sty
+note: downloading ifvtex.sty
+note: downloading booktabs.sty
+note: downloading longtable.sty
+note: downloading pdflscape.sty
+note: downloading lscape.sty
+note: downloading texgyretermes-regular.otf
+note: downloading texgyretermes-bold.otf
+note: downloading texgyretermes-italic.otf
+note: Rerunning TeX because "bootstrap-tables.aux" changed ...
+note: Rerunning TeX because "bootstrap-tables.aux" changed ...
+note: Running xdvipdfmx ...
+note: Writing `C:\Users\luisl\Desktop\Amos\evidence\phase-4\tex-tables\bootstrap-tables.log` (11.4951171875 KiB)
+note: Writing `C:\Users\luisl\Desktop\Amos\evidence\phase-4\tex-tables\bootstrap-tables.pdf` (15.9384765625 KiB)
+note: Skipped writing 1 intermediate files (use --keep-intermediates to keep them)
+Fontconfig error: Cannot load default config file: No such file: (null)
