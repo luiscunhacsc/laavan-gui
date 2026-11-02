@@ -2,16 +2,16 @@
   "application": "Forma SEM Studio",
   "version": "1.0.0-rc.1",
   "status": "release-candidate",
-  "recordedAt": "2026-11-02T00:04:48.512819+00:00",
+  "recordedAt": "2026-11-02T22:02:23.079569+00:00",
   "build": {
     "application": "Forma",
     "version": "1.0.0-rc.1",
-    "build": "986082cd58b692566a7b",
-    "files": 140,
-    "bytes": 88315490
+    "build": "0d36b7bcafcc5845118c",
+    "files": 141,
+    "bytes": 88328627
   },
   "automatedTests": {
-    "passed": 53,
+    "passed": 66,
     "failed": 0
   },
   "nativeChecks": [
@@ -112,18 +112,19 @@
   },
   "assetAndOfflineSimulation": {
     "passed": true,
-    "build": "986082cd58b692566a7b",
-    "assets": 140,
-    "bytes": 88315490,
+    "build": "0d36b7bcafcc5845118c",
+    "assets": 141,
+    "bytes": 88328627,
     "checks": [
       "all asset hashes and sizes",
+      "browser entry import and worker startup without Node built-ins",
       "integrity-bound service-worker precache",
       "offline navigation and engine/font lookup",
       "application-only GET cache",
       "old-cache cleanup",
       "failed-install cleanup"
     ],
-    "scope": "Node service-worker simulation and artifact validation; not a browser offline certification"
+    "scope": "Node browser-module and service-worker simulations and artifact validation; not a browser offline certification"
   },
   "layoutBefore": [
     {
@@ -674,17 +675,37 @@
   "publicDeployment": false,
   "portablePackageCheck": {
     "passed": true,
-    "httpAssets": 140,
+    "httpAssets": 141,
     "checks": [
       "ZIP CRC",
       "every file checksum and expanded-byte equality",
       "archive checksum",
-      "required launchers, guide and license notices",
+      "Windows, Linux and macOS launchers, guide and license notices",
+      "executable Unix launchers with LF line endings",
       "actual Python loopback server",
       "all application asset bytes over HTTP",
       "WebAssembly/module MIME types",
       "no POST or development QA endpoints"
     ],
     "browserAutomation": false
+  },
+  "launcherChecks": {
+    "passed": true,
+    "platform": "Windows",
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": [
+      "POSIX launchers run on Linux/macOS"
+    ],
+    "checks": [
+      "checkout and portable build discovery",
+      "missing-build guidance",
+      "port validation and collision handling",
+      "actual loopback HTTP startup",
+      "JavaScript/WebAssembly MIME types",
+      "same-build reuse and different-build guard",
+      "platform launcher argument forwarding from a folder with spaces"
+    ]
   }
 }

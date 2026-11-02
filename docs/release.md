@@ -10,8 +10,9 @@ advanced analyses and publication exports. Nothing has been publicly deployed.
 - [Review all seven fixed reference diagrams and six additional examples](phase-4-gallery.html).
 - [Inspect the machine-readable validation record](../evidence/release/validation.json).
 
-Extract the ZIP and run `Start-Forma.cmd` on Windows, or `python3 serve.py` on
-macOS/Linux. The stable local address is <http://127.0.0.1:8765/>. Python 3 is the
+Extract the ZIP and run `Start-Forma.cmd` on Windows, `Start-Forma.command` on
+macOS, or `sh Start-Forma.sh` on Linux. Each launcher opens the default browser.
+The stable local address is <http://127.0.0.1:8765/>. Python 3.8 or newer is the
 only launcher dependency; native R and Node are unnecessary for using this build.
 
 ## Added after Phase 4
@@ -43,10 +44,10 @@ alongside the archive. No dataset supplied by the user is included.
 
 ## Validation
 
-- **53 automated tests pass**, including semantic/geometry coverage for the
+- **66 automated tests pass**, including semantic/geometry coverage for the
   seven models, editor transactions, exports, project compatibility, saved
   inference validation, dataset fingerprints and IndexedDB fit restoration.
-- TypeScript and the production build pass. All **140 static assets** and
+- TypeScript and the production build pass. All **141 static assets** and
   **122 vendored runtime files** match their recorded sizes/hashes.
 - The actual bundled WebAssembly engine passes CSV/Excel/SPSS fidelity, paging,
   transactional restore, all three reference fits, MLR/FIML, WLSMV, covariance

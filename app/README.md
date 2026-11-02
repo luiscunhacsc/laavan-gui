@@ -7,9 +7,12 @@ and [13 reference figures](../docs/phase-4-gallery.html).
 
 ## Use the portable application
 
-Extract `releases/Forma-1.0.0-rc.1.zip`. Run `Start-Forma.cmd` on Windows, or
-`python3 serve.py` on macOS/Linux. Open <http://127.0.0.1:8765/>. The server binds
-to loopback only. Python 3 is required for this launcher; R and Node are not.
+Extract `releases/Forma-1.0.0-rc.1.zip`. Run `Start-Forma.cmd` on Windows,
+double-click `Start-Forma.command` on macOS, or run `sh Start-Forma.sh` on Linux.
+The launcher opens <http://127.0.0.1:8765/> and binds to loopback only. Python 3.8
+or newer is required; R and Node are not. The same launchers in the project
+root start `app/dist/` after a build. Keep their terminal open; Ctrl+C stops the
+server. Starting again reopens the existing Forma instance.
 
 The complete webR 0.6.0/R 4.6.0 runtime, lavaan 0.7-3, semTools 0.5-10, Excel/SPSS
 readers and fonts are bundled. No remote R package installation is performed.

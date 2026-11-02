@@ -6,10 +6,18 @@ release includes its R/WebAssembly engine, packages and fonts.
 
 ## Start and keep your work
 
-Extract the complete release ZIP. On Windows run `Start-Forma.cmd`; on macOS or
-Linux run `python3 serve.py`. Open <http://127.0.0.1:8765/>. Python 3 serves the
-static files; a native R or Node installation is unnecessary. Keep the terminal
-open while using the application. Do not open `web/index.html` directly.
+Extract the complete release ZIP. On Windows run `Start-Forma.cmd`; on macOS
+double-click `Start-Forma.command`; on Linux run `sh Start-Forma.sh` in the
+extracted folder. The launcher opens <http://127.0.0.1:8765/> in your browser.
+Python 3.8 or newer serves the static files; a native R or Node installation is
+unnecessary. Keep the terminal open while using the application and press Ctrl+C
+to stop. Starting again reopens the running Forma app. Do not open
+`web/index.html` directly.
+
+If your macOS extractor did not retain executable permissions, run
+`chmod +x Start-Forma.command Start-Forma.sh` in the extracted folder, or use
+`sh Start-Forma.sh`. The same launchers in a source checkout use `app/dist/`;
+build it with `npm ci` and `npm run build` in `app/` before the first launch.
 
 The first load transfers approximately 84 MiB from the local server. The status
 bar reports when offline caching is ready. Cache/storage availability depends on

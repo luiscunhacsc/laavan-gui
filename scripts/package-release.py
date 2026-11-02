@@ -8,15 +8,34 @@ import zipfile
 root = Path(__file__).resolve().parents[1]
 version = json.loads((root/'app/package.json').read_text(encoding='utf-8'))['version']
 target = root/'releases'/f'Forma-{version}'
+web = target/'web'
+source_web = root/'app/dist'
+build = json.loads((source_web/'release.json').read_text(encoding='utf-8'))
+if build.get('application') != 'Forma' or build.get('version') != version:
+    raise ValueError('Build the current Forma application before packaging.')
+# Refresh only this release's web directory; retain launcher/docs/license files.
+if target.resolve().parent != (root/'releases').resolve() or web.resolve().parent != target.resolve():
+    raise ValueError('The release output must stay inside the releases folder.')
 target.mkdir(parents=True, exist_ok=True)
-shutil.copytree(root/'app/dist', target/'web', dirs_exist_ok=True)
+for old in web.rglob('*'):
+    if old.is_file() and not (source_web/old.relative_to(web)).is_file():
+        if not old.resolve().is_relative_to(web.resolve()):
+            raise ValueError('Refusing to remove a release file outside the web folder.')
+        old.unlink()
+shutil.copytree(source_web, web, dirs_exist_ok=True)
 for source, name in [('scripts/release-serve.py','serve.py'),
-                     ('scripts/release-start.cmd','Start-Forma.cmd'),
-                     ('scripts/release-start.command','Start-Forma.command'),
+                     ('Start-Forma.cmd','Start-Forma.cmd'),
+                     ('Start-Forma.command','Start-Forma.command'),
+                     ('Start-Forma.sh','Start-Forma.sh'),
                      ('docs/release-readme.txt','README.txt'),
                      ('docs/user-guide.md','user-guide.md'),
                      ('evidence/release/validation.json','VALIDATION.json')]:
     shutil.copy2(root/source, target/name)
+    if name.endswith(('.sh', '.command')):
+        (target/name).write_bytes((target/name).read_bytes().replace(b'\r\n', b'\n'))
+        (target/name).chmod(0o755)
+    elif name.endswith('.cmd'):
+        (target/name).write_bytes((target/name).read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n'))
 licenses = target/'licenses'
 licenses.mkdir(exist_ok=True)
 shutil.copy2(root/'app/public/engine/LICENSE-webR.md', licenses/'webR-and-R-GPL-3.md')
@@ -93,7 +112,7 @@ with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=7) as output
     for p in sorted(target.rglob('*')):
         if p.is_file():
             name=(Path(target.name)/p.relative_to(target)).as_posix()
-            if p.suffix=='.command':
+            if p.suffix in ('.command', '.sh'):
                 info=zipfile.ZipInfo.from_file(p,name)
                 info.create_system=3
                 info.external_attr=(0o100755<<16)

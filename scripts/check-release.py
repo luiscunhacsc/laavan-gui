@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import socket
 import sys
 import time
 from urllib.error import HTTPError, URLError
@@ -25,16 +26,23 @@ with zipfile.ZipFile(archive) as z:
         assert hashlib.sha256(content).hexdigest()==digest,name
         assert (folder/name).read_bytes()==content,name
     assert len(names)==len(checks)+1
-    for name in ['serve.py','Start-Forma.cmd','Start-Forma.command','README.txt',
+    for name in ['serve.py','Start-Forma.cmd','Start-Forma.command','Start-Forma.sh','README.txt',
                  'user-guide.md','VALIDATION.json','THIRD-PARTY-NOTICES.md',
                  'licenses/webR-and-R-GPL-3.md','web/engine/library.data']:
         assert prefix+name in names,name
+    for name in ['Start-Forma.command','Start-Forma.sh']:
+        info=z.getinfo(prefix+name)
+        assert info.create_system==3 and ((info.external_attr>>16)&0o111)==0o111,name
+        assert b'\r' not in z.read(prefix+name),name
 digest=hashlib.sha256(archive.read_bytes()).hexdigest()
 assert archive.with_suffix('.zip.sha256').read_text(encoding='utf-8').split()[0]==digest
 manifest=json.loads((folder/'web/assets-manifest.json').read_text(encoding='utf-8'))
-base='http://127.0.0.1:8765/'
+with socket.socket() as probe:
+    probe.bind(('127.0.0.1',0))
+    port=probe.getsockname()[1]
+base=f'http://127.0.0.1:{port}/'
 with (root/'evidence/release/portable-server.log').open('wb') as log:
-    server=subprocess.Popen([sys.executable,str(folder/'serve.py'),'--no-open'],stdout=log,stderr=log,
+    server=subprocess.Popen([sys.executable,str(folder/'serve.py'),'--no-open','--port',str(port)],stdout=log,stderr=log,
                             creationflags=subprocess.CREATE_NO_WINDOW if sys.platform=='win32' else 0)
     try:
         def fetch(path):
@@ -59,7 +67,7 @@ with (root/'evidence/release/portable-server.log').open('wb') as log:
             assert len(content)==file['bytes'] and hashlib.sha256(content).hexdigest()==file['sha256'],file['path']
             if file['path'].endswith('.wasm'):
                 assert headers.get_content_type()=='application/wasm'
-            if file['path'].endswith('.mjs'):
+            if file['path'].endswith(('.mjs','.js')):
                 assert headers.get_content_type()=='text/javascript'
         for path in ['__qa','__qa-advanced','__fixtures/labelled.sav']:
             try:
@@ -78,9 +86,11 @@ with (root/'evidence/release/portable-server.log').open('wb') as log:
         server.terminate()
         server.wait(timeout=10)
 result={'passed':True,'archive':str(archive.relative_to(root)),'archiveBytes':archive.stat().st_size,
+        'build':manifest['key'],
         'sha256':digest,'files':len(checks)+1,'httpAssets':len(manifest['files']),
         'checks':['ZIP CRC','every file checksum and expanded-byte equality','archive checksum',
-                  'required launchers, guide and license notices','actual Python loopback server',
+                  'Windows, Linux and macOS launchers, guide and license notices',
+                  'executable Unix launchers with LF line endings','actual Python loopback server',
                   'all application asset bytes over HTTP','WebAssembly/module MIME types',
                   'no POST or development QA endpoints'],'browserAutomation':False}
 (root/'evidence/release/portable-check.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')

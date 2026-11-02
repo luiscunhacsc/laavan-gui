@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "platform": "Windows",
+  "tests": 8,
+  "failures": 0,
+  "errors": 0,
+  "skipped": [
+    "POSIX launchers run on Linux/macOS"
+  ],
+  "checks": [
+    "checkout and portable build discovery",
+    "missing-build guidance",
+    "port validation and collision handling",
+    "actual loopback HTTP startup",
+    "JavaScript/WebAssembly MIME types",
+    "same-build reuse and different-build guard",
+    "platform launcher argument forwarding from a folder with spaces"
+  ]
+}

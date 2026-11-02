@@ -12,7 +12,8 @@ self-contained R engine, offline cache and saved fitted results.
 
 - [Open Forma](http://127.0.0.1:8000/app/dist/).
 - [Portable ZIP](releases/Forma-1.0.0-rc.1.zip): extract and run `Start-Forma.cmd`
-  on Windows, or `python3 serve.py` on macOS/Linux. Python 3 is the only launcher
+  on Windows, `Start-Forma.command` on macOS, or `sh Start-Forma.sh` on Linux.
+  Python 3.8 or newer is the only launcher
   dependency; R and Node are unnecessary for using the portable app.
 - [User guide](docs/user-guide.md) and [release validation](docs/release.md).
 - [Phase 4 workflows, verification and limits](docs/phase-4.md).
@@ -24,7 +25,13 @@ The complete Chrome/Edge/Firefox/Safari release matrix remains open, including
 browser-level offline checks of the final package. No public deployment has
 been made.
 
-To start it from a new terminal:
+The same three launchers are in this project folder and start the built app at
+<http://127.0.0.1:8765/> in your default browser. Keep the launcher terminal open;
+press Ctrl+C to stop. If Forma is already running, starting again reopens it.
+The source checkout needs `app/dist/`; run `npm ci` and `npm run build` in `app/`
+once if the launcher reports that the build is missing.
+
+To start the development server from a new terminal:
 
 ```powershell
 cd app

@@ -1,3 +1,3 @@
 #!/bin/sh
-cd "$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)" || exit 1
-exec python3 ./serve.py
+FORMA_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd) || exit 1
+exec /bin/sh "$FORMA_DIR/Start-Forma.sh" "$@"

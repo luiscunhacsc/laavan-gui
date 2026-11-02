@@ -41,6 +41,10 @@ result={'application':'Forma SEM Studio','version':read('app/package.json')['ver
 portable=directory/'portable-check.json'
 if portable.exists():
     checked=json.loads(portable.read_text(encoding='utf-8'))
-    result['portablePackageCheck']={k:checked[k] for k in ['passed','httpAssets','checks','browserAutomation']}
+    if checked.get('build')==result['build']['build']:
+        result['portablePackageCheck']={k:checked[k] for k in ['passed','httpAssets','checks','browserAutomation']}
+launchers=directory/'launcher-check.json'
+if launchers.exists():
+    result['launcherChecks']=json.loads(launchers.read_text(encoding='utf-8'))
 (directory/'validation.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'version':result['version'],'tests':count,'numbers':result['numericalComparison']['comparedNumbers'],'build':result['build']['build']}))

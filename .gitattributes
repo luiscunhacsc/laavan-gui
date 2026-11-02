@@ -1,0 +1,6 @@
+*.cmd text eol=crlf
+*.command text eol=lf
+*.sh text eol=lf
+# Integrity-checked runtime and portable release files must retain exact bytes.
+/app/public/engine/** -text
+/releases/** -text

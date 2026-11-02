@@ -3,10 +3,16 @@ FORMA SEM STUDIO 1.0.0-rc.1
 Extract the complete ZIP before starting.
 
 Windows: run Start-Forma.cmd.
-macOS/Linux: run python3 serve.py from the extracted folder.
-Requires Python 3 for the local static server. R and Node are not required.
-Open http://127.0.0.1:8765/ and keep the terminal open while using Forma.
+macOS: double-click Start-Forma.command.
+Linux: run sh Start-Forma.sh from the extracted folder.
+Requires Python 3.8 or newer. R and Node are not required.
+The launcher opens http://127.0.0.1:8765/ in your default browser.
+Keep its terminal open while using Forma. Starting again reopens the running app.
 Stop the server with Ctrl+C. Do not open web/index.html directly.
+
+If macOS reports that the launcher is not executable, open Terminal in the
+extracted folder and run: chmod +x Start-Forma.command Start-Forma.sh
+You can also start on macOS with: sh Start-Forma.sh
 
 The complete R/WebAssembly engine, lavaan, import readers, fonts and application
 are bundled. No remote package installation is needed. First startup transfers
