@@ -9,8 +9,11 @@ async function verified(name:keyof typeof spec.files){
  if(bytes.byteLength!==expected.bytes||hash!==expected.sha256)throw new Error(en.errors['engine.integrity']);return bytes;
 }
 export async function openEngine(){
- await verified('webr.mjs');
- const module=await import(/* @vite-ignore */ root()+'webr.mjs');
+ // webR's .mjs entry is for Node and imports built-ins such as "module".
+ // Verify and load the browser export from the packaged distribution.
+ const entry='webr.js';
+ await verified(entry);
+ const module=await import(/* @vite-ignore */ root()+entry);
  const runtime=new module.WebR({baseUrl:root(),repoUrl:root()+'no-remote-repository/',channelType:module.ChannelType.PostMessage,interactive:false});
  try {
   const load=image??=Promise.all([verified('library.data'),verified('library.metadata.json')]).then(([data,metadata])=>({blob:new Blob([data]),metadata:JSON.parse(new TextDecoder().decode(metadata))})).catch(error=>{image=undefined;throw error;});

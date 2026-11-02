@@ -39,9 +39,9 @@
     "withr": "3.0.3"
   },
   "files": {
-    "webr.mjs": {
-      "bytes": 66628,
-      "sha256": "2e640d3ab63a51e20cf1bd3057d2df239211948a01137b6a16da43e0576d1d5a"
+    "webr.js": {
+      "bytes": 66672,
+      "sha256": "4c04d3240de6cd3e7f59e081756168faa8566f8a8b97251400770939815c344a"
     },
     "library.data": {
       "bytes": 35786395,

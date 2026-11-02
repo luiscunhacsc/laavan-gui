@@ -26,7 +26,7 @@ try {
  const manifest={format:1,webr:'0.6.0',R:await r.evalRString('R.version.string'),packages:Object.fromEntries(info.filter(p=>names.includes(p.Package)).map(p=>[p.Package,p.Version])),files:{}};
  async function record(dir){for(const entry of await readdir(dir,{withFileTypes:true})){const p=path.join(dir,entry.name);if(entry.isDirectory())await record(p);else if(!p.endsWith('manifest.json')){const bytes=await readFile(p);manifest.files[path.relative(output,p).replaceAll('\\','/')]={bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')};}}}
  await record(output);await writeFile(output+'/manifest.json',JSON.stringify(manifest,null,2));
- const spec={webr:manifest.webr,R:manifest.R,packages:manifest.packages,files:Object.fromEntries(['webr.mjs','library.data','library.metadata.json'].map(name=>[name,manifest.files[name]]))};
+ const spec={webr:manifest.webr,R:manifest.R,packages:manifest.packages,files:Object.fromEntries(['webr.js','library.data','library.metadata.json'].map(name=>[name,manifest.files[name]]))};
  await writeFile('app/src/engine-spec.json',JSON.stringify(spec,null,2)+'\n');
  console.log(`Packaged ${metadata.files.length} library files, ${metadata.remote_package_size} bytes.`);
 } finally {await r.close();}

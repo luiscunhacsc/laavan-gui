@@ -1,15 +1,16 @@
 {
   "passed": true,
-  "build": "ee9297a44947b9826422",
+  "build": "0d36b7bcafcc5845118c",
   "assets": 141,
-  "bytes": 88328630,
+  "bytes": 88328627,
   "checks": [
     "all asset hashes and sizes",
+    "browser entry import and worker startup without Node built-ins",
     "integrity-bound service-worker precache",
     "offline navigation and engine/font lookup",
     "application-only GET cache",
     "old-cache cleanup",
     "failed-install cleanup"
   ],
-  "scope": "Node service-worker simulation and artifact validation; not a browser offline certification"
+  "scope": "Node browser-module and service-worker simulations and artifact validation; not a browser offline certification"
 }
