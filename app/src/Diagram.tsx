@@ -33,7 +33,7 @@ export default function Diagram({scene,display,selection,setSelection,onPosition
    setViewport({x:p.x+(viewport.x-p.x)*scale,y:p.y+(viewport.y-p.y)*scale,width,height:viewport.height*scale});
  };
  const active=preview||scene,source=active?.nodes.find(n=>n.id===pending);
- const rubber=source&&cursor?`<path d="M ${source.x} ${source.y} L ${cursor.x} ${cursor.y}" stroke="#3c8a6d" stroke-width="2" stroke-dasharray="7 5" fill="none" pointer-events="none"/>`:'';
+ const rubber=source&&cursor?`<path d="M ${source.x} ${source.y} L ${cursor.x} ${cursor.y}" stroke="var(--focus)" stroke-width="2" stroke-dasharray="7 5" fill="none" pointer-events="none"/>`:'';
  return <svg ref={ref} className={`diagram-svg tool-${tool}`} viewBox={`${viewport.x} ${viewport.y} ${viewport.width} ${viewport.height}`} role="group" aria-label={en.canvas} tabIndex={0}
    onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onWheel={wheel}
    onDragOver={e=>{if(!disabled&&e.dataTransfer.types.includes('application/x-forma-variable')){e.preventDefault();e.dataTransfer.dropEffect='copy';}}}

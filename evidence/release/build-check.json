@@ -1,8 +1,8 @@
 {
   "passed": true,
-  "build": "986082cd58b692566a7b",
-  "assets": 140,
-  "bytes": 88315490,
+  "build": "ee9297a44947b9826422",
+  "assets": 141,
+  "bytes": 88328630,
   "checks": [
     "all asset hashes and sizes",
     "integrity-bound service-worker precache",

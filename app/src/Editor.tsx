@@ -20,12 +20,12 @@ const lavaan=StreamLanguage.define({token(stream){
   stream.next();return null;
 }});
 const highlight=HighlightStyle.define([
-  {tag:tags.comment,color:'#87948f',fontStyle:'italic'},
-  {tag:tags.operator,color:'#a66b28',fontWeight:'600'},
-  {tag:tags.number,color:'#8b599a'},
-  {tag:tags.keyword,color:'#1a7b71'},
-  {tag:tags.string,color:'#a15c42'},
-  {tag:tags.variableName,color:'#23483f'}
+  {tag:tags.comment,color:'var(--syntax-comment)',fontStyle:'italic'},
+  {tag:tags.operator,color:'var(--syntax-operator)',fontWeight:'600'},
+  {tag:tags.number,color:'var(--syntax-number)'},
+  {tag:tags.keyword,color:'var(--syntax-keyword)'},
+  {tag:tags.string,color:'var(--syntax-string)'},
+  {tag:tags.variableName,color:'var(--text)'}
 ]);
 const external=Annotation.define<boolean>();
 export default function Editor({value,onChange,onConvert,error,names,onUndo,onRedo,readOnly=false}:{value:string;onChange:(text:string)=>void;onConvert:()=>void;error:string;names:string[];onUndo?:()=>void;onRedo?:()=>void;readOnly?:boolean}){
@@ -41,7 +41,7 @@ export default function Editor({value,onChange,onConvert,error,names,onUndo,onRe
       complete.current.of(autocompletion()),
       lock.current.of(EditorState.readOnly.of(readOnly)),
       EditorView.updateListener.of(update=>{if(update.docChanged&&!update.transactions.some(t=>t.annotation(external)))callbacks.current.onChange(update.state.doc.toString());}),
-      EditorView.theme({'&':{height:'100%',fontSize:'13px'},'.cm-scroller':{fontFamily:'"Cascadia Code", Consolas, monospace',lineHeight:'1.9'},'.cm-content':{padding:'22px 12px'},'.cm-gutters':{background:'transparent',border:'none',color:'#a5afa8'},'.cm-lineNumbers .cm-gutterElement':{padding:'0 10px 0 12px'},'.cm-activeLine':{background:'#edf3ee'},'.cm-activeLineGutter':{background:'transparent'},'&.cm-focused':{outline:'none'},'.cm-cursor':{borderLeftColor:'#14735f'},'.cm-selectionBackground':{background:'#d9e8df!important'}})
+      EditorView.theme({'&':{height:'100%',fontSize:'13px',color:'var(--text)'},'.cm-scroller':{fontFamily:'"Cascadia Code", Consolas, monospace',lineHeight:'1.9'},'.cm-content':{padding:'22px 12px'},'.cm-gutters':{background:'transparent',border:'none',color:'var(--text-muted)'},'.cm-lineNumbers .cm-gutterElement':{padding:'0 10px 0 12px'},'.cm-activeLine':{background:'var(--surface-muted)'},'.cm-activeLineGutter':{background:'transparent'},'&.cm-focused':{outline:'none'},'.cm-cursor':{borderLeftColor:'var(--focus)'},'.cm-selectionBackground':{background:'var(--accent-border)!important'}})
     ]})});view.current=editor;return()=>editor.destroy();
   },[]);
   useEffect(()=>{view.current?.dispatch({effects:lock.current.reconfigure(EditorState.readOnly.of(readOnly))});},[readOnly]);

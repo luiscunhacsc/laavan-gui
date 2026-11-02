@@ -1,4 +1,5 @@
 const paths:Record<string,string>={
+  sun:'M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5',moon:'M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z',
   cursor:'m5 3 14 9-7 1-3 7-4-17Z',observed:'M3 5h18v14H3V5Z',latent:'M21 12a9 6 0 1 1-18 0 9 6 0 0 1 18 0Z',loading:'M4 19 9 5h3l8 14M7 13h10',covariance:'M3 12c4-10 14-10 18 0M3 12V6m0 6 6-2m12 2V6m0 6-6-2',formative:'M3 5l12 7L3 19m12-7h6m-4-4 4 4-4 4',
   plus:'M12 5v14M5 12h14',download:'M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4',open:'M3 7h6l2-3h9v15H3V7Zm0 3h17',
   undo:'M9 4 4 9l5 5M4 9h9a6 6 0 0 1 0 12',redo:'m15 4 5 5-5 5m5-5h-9a6 6 0 0 0 0 12',fit:'M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M8 12h8m-4-4v8',

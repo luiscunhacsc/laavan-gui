@@ -3,8 +3,9 @@ import {pathData} from './geometry';
 import en from './en.json';
 const escape=(s:unknown)=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&apos;');
 export function sceneBody(scene:Scene,display:Display,selected:string[]=[],interactive=false,selectedParameter?:number){
-  const color=display.theme==='presentation'?'#17635d':'#222a30';
-  const muted=display.theme==='presentation'?'#7b9b96':'#788187';
+  const color=interactive?'var(--diagram-ink)':display.theme==='presentation'?'#17635d':'#222a30';
+  const muted=interactive?'var(--diagram-muted)':display.theme==='presentation'?'#7b9b96':'#788187';
+  const accent=interactive?'var(--focus)':'#248267';
   const visibleNode=(n:SceneNode)=>display.implicit||!n.implicit;
   const nodes=scene.nodes.filter(visibleNode),ids=new Set(nodes.map(n=>n.id));
   let body='<defs>'+[['',color],['-implicit',muted]].map(([suffix,fill])=>`<marker id="arrow${suffix}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 1 L 10 5 L 0 9 Z" fill="${fill}"/></marker><marker id="arrow-back${suffix}" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 10 1 L 0 5 L 10 9 Z" fill="${fill}"/></marker>`).join('')+'</defs>';
@@ -14,14 +15,15 @@ export function sceneBody(scene:Scene,display:Display,selected:string[]=[],inter
     if((e.implicit&&!display.implicit)||!ids.has(e.source)||!ids.has(e.target))continue;
     const implicit=e.implicit||!!e.defaultFixed&&display.implicit;
     const path=pathData(e.points,e.kind==='covariance'&&e.points.length<20),active=interactive&&selectedParameter!==undefined&&e.rowId===selectedParameter;
-    body+=`<path d="${path}" fill="none" stroke="${active?'#248267':implicit?muted:color}" stroke-width="${active?2.8:1.65}" ${implicit?'stroke-dasharray="5 4"':''} marker-end="url(#arrow${implicit?'-implicit':''})" ${e.kind==='covariance'?`marker-start="url(#arrow-back${implicit?'-implicit':''})"`:''}/>`;
+    body+=`<path d="${path}" fill="none" stroke="${active?accent:implicit?muted:color}" stroke-width="${active?2.8:1.65}" ${implicit?'stroke-dasharray="5 4"':''} marker-end="url(#arrow${implicit?'-implicit':''})" ${e.kind==='covariance'?`marker-start="url(#arrow-back${implicit?'-implicit':''})"`:''}/>`;
     if(interactive&&e.rowId){const row=scene.model.table.find(r=>r.id===e.rowId);body+=`<path data-parameter="${e.rowId}" d="${path}" fill="none" stroke="transparent" stroke-width="15" style="cursor:pointer" tabindex="0" role="button" aria-label="${escape(row?`${row.lhs} ${row.op} ${row.rhs}`:'')}"/>`;}
   }
   for(const n of nodes){
-    const fill=display.theme==='presentation'?(n.kind==='latent'||n.kind==='composite'?'#e8f2ef':'#ffffff'):'#ffffff';
+    const isLatent=n.kind==='latent'||n.kind==='composite';
+    const fill=interactive?(display.theme==='presentation'&&isLatent?'var(--diagram-latent)':'var(--diagram-fill)'):display.theme==='presentation'?(isLatent?'#e8f2ef':'#ffffff'):'#ffffff';
     const stroke=n.implicit?muted:color;
     body+=`<g data-node="${escape(n.id)}" ${interactive?`tabindex="0" role="button" aria-label="${escape(n.name)}" style="cursor:grab"`:''}>`;
-    if(selected.includes(n.id))body+=`<rect x="${n.x-n.width/2-7}" y="${n.y-n.height/2-7}" width="${n.width+14}" height="${n.height+14}" rx="10" fill="#197e6c" fill-opacity=".09" stroke="#197e6c" stroke-dasharray="3 3"/>`;
+    if(selected.includes(n.id))body+=`<rect x="${n.x-n.width/2-7}" y="${n.y-n.height/2-7}" width="${n.width+14}" height="${n.height+14}" rx="10" fill="${accent}" fill-opacity=".09" stroke="${accent}" stroke-dasharray="3 3"/>`;
     if(n.kind==='observed')body+=`<rect x="${n.x-n.width/2}" y="${n.y-n.height/2}" width="${n.width}" height="${n.height}" fill="${fill}" stroke="${stroke}" stroke-width="1.65"/>`;
     else body+=`<ellipse cx="${n.x}" cy="${n.y}" rx="${n.width/2}" ry="${n.height/2}" fill="${fill}" stroke="${stroke}" stroke-width="1.65" ${n.implicit?'stroke-dasharray="4 3"':''}/>`;
     body+=`<text x="${n.x}" y="${n.y}" text-anchor="middle" dominant-baseline="central" font-size="${n.kind==='residual'?12:16}">${escape(n.name)}</text></g>`;
