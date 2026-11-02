@@ -19,9 +19,9 @@ const metric=new jsPDF({unit:'pt'});metric.addFileToVFS('regular.ttf',regular);m
 const measure=(text:string,size:number)=>{metric.setFontSize(size);return metric.getTextWidth(text);};
 const tasks=[...fixtures.map(f=>({...f,model:editing.roundtrips[f.id].model,syntax:editing.roundtrips[f.id].syntax})),
  ...fixtures.slice(0,3).map(f=>({id:f.id+'-fitted',title:f.title+' · standardised estimates',syntax:editing.roundtrips[f.id].syntax,model:annotatedModel(fits.core[f.id],{mode:'standardized',extra:'stars',rsquared:true})})),
- {id:'greek-cfa',title:'Three-factor CFA · parameter notation',syntax:fixtures[0].id,model:notationModel(normalizeModel(editing.roundtrips[fixtures[0].id].model))},
- {id:'ram-cfa',title:'Three-factor CFA ? RAM variance loops',syntax:'',model:{...advanced.single.model,displayVariances:'loops'}},
- {id:'invariance-configural',title:'Two-group CFA · configural estimates',syntax:'',model:annotatedModel(advanced.invariance,{mode:'estimates',extra:'none',rsquared:false})}];
+ {id:'greek-cfa',title:'Three-factor CFA · parameter notation',syntax:editing.roundtrips[fixtures[0].id].syntax,model:notationModel(normalizeModel(editing.roundtrips[fixtures[0].id].model))},
+ {id:'ram-cfa',title:'Three-factor CFA - RAM variance loops',syntax:editing.roundtrips[fixtures[0].id].syntax,model:{...advanced.single.model,displayVariances:'loops'}},
+ {id:'invariance-configural',title:'Two-group CFA · configural estimates',syntax:editing.roundtrips[fixtures[0].id].syntax,model:annotatedModel(advanced.invariance,{mode:'estimates',extra:'none',rsquared:false})}];
 const output='../docs/phase-4-diagrams';await mkdir(output,{recursive:true});const summary=[];
 for(const f of tasks){const model=normalizeModel(f.model as CompiledModel),scene=await layoutModel(model,{},measure),display={...defaultDisplay,title:f.title};
  if(scene.diagnostics.length)throw new Error(`${f.id}: ${scene.diagnostics.join(', ')}`);

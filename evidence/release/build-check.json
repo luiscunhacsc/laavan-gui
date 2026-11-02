@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "build": "986082cd58b692566a7b",
+  "assets": 140,
+  "bytes": 88315490,
+  "checks": [
+    "all asset hashes and sizes",
+    "integrity-bound service-worker precache",
+    "offline navigation and engine/font lookup",
+    "application-only GET cache",
+    "old-cache cleanup",
+    "failed-install cleanup"
+  ],
+  "scope": "Node service-worker simulation and artifact validation; not a browser offline certification"
+}

@@ -102,8 +102,16 @@ function crossingCost(points:Position[],edges:Edge[]){
 }
 function covariance(edge:Edge,nodes:SceneNode[],existing:Edge[],index:number):Position[]{
   const a=nodes.find(n=>n.id===edge.source)!,b=nodes.find(n=>n.id===edge.target)!;
-  const bounds=union(nodes.map(n=>nodeBox(n,20)));
   const candidates:Position[][]=[];
+  // Diagonal bows let residual covariances follow the space between clusters.
+  // Keep the cardinal candidates too: each route must clear every node.
+  const dx=b.x-a.x,dy=b.y-a.y,length=distance(a,b)||1;
+  for(const sign of [-1,1])for(const bend of [45,90,160,260]){
+    const bow=sign*(bend+length*.08),nx=-dy/length,ny=dx/length;
+    const c={x:a.x+dx*.3+nx*bow,y:a.y+dy*.3+ny*bow},d={x:b.x-dx*.3+nx*bow,y:b.y-dy*.3+ny*bow};
+    const points=cubic(port(a,c),c,d,port(b,d));
+    if(!nodeHits(points,nodes,edge.source,edge.target))candidates.push(points);
+  }
   for(const side of ['west','east','north','south']){
     for(const extra of [0,65,140,240]){
       const span=(side==='west'||side==='east')&&Math.abs(a.x-b.x)<10?Math.abs(a.y-b.y)*.18:
@@ -123,7 +131,10 @@ function covariance(edge:Edge,nodes:SceneNode[],existing:Edge[],index:number):Po
       if(!nodeHits(points,nodes,edge.source,edge.target))candidates.push(points);
     }
   }
-  if(candidates.length)return candidates.sort((a,b)=>(polyLength(a)+crossingCost(a,existing)*150)-(polyLength(b)+crossingCost(b,existing)*150))[0];
+  if(candidates.length){
+    const ranked=candidates.map(points=>({points,score:polyLength(points)+crossingCost(points,existing)*600}));
+    return ranked.sort((a,b)=>a.score-b.score)[0].points;
+  }
   const obstacles=nodes.map(n=>nodeBox(n,12));
   // Endpoint ports lead outside inflated bounds before the visibility search.
   const directions=[{x:-1,y:0},{x:1,y:0},{x:0,y:-1},{x:0,y:1}];
@@ -136,7 +147,7 @@ function covariance(edge:Edge,nodes:SceneNode[],existing:Edge[],index:number):Po
     if(obstacles.some(o=>segmentHitsBox(p,outsideA,o)&&!containsEndpoint(o,a))||obstacles.some(o=>segmentHitsBox(q,outsideB,o)&&!containsEndpoint(o,b)))continue;
     const avoid=existing.filter(e=>e.kind==='covariance'&&e.points.length<20).flatMap(e=>e.points.slice(1).map((p,i)=>[e.points[i],p] as [Position,Position]));
     const path=routeGrid(outsideA,outsideB,obstacles,avoid);
-    if(path){const points=simplify([p,...path,q]);if(!nodeHits(points,nodes,edge.source,edge.target)&&(!best||polyLength(points)+crossingCost(points,existing)*150<polyLength(best)+crossingCost(best,existing)*150))best=points;}
+    if(path){const points=simplify([p,...path,q]);if(!nodeHits(points,nodes,edge.source,edge.target)&&(!best||polyLength(points)+crossingCost(points,existing)*600<polyLength(best)+crossingCost(best,existing)*600))best=points;}
   }
   if(!best)throw new Error('layout.route');
   return best;

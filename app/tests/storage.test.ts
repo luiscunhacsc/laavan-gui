@@ -10,7 +10,7 @@ const source=(text:string):DatasetState=>({query:{action:'import',id:'test-sourc
 test('portable projects retain exact dataset bytes and measurement-type choices',()=>{
  const original=source('x,y\n1,2\n3,4\n');
  const p=readProject(JSON.parse(JSON.stringify({...project,dataset:portableAttachment(original)})));
- assert.equal(p.version,2);assert.equal(p.datasetAttached,true);
+ assert.equal(p.version,3);assert.equal(p.datasetAttached,true);
  const state=attachmentState(p.dataset!);
  assert.deepEqual(state.binary,original.binary);assert.equal(state.types[0].type,'ordered');
  assert.equal(state.types[0].revision,1);assert.equal(state.types[0].id,'test-source');

@@ -1,11 +1,11 @@
 {
   "name": "forma-sem",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0-rc.1",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/seal-build.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "test": "tsx --test tests/*.test.ts tests/*.test.tsx",
     "render:fixtures": "tsx scripts/render-fixtures.ts"

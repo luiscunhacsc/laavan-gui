@@ -21,6 +21,30 @@ modindices(fit, sort. = TRUE)
 # semTools 0.5.10; observed-variance denominator; HTMT2 uses absolute correlations
 semTools::compRelSEM(fit, obs.var = TRUE, tau.eq = FALSE, ord.scale = TRUE, simplify = TRUE)
 semTools::AVE(fit, obs.var = TRUE, return.df = FALSE)
+
+measurement <- function (fit, g) 
+{
+    pt <- lavaan::parTable(fit)
+    load <- pt[pt$op == "=~" & pt$group == g, , drop = FALSE]
+    paste(vapply(unique(load$lhs), function(f) paste(f, "=~", paste(load$rhs[load$lhs == f], collapse = " + ")), character(1)), collapse = "\n")
+}
 cases <- lavInspect(fit, "case.idx")
 if (!is.list(cases)) cases <- list(cases)
-lapply(cases, function(i) semTools::htmt("visual =~ x1 + x2 + x3\ntextual =~ x4 + x5 + x6\nspeed =~ x7 + x8 + x9", data = data[i, , drop = FALSE], missing = "listwise", absolute = TRUE, htmt2 = TRUE))
+lapply(seq_along(cases), function(g) semTools::htmt(measurement(fit, g), data = data[cases[[g]], , drop = FALSE], missing = "listwise", absolute = TRUE, htmt2 = TRUE))
+
+# Fornell-Larcker: square-root AVE on the diagonal, latent correlations off diagonal.
+ave <- semTools::AVE(fit, obs.var = TRUE, return.df = FALSE)
+latent_cor <- lavInspect(fit, "cor.lv")
+if (!is.list(ave)) ave <- list(ave)
+if (!is.list(latent_cor)) latent_cor <- list(latent_cor)
+for (g in seq_along(ave)) {
+  factors <- names(ave[[g]])
+  r <- latent_cor[[g]][factors, factors, drop = FALSE]
+  root_ave <- sqrt(ave[[g]])
+  display <- r
+  diag(display) <- root_ave
+  print(display)
+  passes <- outer(root_ave, root_ave, pmin) > abs(r)
+  diag(passes) <- NA
+  print(passes)
+}

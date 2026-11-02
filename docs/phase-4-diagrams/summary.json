@@ -3,7 +3,7 @@
     "id": "01-holzinger-swineford",
     "title": "Holzinger–Swineford three-factor CFA",
     "nodes": 21,
-    "width": 890.2420000000001,
+    "width": 695.4029359055394,
     "height": 1384,
     "diagnostics": []
   },
@@ -12,7 +12,7 @@
     "title": "PoliticalDemocracy full SEM",
     "nodes": 27,
     "width": 2059.3816731770835,
-    "height": 1259.1,
+    "height": 1142,
     "diagnostics": []
   },
   {
@@ -43,7 +43,7 @@
     "id": "06-observed-path",
     "title": "Observed-only path model",
     "nodes": 6,
-    "width": 990.55,
+    "width": 910.9630952380953,
     "height": 461,
     "diagnostics": []
   },
@@ -59,16 +59,16 @@
     "id": "01-holzinger-swineford-fitted",
     "title": "Holzinger–Swineford three-factor CFA · standardised estimates",
     "nodes": 21,
-    "width": 977.5406316358053,
-    "height": 1389,
+    "width": 782.7043663342499,
+    "height": 1478,
     "diagnostics": []
   },
   {
     "id": "02-political-democracy-fitted",
     "title": "PoliticalDemocracy full SEM · standardised estimates",
     "nodes": 27,
-    "width": 2108.0939532511284,
-    "height": 1286.596747260737,
+    "width": 2059.3816731770835,
+    "height": 1257.7083397288156,
     "diagnostics": []
   },
   {
@@ -76,22 +76,30 @@
     "title": "Labelled mediation · standardised estimates",
     "nodes": 5,
     "width": 927.72,
-    "height": 635.5,
+    "height": 664.5,
     "diagnostics": []
   },
   {
     "id": "greek-cfa",
     "title": "Three-factor CFA · parameter notation",
     "nodes": 21,
-    "width": 916.9569342335403,
+    "width": 722.1190029838269,
     "height": 1384,
+    "diagnostics": []
+  },
+  {
+    "id": "ram-cfa",
+    "title": "Three-factor CFA - RAM variance loops",
+    "nodes": 21,
+    "width": 727.5239556326326,
+    "height": 1421.8101739199637,
     "diagnostics": []
   },
   {
     "id": "invariance-configural",
     "title": "Two-group CFA · configural estimates",
     "nodes": 42,
-    "width": 1945.8794210905369,
+    "width": 1763.360271247462,
     "height": 1452,
     "diagnostics": []
   }

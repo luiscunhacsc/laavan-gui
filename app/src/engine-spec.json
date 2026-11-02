@@ -1,0 +1,55 @@
+{
+  "webr": "0.6.0",
+  "R": "R version 4.6.0 (2026-04-24)",
+  "packages": {
+    "MASS": "7.3-66",
+    "R6": "2.6.1",
+    "bit": "4.6.0",
+    "bit64": "4.8.6",
+    "cellranger": "1.1.0",
+    "cli": "3.6.6",
+    "clipr": "0.8.1",
+    "crayon": "1.5.3",
+    "forcats": "1.0.1",
+    "glue": "1.8.1",
+    "haven": "2.5.5",
+    "hms": "1.1.4",
+    "jsonlite": "2.0.0",
+    "lavaan": "0.7-3",
+    "lifecycle": "1.0.5",
+    "magrittr": "2.0.5",
+    "mnormt": "2.1.1",
+    "numDeriv": "2016.8-1.1",
+    "pbivnorm": "0.6.0",
+    "pillar": "1.11.1",
+    "pkgconfig": "2.0.3",
+    "quadprog": "1.5-8",
+    "readr": "2.2.0",
+    "readxl": "1.5.0.1",
+    "rematch": "2.0.0",
+    "rlang": "1.3.0",
+    "semTools": "0.5-10",
+    "tibble": "3.3.1",
+    "tidyselect": "1.2.1",
+    "translations": "4.6.0",
+    "tzdb": "0.5.0",
+    "utf8": "1.2.6",
+    "vctrs": "0.7.3",
+    "vroom": "1.7.1.9000",
+    "withr": "3.0.3"
+  },
+  "files": {
+    "webr.mjs": {
+      "bytes": 66628,
+      "sha256": "2e640d3ab63a51e20cf1bd3057d2df239211948a01137b6a16da43e0576d1d5a"
+    },
+    "library.data": {
+      "bytes": 35786395,
+      "sha256": "217181bf399731ed3d31a01e98e8dae93b36302464fa581bbafb78a1667405e8"
+    },
+    "library.metadata.json": {
+      "bytes": 146510,
+      "sha256": "7062895552b4d5df21159efa1613d1fd16eda09cc7091c9aeb88fcf7f81329de"
+    }
+  }
+}

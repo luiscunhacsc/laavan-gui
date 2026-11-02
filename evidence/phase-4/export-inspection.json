@@ -84,6 +84,13 @@
     "noClippedText": true
   },
   {
+    "file": "ram-cfa.pdf",
+    "nodes": 21,
+    "textExtracts": true,
+    "vectorPaths": 103,
+    "noClippedText": true
+  },
+  {
     "file": "bootstrap.pdf",
     "wordPages": 5,
     "rendered": true
@@ -97,5 +104,95 @@
     "file": "single.pdf",
     "wordPages": 10,
     "rendered": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-07-17-250Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-11-47-254Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-14-08-586Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-18-01-403Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-25-10-512Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-29-13-868Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-34-19-171Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-39-05-327Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
+  },
+  {
+    "file": "evidence\\phase-4\\browser-2026-11-01T22-41-30-201Z",
+    "pngWidth": 1950,
+    "pngDpi": [
+      299.9994,
+      299.9994
+    ],
+    "pdfVectorPaths": 16,
+    "fittedLabelsExtract": true
   }
 ]

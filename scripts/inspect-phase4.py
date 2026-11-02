@@ -25,5 +25,14 @@ for path in (root/'evidence/phase-4/word-render').glob('*.pdf'):
         assert '\ufffd' not in page.get_text(),(path,i,'missing glyph')
         page.get_pixmap(matrix=fitz.Matrix(1.4,1.4)).save(output/(path.stem+f'-page-{i+1}.png'))
     checks.append({'file':path.name,'wordPages':len(doc),'rendered':True})
+from PIL import Image
+for directory in (root/'evidence/phase-4').glob('browser-*'):
+    if not directory.is_dir():continue
+    png=Image.open(directory/'mediation.png');assert png.width==1950 and abs(png.info['dpi'][0]-300)<.02
+    doc=fitz.open(directory/'mediation.pdf');page=doc[0]
+    assert len(doc)==1 and len(page.get_drawings())>5
+    for name in ['X','M','Y','0.620','0.494','0.199','ind','R²']:assert name in page.get_text(),name
+    page.get_pixmap(matrix=fitz.Matrix(2,2)).save(output/'browser-mediation-pdf.png')
+    checks.append({'file':str(directory.relative_to(root)), 'pngWidth':png.width,'pngDpi':png.info['dpi'],'pdfVectorPaths':len(page.get_drawings()),'fittedLabelsExtract':True})
 (root/'evidence/phase-4/export-inspection.json').write_text(json.dumps(checks,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(checks))

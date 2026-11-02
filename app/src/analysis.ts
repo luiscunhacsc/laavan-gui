@@ -9,13 +9,21 @@ export interface AnalysisOptions {estimator:'ML'|'MLR'|'WLSMV';missing:'listwise
 export const defaultAnalysis:AnalysisOptions={estimator:'ML',missing:'listwise',group:''};
 export interface Estimate {lhs:string;op:string;rhs:string;group?:number;block?:number;label?:string;est:number|null;se:number|null;z:number|null;pvalue:number|null;'ci.lower'?:number|null;'ci.upper'?:number|null;'std.all'?:number|null;'est.std'?:number|null}
 export interface FitResult {ok:true;converged:boolean;admissible:boolean;model:CompiledModel;parameters:Estimate[];standardized:Estimate[];measures:{name:string;value:number|null;reason:string|null}[];rsquared:{name:string;group:number;value:number|null}[];nobs:number[];inputCases:number;excluded:number;estimator:string;missing:string;ordered:string[];script:string;versions:{lavaan:string;R:string;readxl?:string;haven?:string};datasetId:string;datasetRevision:number;warnings:string[]}
-export interface AnalysisSnapshot {key:string;datasetName:string;syntax:string;result:FitResult;at:string}
+export interface AnalysisSnapshot {key:string;datasetName:string;syntax:string;result:FitResult;at:string;datasetDigest?:string;datasetVerified?:boolean}
 export interface Modification {lhs:string;op:'=~'|'~'|'~~';rhs:string;group?:number;mi:number;epc:number|null;'sepc.all':number|null}
 export interface InvarianceRow {stage:'configural'|'metric'|'scalar'|'strict';converged:boolean;admissible:boolean;chisq:number|null;df:number|null;pvalue:number|null;cfi:number|null;cfiType:string;rmsea:number|null;rmseaType:string;srmr:number|null;deltaCfi:number|null;deltaRmsea:number|null;difference:{chisq:number|null;df:number|null;pvalue:number|null;method:string[]}|null;differenceError:string|null}
 export interface Reliability {status:string;version?:string;scales:{group:number;groupLabel:string;factor:string;omega:number|null;ave:number|null}[];pairs:{group:number;first:string;second:string;correlation:number|null;sqrtAveFirst:number|null;sqrtAveSecond:number|null;fornellLarcker:boolean|null;htmt2:number|null;reason?:string|null}[]}
 export interface FitResult {confidence?:number;groupLabels?:string[];bootstrap?:{requested:number;completed:number;failed:number;nonadmissible:number;seed:number;confidence:number;interval:string}|null;modifications?:{status:string;message?:string;total:number;truncated:boolean;rows:Modification[]}|null;reliability?:Reliability|null;invariance?:InvarianceRow[]|null}
 export type AnnotationOptions={mode:'specification'|'estimates'|'standardized';extra:'none'|'se'|'pvalue'|'stars';rsquared:boolean};
 export const defaultAnnotation:AnnotationOptions={mode:'specification',extra:'none',rsquared:false};
+export function readAnalysisOptions(value:unknown):AnalysisOptions {
+ const a={...defaultAnalysis,...value as Partial<AnalysisOptions>};
+ if(!['ML','MLR','WLSMV'].includes(a.estimator)||!['listwise','fiml','pairwise'].includes(a.missing)||typeof a.group!=='string'||a.group.length>500)throw new Error('badProject');
+ if(a.bootstrap!==undefined&&(!Number.isInteger(a.bootstrap)||a.bootstrap!==0&&(a.bootstrap<100||a.bootstrap>10000)))throw new Error('badProject');
+ if(a.seed!==undefined&&(!Number.isInteger(a.seed)||a.seed<1||a.seed>2147483647))throw new Error('badProject');
+ if(a.confidence!==undefined&&(!Number.isFinite(a.confidence)||a.confidence<.8||a.confidence>.99))throw new Error('badProject');
+ for(const key of ['invariance','reliability','modificationIndices'] as const)if(a[key]!==undefined&&typeof a[key]!=='boolean')throw new Error('badProject');return a;
+}
 export function analysisKey(syntax:string,options:Options,analysis:AnalysisOptions,dataset?:Dataset){return JSON.stringify([syntax,options,analysis,dataset?.id,dataset?.revision]);}
 export function messageText(message:string){const split=message.indexOf(': '),key=split>=0?message.slice(0,split):message;const translated=(en.errors as Record<string,string>)[key];return translated?translated+(split>=0?message.slice(split):''):message;}
 export function numberText(value:number|null|undefined,digits=3){return value==null||!Number.isFinite(value)?'—':value.toFixed(digits);}

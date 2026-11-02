@@ -1,11 +1,12 @@
 import {defaultOptions,defaultDisplay,normalizeModel,type CompiledModel,type Options,type Positions,type Display} from './model';
-import {defaultAnalysis,type AnalysisOptions} from './analysis';
+import {readAnalysisOptions,type AnalysisOptions,type AnalysisSnapshot,type AnnotationOptions} from './analysis';
+import {readSavedAnalysis} from './stored-analysis';
 import {readAttachment,type DatasetAttachment} from './dataset-source';
-export interface Project {format:'forma-sem';version:1|2;syntax:string;options:Options;positions:Positions;display:Display;canonical?:CompiledModel;validSyntax?:string;analysis?:AnalysisOptions;datasetAttached?:boolean;dataset?:DatasetAttachment}
+export interface Project {format:'forma-sem';version:1|2|3;syntax:string;options:Options;positions:Positions;display:Display;canonical?:CompiledModel;validSyntax?:string;analysis?:AnalysisOptions;datasetAttached?:boolean;dataset?:DatasetAttachment;fit?:AnalysisSnapshot;annotation?:AnnotationOptions;workspace?:'data'|'model'|'results'}
 export const SESSION='forma.project.v1';
 export function readProject(value:unknown):Project{
   const p=value as Partial<Project>;
-  if(!p||p.format!=='forma-sem'||![1,2].includes(p.version as number)||typeof p.syntax!=='string'||p.syntax.length>200000)throw new Error('badProject');
+  if(!p||p.format!=='forma-sem'||![1,2,3].includes(p.version as number)||typeof p.syntax!=='string'||p.syntax.length>200000)throw new Error('badProject');
   if(p.validSyntax!==undefined&&(typeof p.validSyntax!=='string'||p.validSyntax.length>200000))throw new Error('badProject');
   const options={...defaultOptions,...p.options};
   if(!['sem','cfa','path'].includes(options.preset)||!Number.isInteger(options.groups)||options.groups<1||options.groups>16||typeof options.fixedX!=='boolean'||typeof options.meanstructure!=='boolean')throw new Error('badProject');
@@ -13,12 +14,7 @@ export function readProject(value:unknown):Project{
     if(pos&&Number.isFinite(pos.x)&&Number.isFinite(pos.y)&&Math.abs(pos.x)<1e6&&Math.abs(pos.y)<1e6)positions[key]={x:pos.x,y:pos.y};
   }
   const display={...defaultDisplay,...p.display};
-  const analysis={...defaultAnalysis,...p.analysis};
-  if(!['ML','MLR','WLSMV'].includes(analysis.estimator)||!['listwise','fiml','pairwise'].includes(analysis.missing)||typeof analysis.group!=='string'||analysis.group.length>500)throw new Error('badProject');
-  if(analysis.bootstrap!==undefined&&(!Number.isInteger(analysis.bootstrap)||analysis.bootstrap!==0&&(analysis.bootstrap<100||analysis.bootstrap>10000)))throw new Error('badProject');
-  if(analysis.seed!==undefined&&(!Number.isInteger(analysis.seed)||analysis.seed<1||analysis.seed>2147483647))throw new Error('badProject');
-  if(analysis.confidence!==undefined&&(!Number.isFinite(analysis.confidence)||analysis.confidence<.8||analysis.confidence>.99))throw new Error('badProject');
-  for(const key of ['invariance','reliability','modificationIndices'] as const)if(analysis[key]!==undefined&&typeof analysis[key]!=='boolean')throw new Error('badProject');
+  const analysis=readAnalysisOptions(p.analysis);
   if(typeof display.title!=='string'||display.title.length>250||!['journal','presentation'].includes(display.theme)||typeof display.implicit!=='boolean')throw new Error('badProject');
   if(display.notation!==undefined&&typeof display.notation!=='boolean')throw new Error('badProject');
   if(display.varianceStyle!==undefined&&!['amos','loops'].includes(display.varianceStyle))throw new Error('badProject');
@@ -33,7 +29,10 @@ export function readProject(value:unknown):Project{
     canonical=normalizeModel(model);
   }
   const dataset=p.dataset?readAttachment(p.dataset):undefined;
-  return{format:'forma-sem',version:2,syntax:p.syntax,options,positions,display,canonical,analysis,dataset,datasetAttached:!!dataset||p.datasetAttached===true,
+  const fit=p.fit?readSavedAnalysis(p.fit):undefined,annotation=p.annotation;
+  if(annotation&&(!['specification','estimates','standardized'].includes(annotation.mode)||!['none','se','pvalue','stars'].includes(annotation.extra)||typeof annotation.rsquared!=='boolean'))throw new Error('badProject');
+  if(p.workspace!==undefined&&!['data','model','results'].includes(p.workspace))throw new Error('badProject');
+  return{format:'forma-sem',version:3,syntax:p.syntax,options,positions,display,canonical,analysis,dataset,fit,annotation,workspace:p.workspace,datasetAttached:!!dataset||p.datasetAttached===true,
     validSyntax:typeof p.validSyntax==='string'?p.validSyntax:undefined};
 }
 export function savedProject():Project|undefined{try{const text=localStorage.getItem(SESSION);return text?readProject(JSON.parse(text)):undefined;}catch{return undefined;}}

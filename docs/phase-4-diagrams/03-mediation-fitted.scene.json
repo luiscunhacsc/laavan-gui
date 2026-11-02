@@ -333,6 +333,14 @@
       "text": "total := cp+ind = 0.505***",
       "implicit": false,
       "rowId": 8
+    },
+    {
+      "x": 151,
+      "y": 634.5,
+      "width": 358.716,
+      "height": 24,
+      "text": "* p < .05, ** p < .01, *** p < .001. Fixed paths receive no stars.",
+      "implicit": false
     }
   ],
   "panels": [
@@ -346,7 +354,7 @@
     }
   ],
   "width": 927.72,
-  "height": 635.5,
+  "height": 664.5,
   "minX": 101,
   "minY": 44,
   "coveredRows": [
@@ -611,6 +619,9 @@
         "group": 1,
         "value": 0.4056525427696812
       }
+    ],
+    "displayNotes": [
+      "* p < .05, ** p < .01, *** p < .001. Fixed paths receive no stars."
     ],
     "analysisDisplay": {
       "estimator": "ML",

@@ -1,6 +1,7 @@
 # Phase 4 · advanced analysis and publication exports
 
-Status: implemented and ready for review. Open [Forma](http://127.0.0.1:8000/app/dist/)
+Status: implemented; subsequent release packaging is recorded in [release notes](release.md).
+Open [Forma](http://127.0.0.1:8000/app/dist/)
 and the [seven fixed models plus fitted/notation examples](phase-4-gallery.html).
 This is a review build; the complete four-browser release matrix remains open.
 
@@ -19,7 +20,8 @@ This is a review build; the complete four-browser release matrix remains open.
   draws. Normal-approximation z/p values are identified as such. Cancel stops
   the worker; the dataset is retained for its restoration.
 - **Modification indices:** enable them before fitting. Results supports sorting,
-  search and a minimum MI. Add to model frees the selected zero parameter in
+  search and a minimum MI. Displayed proposals cover loadings, regressions and
+  covariances. Add to model frees the selected zero parameter in
   its indicated group, updates syntax/diagram, records undo history and marks
   the previous fit stale. Rerun to assess the changed model. Equality constraints
   are not automatically released; shared-label cases receive a specific message.
@@ -49,7 +51,7 @@ This is a review build; the complete four-browser release matrix remains open.
 
 ## Numerical and export verification
 
-- **48 frontend tests** and TypeScript/Vite compilation pass. Existing model,
+- **49 frontend tests** and TypeScript/Vite compilation pass. Existing model,
   import/display, storage and geometry checks remain in place. New checks cover
   advanced result tables, CI headers, report escaping, stale reports, display
   projections, variance-loop geometry, physical PNG sizes/resolution, Unicode PDF
@@ -65,7 +67,7 @@ This is a review build; the complete four-browser release matrix remains open.
 - The user-operated **VS Code embedded Chromium 150 / Electron 43** run passed
   **12/12** checks. Its **2,680 numerical values** agree with native R to four
   decimals, including the first three fixed fits, reliability, MI, invariance and
-  bootstrap output; the largest absolute difference is 2.86 × 10⁻⁶.
+  bootstrap output; the largest absolute difference is 2.85 × 10⁻⁶.
   [Browser comparison](../evidence/phase-4/browser-comparison.json). The evidence's
   user agent establishes this browser identity; it is not labelled Firefox.
   PNG, PDF, Word, SVG and LaTeX files were saved directly by this browser run.
@@ -154,4 +156,5 @@ and the semTools authors' documentation for
 [AVE](https://github.com/simsem/semTools/blob/master/semTools/man/AVE.Rd) and
 [HTMT2](https://github.com/simsem/semTools/blob/master/semTools/man/htmt.Rd).
 
-Work stops here for the requested Phase 4 review. Nothing has been published.
+The subsequent autonomous release work is recorded in [release notes](release.md).
+Nothing has been published.

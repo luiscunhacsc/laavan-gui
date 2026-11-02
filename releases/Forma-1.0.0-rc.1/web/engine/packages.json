@@ -1,0 +1,302 @@
+[
+  {
+    "Package": "MASS",
+    "Version": "7.3-66",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "MASS"
+  },
+  {
+    "Package": "R6",
+    "Version": "2.6.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "R6"
+  },
+  {
+    "Package": "base",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "base"
+  },
+  {
+    "Package": "bit",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "bit"
+  },
+  {
+    "Package": "bit64",
+    "Version": "4.8.6",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "bit64"
+  },
+  {
+    "Package": "cellranger",
+    "Version": "1.1.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "cellranger"
+  },
+  {
+    "Package": "cli",
+    "Version": "3.6.6",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "cli"
+  },
+  {
+    "Package": "clipr",
+    "Version": "0.8.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "clipr"
+  },
+  {
+    "Package": "compiler",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "compiler"
+  },
+  {
+    "Package": "crayon",
+    "Version": "1.5.3",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "crayon"
+  },
+  {
+    "Package": "datasets",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "datasets"
+  },
+  {
+    "Package": "forcats",
+    "Version": "1.0.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "forcats"
+  },
+  {
+    "Package": "glue",
+    "Version": "1.8.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "glue"
+  },
+  {
+    "Package": "grDevices",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "grDevices"
+  },
+  {
+    "Package": "graphics",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "graphics"
+  },
+  {
+    "Package": "grid",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "grid"
+  },
+  {
+    "Package": "haven",
+    "Version": "2.5.5",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "haven"
+  },
+  {
+    "Package": "hms",
+    "Version": "1.1.4",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "hms"
+  },
+  {
+    "Package": "jsonlite",
+    "Version": "2.0.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "jsonlite"
+  },
+  {
+    "Package": "lavaan",
+    "Version": "0.7-3",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "lavaan"
+  },
+  {
+    "Package": "lifecycle",
+    "Version": "1.0.5",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "lifecycle"
+  },
+  {
+    "Package": "magrittr",
+    "Version": "2.0.5",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "magrittr"
+  },
+  {
+    "Package": "methods",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "methods"
+  },
+  {
+    "Package": "mnormt",
+    "Version": "2.1.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "mnormt"
+  },
+  {
+    "Package": "numDeriv",
+    "Version": "2016.8-1.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "numDeriv"
+  },
+  {
+    "Package": "parallel",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "parallel"
+  },
+  {
+    "Package": "pbivnorm",
+    "Version": "0.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "pbivnorm"
+  },
+  {
+    "Package": "pillar",
+    "Version": "1.11.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "pillar"
+  },
+  {
+    "Package": "pkgconfig",
+    "Version": "2.0.3",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "pkgconfig"
+  },
+  {
+    "Package": "quadprog",
+    "Version": "1.5-8",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "quadprog"
+  },
+  {
+    "Package": "readr",
+    "Version": "2.2.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "readr"
+  },
+  {
+    "Package": "readxl",
+    "Version": "1.5.0.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "readxl"
+  },
+  {
+    "Package": "rematch",
+    "Version": "2.0.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "rematch"
+  },
+  {
+    "Package": "rlang",
+    "Version": "1.3.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "rlang"
+  },
+  {
+    "Package": "semTools",
+    "Version": "0.5-10",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "semTools"
+  },
+  {
+    "Package": "splines",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "splines"
+  },
+  {
+    "Package": "stats",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "stats"
+  },
+  {
+    "Package": "stats4",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "stats4"
+  },
+  {
+    "Package": "tcltk",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "tcltk"
+  },
+  {
+    "Package": "tibble",
+    "Version": "3.3.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "tibble"
+  },
+  {
+    "Package": "tidyselect",
+    "Version": "1.2.1",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "tidyselect"
+  },
+  {
+    "Package": "tools",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "tools"
+  },
+  {
+    "Package": "translations",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "translations"
+  },
+  {
+    "Package": "tzdb",
+    "Version": "0.5.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "tzdb"
+  },
+  {
+    "Package": "utf8",
+    "Version": "1.2.6",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "utf8"
+  },
+  {
+    "Package": "utils",
+    "Version": "4.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "utils"
+  },
+  {
+    "Package": "vctrs",
+    "Version": "0.7.3",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "vctrs"
+  },
+  {
+    "Package": "vroom",
+    "Version": "1.7.1.9000",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "vroom"
+  },
+  {
+    "Package": "webr",
+    "Version": "0.6.0",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "webr"
+  },
+  {
+    "Package": "withr",
+    "Version": "3.0.3",
+    "LibPath": "/usr/lib/R/library",
+    "_row": "withr"
+  }
+]

@@ -6,7 +6,7 @@ import {normalizeModel,type CompileResult,type Options} from './model';
 import en from './en.json';
 import {sourceQuery,cleanTypes,type DatasetState} from './dataset-source';
 import type {Dataset} from './analysis';
-const MODULE='https://webr.r-wasm.org/v0.6.0/webr.mjs';
+import {openEngine} from './engine';
 type RuntimeStage='runtime'|'lavaan'|'readers'|'ready';
 export class LavaanRuntime {
   private runtime:any;
@@ -24,16 +24,13 @@ export class LavaanRuntime {
   private async open(){
     const generation=this.generation;
     this.report('runtime');
-    const {WebR,ChannelType}=await import(/* @vite-ignore */ MODULE);
-    const r=new WebR({channelType:ChannelType.PostMessage,interactive:false});
-    await r.init();
+    const r=await openEngine();
     if(generation!==this.generation){await r.close();throw new Error('Runtime restarted');}
     this.runtime=r;
     await r.evalRVoid('options(useFancyQuotes = FALSE)');
     // Consume console events so worker output does not accumulate.
     (async()=>{for await(const _ of r.stream()){/* diagnostics are returned by the adapter */}})().catch(()=>{});
     this.report('lavaan');
-    await r.installPackages(['lavaan','jsonlite']);
     const version=await r.evalRString('as.character(packageVersion("lavaan"))');
     if(version!=='0.7.3')throw new Error(en.runtimeVersion.replace('{version}',version));
     await r.evalRVoid(compilerSource);
@@ -70,13 +67,13 @@ export class LavaanRuntime {
   }
   private async installReader(query:Record<string,unknown>){
     if(query.action==='fit'&&(query.analysis as {reliability?:boolean})?.reliability&&!this.readers.has('semTools')){
-      this.report('readers');await this.runtime.installPackages(['semTools']);
+      this.report('readers');
       if(await this.runtime.evalRString('as.character(packageVersion("semTools"))')!=='0.5.10')throw new Error(en.errors['advanced.semToolsVersion']);
       this.readers.add('semTools');this.report('ready');
     }
     const source=query.action==='restore'?query.source as Record<string,unknown>:query;
     const pkg=source.action==='sheets'||['xls','xlsx'].includes(String(source.format))?'readxl':['sav','zsav'].includes(String(source.format))?'haven':undefined;
-    if(pkg&&!this.readers.has(pkg)){this.report('readers');await this.runtime.installPackages([pkg]);this.readers.add(pkg);this.report('ready');}
+    if(pkg&&!this.readers.has(pkg)){this.readers.add(pkg);}
   }
   private async execute(query:Record<string,unknown>,binary?:Uint8Array){
     const input={...query},runtime=this.runtime;

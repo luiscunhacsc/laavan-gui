@@ -1,0 +1,65 @@
+[
+  {
+    "id": "01-holzinger-swineford",
+    "crossings": 1,
+    "covarianceCrossings": 1,
+    "covarianceLength": 2309,
+    "width": 893,
+    "height": 1384,
+    "milliseconds": 179
+  },
+  {
+    "id": "02-political-democracy",
+    "crossings": 10,
+    "covarianceCrossings": 10,
+    "covarianceLength": 7166,
+    "width": 2059,
+    "height": 1259,
+    "milliseconds": 728
+  },
+  {
+    "id": "03-mediation",
+    "crossings": 0,
+    "covarianceCrossings": 0,
+    "covarianceLength": 0,
+    "width": 904,
+    "height": 636,
+    "milliseconds": 46
+  },
+  {
+    "id": "04-second-order",
+    "crossings": 0,
+    "covarianceCrossings": 0,
+    "covarianceLength": 0,
+    "width": 986,
+    "height": 1247,
+    "milliseconds": 11
+  },
+  {
+    "id": "05-two-group",
+    "crossings": 0,
+    "covarianceCrossings": 0,
+    "covarianceLength": 0,
+    "width": 1720,
+    "height": 719,
+    "milliseconds": 3
+  },
+  {
+    "id": "06-observed-path",
+    "crossings": 0,
+    "covarianceCrossings": 0,
+    "covarianceLength": 364,
+    "width": 991,
+    "height": 461,
+    "milliseconds": 53
+  },
+  {
+    "id": "07-large",
+    "crossings": 0,
+    "covarianceCrossings": 0,
+    "covarianceLength": 0,
+    "width": 3661,
+    "height": 932,
+    "milliseconds": 72
+  }
+]

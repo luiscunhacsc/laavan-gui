@@ -3,8 +3,8 @@ import en from './en.json';
 export interface ReportTable {title:string;headers:string[];rows:string[][];note?:string}
 export const pText=(value:number|null|undefined)=>value==null?'—':value<.001?'< .001':numberText(value).replace(/^0\./,'.');
 export function reportTables(snapshot:AnalysisSnapshot):ReportTable[]{
- const f=snapshot.result,t=en.results,a=en.advanced,group=(n:number)=>f.groupLabels?.[n-1]||String(n);
- const tables:ReportTable[]=[{title:t.parameters,headers:[en.group,en.lhs,en.operator,en.rhs,en.label,t.estimate,t.se,t.z,t.pvalue,`${Math.round((f.confidence??.95)*100)}% ${a.ciLower}`,`${Math.round((f.confidence??.95)*100)}% ${a.ciUpper}`,t.stdAll],rows:f.parameters.map(p=>[group(p.group||1),p.lhs,p.op,p.rhs,p.label||'',numberText(p.est),numberText(p.se),numberText(p.z),pText(p.pvalue),numberText(p['ci.lower']),numberText(p['ci.upper']),numberText(p['std.all'])]),note:`${a.reportNote} ${Math.round((f.confidence??.95)*100)}% CI. ${f.bootstrap?a.bootstrapNote:''}`},
+ const f=snapshot.result,t=en.results,a=en.advanced,group=(n:number)=>n===0?a.global:f.groupLabels?.[n-1]||String(n);
+ const tables:ReportTable[]=[{title:t.parameters,headers:[en.group,en.lhs,en.operator,en.rhs,en.label,t.estimate,t.se,t.z,t.pvalue,`${Math.round((f.confidence??.95)*100)}% ${a.ciLower}`,`${Math.round((f.confidence??.95)*100)}% ${a.ciUpper}`,t.stdAll],rows:f.parameters.map(p=>[group(p.group??1),p.lhs,p.op,p.rhs,p.label||'',numberText(p.est),numberText(p.se),numberText(p.z),pText(p.pvalue),numberText(p['ci.lower']),numberText(p['ci.upper']),numberText(p['std.all'])]),note:`${a.reportNote} ${Math.round((f.confidence??.95)*100)}% CI. ${f.bootstrap?a.bootstrapNote:''}`},
  {title:t.fitMeasures,headers:[t.measure,t.value],rows:f.measures.map(m=>[(t.measureNames as Record<string,string>)[m.name]||m.name,m.name.startsWith('pvalue')?pText(m.value):numberText(m.value)]),note:t.robustHint},
  {title:t.rSquared,headers:[en.group,en.lhs,en.rSquaredSymbol],rows:f.rsquared.map(r=>[group(r.group),r.name,numberText(r.value)])}];
  if(f.invariance)tables.push({title:a.invariance,headers:[a.stage,'χ²','df','p','CFI','RMSEA','SRMR',a.deltaCfi,a.deltaRmsea,a.difference,a.differenceDf,a.differenceP,a.cfiType,a.rmseaType],rows:f.invariance.map(r=>[a[r.stage],numberText(r.chisq),numberText(r.df,0),pText(r.pvalue),numberText(r.cfi),numberText(r.rmsea),numberText(r.srmr),numberText(r.deltaCfi),numberText(r.deltaRmsea),numberText(r.difference?.chisq),numberText(r.difference?.df,0),pText(r.difference?.pvalue),r.cfiType,r.rmseaType]),note:[a.invarianceNote,...f.invariance.flatMap(r=>r.difference?.method||[]),...f.invariance.flatMap(r=>r.differenceError?[r.differenceError]:[])].join(' ')});
@@ -20,7 +20,7 @@ export function reportNotes(snapshot:AnalysisSnapshot,stale=false){const f=snaps
 export function texEscape(text:string){
  const greek:Record<string,string>={λ:'lambda',β:'beta',γ:'gamma',ψ:'psi',θ:'theta',φ:'phi',μ:'mu',α:'alpha',τ:'tau',χ:'chi',ω:'omega',Δ:'Delta',ρ:'rho'};
  return text.replace(/[\\{}$&#_%~^]/g,c=>({'\\':'\\textbackslash{}','{':'\\{','}':'\\}','$':'\\$','&':'\\&','#':'\\#','_':'\\_','%':'\\%','~':'\\textasciitilde{}','^':'\\textasciicircum{}'}[c]!))
-  .replace(/([λβγψθφματχωΔρ])([₀₁₂₃₄₅₆₇₈₉]*)/g,(_,c:string,s:string)=>`$\\${greek[c]}${s?'_{'+[...s].map(d=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(d)).join('')+'}':''}$`)
+  .replace(/([λβγψθφματχωΔρ])([₀₁₂₃₄₅₆₇₈₉]*(?:,[₀₁₂₃₄₅₆₇₈₉]+)?)/g,(_,c:string,s:string)=>`$\\${greek[c]}${s?'_{'+[...s].map(d=>d===','?',':'₀₁₂₃₄₅₆₇₈₉'.indexOf(d)).join('')+'}':''}$`)
   .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g,s=>`$_{${[...s].map(d=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(d)).join('')}}$`).replaceAll('²','$^{2}$').replaceAll('√','$\\surd$');
 }
 export function reportLatex(snapshot:AnalysisSnapshot,stale=false){

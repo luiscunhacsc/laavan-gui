@@ -1,0 +1,238 @@
+% Compile with LuaLaTeX or XeLaTeX.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec,booktabs,longtable,pdflscape}
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf]
+\begin{document}
+\section*{Analysis report}
+Holzinger-Swineford · MLR · listwise · N = 156 + 145 · lavaan 0.7.3\par
+
+\begin{landscape}
+\small
+\begin{longtable}{llllrrrrrrrr}
+\caption{Parameter estimates}\\
+\toprule
+Group & Left & Relation & Right & Label / value & Estimate & SE & z & p & 95\% CI lower & 95\% CI upper & std.all \\
+\midrule
+\endfirsthead
+\multicolumn{12}{l}{Table 1 (Parameter estimates)} \\
+\toprule
+Group & Left & Relation & Right & Label / value & Estimate & SE & z & p & 95\% CI lower & 95\% CI upper & std.all \\
+\midrule
+\endhead
+Pasteur & visual & =\textasciitilde{} & x1 &  & 1.000 & 0.000 & — & — & 1.000 & 1.000 & 0.887 \\
+Pasteur & visual & =\textasciitilde{} & x2 &  & 0.394 & 0.197 & 1.996 & .046 & 0.007 & 0.780 & 0.336 \\
+Pasteur & visual & =\textasciitilde{} & x3 &  & 0.570 & 0.201 & 2.838 & .005 & 0.176 & 0.964 & 0.515 \\
+Pasteur & textual & =\textasciitilde{} & x4 &  & 1.000 & 0.000 & — & — & 1.000 & 1.000 & 0.823 \\
+Pasteur & textual & =\textasciitilde{} & x5 &  & 1.183 & 0.106 & 11.213 & < .001 & 0.977 & 1.390 & 0.856 \\
+Pasteur & textual & =\textasciitilde{} & x6 &  & 0.875 & 0.093 & 9.388 & < .001 & 0.692 & 1.058 & 0.838 \\
+Pasteur & speed & =\textasciitilde{} & x7 &  & 1.000 & 0.000 & — & — & 1.000 & 1.000 & 0.547 \\
+Pasteur & speed & =\textasciitilde{} & x8 &  & 1.125 & 0.262 & 4.298 & < .001 & 0.612 & 1.638 & 0.682 \\
+Pasteur & speed & =\textasciitilde{} & x9 &  & 0.922 & 0.297 & 3.099 & .002 & 0.339 & 1.505 & 0.551 \\
+Pasteur & x1 & \textasciitilde{}\textasciitilde{} & x1 &  & 0.298 & 0.338 & 0.882 & .378 & -0.365 & 0.961 & 0.214 \\
+Pasteur & x2 & \textasciitilde{}\textasciitilde{} & x2 &  & 1.334 & 0.179 & 7.441 & < .001 & 0.982 & 1.685 & 0.887 \\
+Pasteur & x3 & \textasciitilde{}\textasciitilde{} & x3 &  & 0.989 & 0.154 & 6.444 & < .001 & 0.689 & 1.290 & 0.735 \\
+Pasteur & x4 & \textasciitilde{}\textasciitilde{} & x4 &  & 0.425 & 0.073 & 5.867 & < .001 & 0.283 & 0.567 & 0.322 \\
+Pasteur & x5 & \textasciitilde{}\textasciitilde{} & x5 &  & 0.456 & 0.086 & 5.304 & < .001 & 0.287 & 0.624 & 0.267 \\
+Pasteur & x6 & \textasciitilde{}\textasciitilde{} & x6 &  & 0.290 & 0.055 & 5.267 & < .001 & 0.182 & 0.398 & 0.297 \\
+Pasteur & x7 & \textasciitilde{}\textasciitilde{} & x7 &  & 0.820 & 0.132 & 6.211 & < .001 & 0.561 & 1.079 & 0.701 \\
+Pasteur & x8 & \textasciitilde{}\textasciitilde{} & x8 &  & 0.510 & 0.101 & 5.048 & < .001 & 0.312 & 0.708 & 0.535 \\
+Pasteur & x9 & \textasciitilde{}\textasciitilde{} & x9 &  & 0.680 & 0.126 & 5.406 & < .001 & 0.434 & 0.927 & 0.696 \\
+Pasteur & visual & \textasciitilde{}\textasciitilde{} & visual &  & 1.097 & 0.378 & 2.899 & .004 & 0.355 & 1.839 & 1.000 \\
+Pasteur & textual & \textasciitilde{}\textasciitilde{} & textual &  & 0.894 & 0.160 & 5.577 & < .001 & 0.580 & 1.209 & 1.000 \\
+Pasteur & speed & \textasciitilde{}\textasciitilde{} & speed &  & 0.350 & 0.140 & 2.502 & .012 & 0.076 & 0.623 & 1.000 \\
+Pasteur & visual & \textasciitilde{}\textasciitilde{} & textual &  & 0.479 & 0.144 & 3.334 & < .001 & 0.197 & 0.761 & 0.484 \\
+Pasteur & visual & \textasciitilde{}\textasciitilde{} & speed &  & 0.185 & 0.076 & 2.449 & .014 & 0.037 & 0.333 & 0.299 \\
+Pasteur & textual & \textasciitilde{}\textasciitilde{} & speed &  & 0.182 & 0.076 & 2.402 & .016 & 0.033 & 0.330 & 0.325 \\
+Pasteur & x1 & \textasciitilde{}1 &  &  & 4.941 & 0.095 & 52.249 & < .001 & 4.756 & 5.127 & 4.183 \\
+Pasteur & x2 & \textasciitilde{}1 &  &  & 5.984 & 0.098 & 60.949 & < .001 & 5.792 & 6.176 & 4.880 \\
+Pasteur & x3 & \textasciitilde{}1 &  &  & 2.487 & 0.093 & 26.778 & < .001 & 2.305 & 2.669 & 2.144 \\
+Pasteur & x4 & \textasciitilde{}1 &  &  & 2.823 & 0.092 & 30.689 & < .001 & 2.642 & 3.003 & 2.457 \\
+Pasteur & x5 & \textasciitilde{}1 &  &  & 3.995 & 0.105 & 38.183 & < .001 & 3.790 & 4.200 & 3.057 \\
+Pasteur & x6 & \textasciitilde{}1 &  &  & 1.922 & 0.079 & 24.321 & < .001 & 1.767 & 2.077 & 1.947 \\
+Pasteur & x7 & \textasciitilde{}1 &  &  & 4.432 & 0.087 & 51.181 & < .001 & 4.263 & 4.602 & 4.098 \\
+Pasteur & x8 & \textasciitilde{}1 &  &  & 5.563 & 0.078 & 71.214 & < .001 & 5.410 & 5.716 & 5.702 \\
+Pasteur & x9 & \textasciitilde{}1 &  &  & 5.418 & 0.079 & 68.440 & < .001 & 5.263 & 5.573 & 5.480 \\
+Pasteur & visual & \textasciitilde{}1 &  &  & 0.000 & 0.000 & — & — & 0.000 & 0.000 & 0.000 \\
+Pasteur & textual & \textasciitilde{}1 &  &  & 0.000 & 0.000 & — & — & 0.000 & 0.000 & 0.000 \\
+Pasteur & speed & \textasciitilde{}1 &  &  & 0.000 & 0.000 & — & — & 0.000 & 0.000 & 0.000 \\
+Grant-White & visual & =\textasciitilde{} & x1 &  & 1.000 & 0.000 & — & — & 1.000 & 1.000 & 0.677 \\
+Grant-White & visual & =\textasciitilde{} & x2 &  & 0.736 & 0.190 & 3.870 & < .001 & 0.363 & 1.109 & 0.517 \\
+Grant-White & visual & =\textasciitilde{} & x3 &  & 0.925 & 0.216 & 4.281 & < .001 & 0.501 & 1.348 & 0.694 \\
+Grant-White & textual & =\textasciitilde{} & x4 &  & 1.000 & 0.000 & — & — & 1.000 & 1.000 & 0.866 \\
+Grant-White & textual & =\textasciitilde{} & x5 &  & 0.990 & 0.089 & 11.179 & < .001 & 0.816 & 1.163 & 0.829 \\
+Grant-White & textual & =\textasciitilde{} & x6 &  & 0.963 & 0.091 & 10.588 & < .001 & 0.785 & 1.142 & 0.826 \\
+Grant-White & speed & =\textasciitilde{} & x7 &  & 1.000 & 0.000 & — & — & 1.000 & 1.000 & 0.659 \\
+Grant-White & speed & =\textasciitilde{} & x8 &  & 1.226 & 0.162 & 7.560 & < .001 & 0.908 & 1.544 & 0.796 \\
+Grant-White & speed & =\textasciitilde{} & x9 &  & 1.058 & 0.250 & 4.227 & < .001 & 0.567 & 1.548 & 0.701 \\
+Grant-White & x1 & \textasciitilde{}\textasciitilde{} & x1 &  & 0.715 & 0.182 & 3.938 & < .001 & 0.359 & 1.071 & 0.542 \\
+Grant-White & x2 & \textasciitilde{}\textasciitilde{} & x2 &  & 0.899 & 0.142 & 6.338 & < .001 & 0.621 & 1.177 & 0.733 \\
+Grant-White & x3 & \textasciitilde{}\textasciitilde{} & x3 &  & 0.557 & 0.122 & 4.568 & < .001 & 0.318 & 0.796 & 0.519 \\
+Grant-White & x4 & \textasciitilde{}\textasciitilde{} & x4 &  & 0.315 & 0.066 & 4.764 & < .001 & 0.186 & 0.445 & 0.251 \\
+Grant-White & x5 & \textasciitilde{}\textasciitilde{} & x5 &  & 0.419 & 0.071 & 5.876 & < .001 & 0.279 & 0.559 & 0.312 \\
+Grant-White & x6 & \textasciitilde{}\textasciitilde{} & x6 &  & 0.406 & 0.076 & 5.363 & < .001 & 0.258 & 0.554 & 0.317 \\
+Grant-White & x7 & \textasciitilde{}\textasciitilde{} & x7 &  & 0.600 & 0.100 & 5.995 & < .001 & 0.404 & 0.797 & 0.566 \\
+Grant-White & x8 & \textasciitilde{}\textasciitilde{} & x8 &  & 0.401 & 0.159 & 2.516 & .012 & 0.089 & 0.714 & 0.367 \\
+Grant-White & x9 & \textasciitilde{}\textasciitilde{} & x9 &  & 0.535 & 0.140 & 3.814 & < .001 & 0.260 & 0.810 & 0.509 \\
+Grant-White & visual & \textasciitilde{}\textasciitilde{} & visual &  & 0.604 & 0.194 & 3.105 & .002 & 0.223 & 0.985 & 1.000 \\
+Grant-White & textual & \textasciitilde{}\textasciitilde{} & textual &  & 0.942 & 0.162 & 5.807 & < .001 & 0.624 & 1.260 & 1.000 \\
+Grant-White & speed & \textasciitilde{}\textasciitilde{} & speed &  & 0.461 & 0.120 & 3.839 & < .001 & 0.226 & 0.697 & 1.000 \\
+Grant-White & visual & \textasciitilde{}\textasciitilde{} & textual &  & 0.408 & 0.115 & 3.535 & < .001 & 0.182 & 0.634 & 0.541 \\
+Grant-White & visual & \textasciitilde{}\textasciitilde{} & speed &  & 0.276 & 0.101 & 2.731 & .006 & 0.078 & 0.474 & 0.523 \\
+Grant-White & textual & \textasciitilde{}\textasciitilde{} & speed &  & 0.222 & 0.105 & 2.115 & .034 & 0.016 & 0.427 & 0.336 \\
+Grant-White & x1 & \textasciitilde{}1 &  &  & 4.930 & 0.095 & 51.696 & < .001 & 4.743 & 5.117 & 4.293 \\
+Grant-White & x2 & \textasciitilde{}1 &  &  & 6.200 & 0.092 & 67.416 & < .001 & 6.020 & 6.380 & 5.599 \\
+Grant-White & x3 & \textasciitilde{}1 &  &  & 1.996 & 0.086 & 23.195 & < .001 & 1.827 & 2.164 & 1.926 \\
+Grant-White & x4 & \textasciitilde{}1 &  &  & 3.317 & 0.093 & 35.625 & < .001 & 3.135 & 3.500 & 2.959 \\
+Grant-White & x5 & \textasciitilde{}1 &  &  & 4.712 & 0.096 & 48.986 & < .001 & 4.524 & 4.901 & 4.068 \\
+Grant-White & x6 & \textasciitilde{}1 &  &  & 2.469 & 0.094 & 26.277 & < .001 & 2.285 & 2.653 & 2.182 \\
+Grant-White & x7 & \textasciitilde{}1 &  &  & 3.921 & 0.086 & 45.819 & < .001 & 3.753 & 4.089 & 3.805 \\
+Grant-White & x8 & \textasciitilde{}1 &  &  & 5.488 & 0.087 & 63.174 & < .001 & 5.318 & 5.659 & 5.246 \\
+Grant-White & x9 & \textasciitilde{}1 &  &  & 5.327 & 0.085 & 62.571 & < .001 & 5.160 & 5.494 & 5.196 \\
+Grant-White & visual & \textasciitilde{}1 &  &  & 0.000 & 0.000 & — & — & 0.000 & 0.000 & 0.000 \\
+Grant-White & textual & \textasciitilde{}1 &  &  & 0.000 & 0.000 & — & — & 0.000 & 0.000 & 0.000 \\
+Grant-White & speed & \textasciitilde{}1 &  &  & 0.000 & 0.000 & — & — & 0.000 & 0.000 & 0.000 \\
+\bottomrule
+\end{longtable}
+\noindent Note. Estimates and intervals are unstandardised; Std. all is fully standardised. Values are rounded only for display. A dash indicates unavailable output. 95\% CI. \par
+\end{landscape}
+
+\small
+\begin{longtable}{lr}
+\caption{Fit measures}\\
+\toprule
+Measure & Value \\
+\midrule
+\endfirsthead
+\multicolumn{2}{l}{Table 2 (Fit measures)} \\
+\toprule
+Measure & Value \\
+\midrule
+\endhead
+$\chi$$^{2}$ & 115.851 \\
+df & 48.000 \\
+p ($\chi$$^{2}$) & < .001 \\
+CFI & 0.923 \\
+TLI & 0.885 \\
+RMSEA & 0.097 \\
+RMSEA 90\% CI lower & 0.075 \\
+RMSEA 90\% CI upper & 0.120 \\
+SRMR & 0.068 \\
+Scaled $\chi$$^{2}$ & 121.741 \\
+Scaled df & 48.000 \\
+p (scaled $\chi$$^{2}$) & < .001 \\
+Robust CFI & 0.921 \\
+Robust TLI & 0.881 \\
+Robust RMSEA & 0.099 \\
+Robust RMSEA 90\% CI lower & 0.077 \\
+Robust RMSEA 90\% CI upper & 0.120 \\
+Scaled CFI & 0.914 \\
+Scaled TLI & 0.872 \\
+Scaled RMSEA & 0.101 \\
+Scaled RMSEA 90\% CI lower & 0.078 \\
+Scaled RMSEA 90\% CI upper & 0.124 \\
+\bottomrule
+\end{longtable}
+\noindent Note. Scaled and robust statistics are labelled explicitly. Compare the appropriate version for your estimator.\par
+
+\small
+\begin{longtable}{llr}
+\caption{Explained variance (R$^{2}$)}\\
+\toprule
+Group & Left & R$^{2}$ \\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{Table 3 (Explained variance (R$^{2}$))} \\
+\toprule
+Group & Left & R$^{2}$ \\
+\midrule
+\endhead
+Pasteur & x1 & 0.786 \\
+Pasteur & x2 & 0.113 \\
+Pasteur & x3 & 0.265 \\
+Pasteur & x4 & 0.678 \\
+Pasteur & x5 & 0.733 \\
+Pasteur & x6 & 0.703 \\
+Pasteur & x7 & 0.299 \\
+Pasteur & x8 & 0.465 \\
+Pasteur & x9 & 0.304 \\
+Grant-White & x1 & 0.458 \\
+Grant-White & x2 & 0.267 \\
+Grant-White & x3 & 0.481 \\
+Grant-White & x4 & 0.749 \\
+Grant-White & x5 & 0.688 \\
+Grant-White & x6 & 0.683 \\
+Grant-White & x7 & 0.434 \\
+Grant-White & x8 & 0.633 \\
+Grant-White & x9 & 0.491 \\
+\bottomrule
+\end{longtable}
+
+\begin{landscape}
+\small
+\begin{longtable}{llllrrrrrrrrrr}
+\caption{Measurement invariance}\\
+\toprule
+Stage & $\chi$$^{2}$ & df & p & CFI & RMSEA & SRMR & $\Delta$CFI & $\Delta$RMSEA & $\Delta$$\chi$$^{2}$ & $\Delta$df & Difference p & CFI variant & RMSEA variant \\
+\midrule
+\endfirsthead
+\multicolumn{14}{l}{Table 4 (Measurement invariance)} \\
+\toprule
+Stage & $\chi$$^{2}$ & df & p & CFI & RMSEA & SRMR & $\Delta$CFI & $\Delta$RMSEA & $\Delta$$\chi$$^{2}$ & $\Delta$df & Difference p & CFI variant & RMSEA variant \\
+\midrule
+\endhead
+Configural & 121.741 & 48 & < .001 & 0.921 & 0.099 & 0.068 & — & — & — & — & — & cfi.robust & rmsea.robust \\
+Metric & 125.997 & 54 & < .001 & 0.920 & 0.093 & 0.072 & -0.001 & -0.005 & 6.567 & 6 & .363 & cfi.robust & rmsea.robust \\
+Scalar & 166.748 & 60 & < .001 & 0.881 & 0.108 & 0.082 & -0.039 & 0.014 & 40.838 & 6 & < .001 & cfi.robust & rmsea.robust \\
+Strict & 181.429 & 69 & < .001 & 0.873 & 0.104 & 0.088 & -0.008 & -0.004 & 15.694 & 9 & .074 & cfi.robust & rmsea.robust \\
+\bottomrule
+\end{longtable}
+\noindent Note. Each stage is compared with the previous stage using lavaan's difference test. $\Delta$CFI and $\Delta$RMSEA are signed changes; the exact fit-index variants are reported. These statistics do not automatically establish invariance. Scaled Chi-Squared Difference Test (method = "satorra.bentler.2001") Scaled Chi-Squared Difference Test (method = "satorra.bentler.2001") Scaled Chi-Squared Difference Test (method = "satorra.bentler.2001")\par
+\end{landscape}
+
+\small
+\begin{longtable}{lllr}
+\caption{Reliability \& validity}\\
+\toprule
+Group & Factor & Composite $\omega$ & AVE \\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{Table 5 (Reliability \& validity)} \\
+\toprule
+Group & Factor & Composite $\omega$ & AVE \\
+\midrule
+\endhead
+Pasteur & visual & 0.584 & 0.382 \\
+Pasteur & textual & 0.877 & 0.707 \\
+Pasteur & speed & 0.620 & 0.351 \\
+Grant-White & visual & 0.661 & 0.400 \\
+Grant-White & textual & 0.878 & 0.706 \\
+Grant-White & speed & 0.766 & 0.521 \\
+\bottomrule
+\end{longtable}
+\noindent Note. Unit-weight omega-type composite reliability and AVE use observed variances (semTools). HTMT2 uses absolute correlations and geometric means; ordinal indicators use polychoric correlations. Reverse-code items in the source data when appropriate. semTools 0.5.10.\par
+
+\begin{landscape}
+\small
+\begin{longtable}{llllrrrr}
+\caption{Discriminant validity}\\
+\toprule
+Group & Factor 1 & Factor 2 & HTMT2 & Latent r & $\surd$AVE$_{1}$ & $\surd$AVE$_{2}$ & Fornell–Larcker \\
+\midrule
+\endfirsthead
+\multicolumn{8}{l}{Table 6 (Discriminant validity)} \\
+\toprule
+Group & Factor 1 & Factor 2 & HTMT2 & Latent r & $\surd$AVE$_{1}$ & $\surd$AVE$_{2}$ & Fornell–Larcker \\
+\midrule
+\endhead
+Pasteur & visual & textual & 0.313 & 0.484 & 0.618 & 0.841 & Yes \\
+Pasteur & visual & speed & 0.292 & 0.299 & 0.618 & 0.593 & Yes \\
+Pasteur & textual & speed & 0.337 & 0.325 & 0.841 & 0.593 & Yes \\
+Grant-White & visual & textual & 0.513 & 0.541 & 0.632 & 0.840 & Yes \\
+Grant-White & visual & speed & 0.420 & 0.523 & 0.632 & 0.722 & Yes \\
+Grant-White & textual & speed & 0.347 & 0.336 & 0.840 & 0.722 & Yes \\
+\bottomrule
+\end{longtable}
+\noindent Note. Fornell–Larcker compares each factor's square root of AVE with the absolute fitted latent correlation. “Yes” means both square roots exceed that correlation; it is not a general validity verdict.\par
+\end{landscape}
+\end{document}

@@ -5,18 +5,24 @@ path analysis using datasets supplied by the user. It includes a spreadsheet-sty
 data viewer, model specification through syntax and drawing, lavaan estimation,
 annotated diagrams and analysis results. Data-free diagramming is also supported.
 
-**Phase 4 is ready for review** in `app/`: invariance, bootstrap confidence
-intervals, modification-index actions, reliability/validity output, publication
-figures and APA tables now join the data viewer, model editor and lavaan fitting.
+**The local release candidate, 1.0.0-rc.1, is ready** in `app/` and
+`releases/Forma-1.0.0-rc.1.zip`. It includes the data viewer, two-way model editor,
+SEM/CFA/path estimation, advanced analyses and publication exports, plus a
+self-contained R engine, offline cache and saved fitted results.
 
 - [Open Forma](http://127.0.0.1:8000/app/dist/).
+- [Portable ZIP](releases/Forma-1.0.0-rc.1.zip): extract and run `Start-Forma.cmd`
+  on Windows, or `python3 serve.py` on macOS/Linux. Python 3 is the only launcher
+  dependency; R and Node are unnecessary for using the portable app.
+- [User guide](docs/user-guide.md) and [release validation](docs/release.md).
 - [Phase 4 workflows, verification and limits](docs/phase-4.md).
 - [Seven fixed models plus fitted, Greek-notation and RAM-loop examples](docs/phase-4-gallery.html).
 - [Run, build and deploy the application](app/README.md).
 
 The 12/12 browser check is recorded as VS Code embedded Chromium 150/Electron 43.
-The complete Chrome/Edge/Firefox/Safari release matrix remains open. This is a
-review build; no public deployment has been made.
+The complete Chrome/Edge/Firefox/Safari release matrix remains open, including
+browser-level offline checks of the final package. No public deployment has
+been made.
 
 To start it from a new terminal:
 
@@ -27,7 +33,8 @@ npm run dev
 ```
 
 The static application is `app/dist/`; the root `dist/` belongs to the earlier
-research harness. Work stops here for the requested Phase 4 review.
+research harness. The portable package contains only the production app,
+launchers, documentation, validation summary and dependency notices.
 
 ## Phase 0 research package
 

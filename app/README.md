@@ -1,246 +1,120 @@
-# Forma · SEM, CFA and path analysis
+# Forma SEM Studio
 
-Forma is being built as a complete dataset-based SEM application, including a
-spreadsheet-style data viewer, lavaan estimation, results and diagrams. The
-current [Phase 4 review build](../docs/phase-4.md) adds invariance, bootstrap,
-modification indices, reliability/validity tables and publication exports to the
-visual/syntax editor, data viewer, estimation and dataset-aware projects. The
-data-free converter remains available. [Review all reference figures and exports](../docs/phase-4-gallery.html).
+Version **1.0.0-rc.1**. Local SEM, CFA and observed-variable path analysis with
+lavaan, a dataset viewer, syntax/drawing synchronisation and publication exports.
+See the [user guide](../docs/user-guide.md), [release record](../docs/release.md)
+and [13 reference figures](../docs/phase-4-gallery.html).
 
-React/TypeScript provide the workspace, CodeMirror the editor, lavaan the
-scientific model, and ELK plus SEM-specific placement/routing the diagram.
-There is no R server and no model upload in the production build.
+## Use the portable application
 
-## Run
+Extract `releases/Forma-1.0.0-rc.1.zip`. Run `Start-Forma.cmd` on Windows, or
+`python3 serve.py` on macOS/Linux. Open <http://127.0.0.1:8765/>. The server binds
+to loopback only. Python 3 is required for this launcher; R and Node are not.
 
-From this directory, with Node.js 22.12+ or 24+ LTS (23.6 was used for these checks):
+The complete webR 0.6.0/R 4.6.0 runtime, lavaan 0.7-3, semTools 0.5-10, Excel/SPSS
+readers and fonts are bundled. No remote R package installation is performed.
+The initial local transfer is approximately 84 MiB. After precaching succeeds,
+the status bar reports offline readiness. Full browser-level offline certification
+is pending; restricted browser storage can prevent precaching or autosave.
+
+Projects now use schema 3 and retain fitted results, annotation choices and
+the selected workspace alongside the canonical table, syntax, positions, options
+and optional original dataset. Opening a fit checks a SHA-256 fingerprint of
+its data/import/type settings. Changed or missing data leave historical results
+out of date. Schema 1/2 projects remain readable. IndexedDB autosave is local to
+the exact browser origin; save a project file as a portable backup.
+
+## Develop
 
 ```powershell
 npm ci
 npm run dev
 ```
 
-Open <http://127.0.0.1:5173/>. The first visit downloads webR 0.6.0 and installs
-lavaan 0.7-3 plus jsonlite. Subsequent edits use the same R worker. The runtime
-checks the lavaan version before accepting a model. Network access is needed
-for the first runtime/package load. A fully offline distribution and immutable
-R package image are not yet implemented.
-Excel imports load readxl on demand; SPSS imports load haven. All data parsing
-and analysis take place in the browser worker. Reliability/validity loads pinned
-semTools 0.5-10 on demand. Publication exports use local JavaScript and bundled
-OFL-licensed Noto Sans fonts.
-
-## Use
-
-- Open **Data** to import UTF-8 CSV/TSV, Excel or SPSS, choose an Excel sheet,
-  configure CSV delimiters/missing codes, or paste a covariance matrix plus N.
-  The three public/synthetic dataset buttons also load their matching models.
-- Inspect cases in the virtualised grid. Search for a column, jump to a case,
-  toggle stored values/value labels and inspect variable labels, missing counts
-  and summaries. Select continuous, ordinal or nominal measurement types.
-  This is an inspection viewer; it does not edit cell values.
-- Write lavaan syntax or choose one of seven fixed examples. Changes compile
-  automatically; Ctrl+Enter also updates the diagram.
-- In **Model**, choose Observed or Latent and click the canvas. Use Regression,
-  Loading, Covariance or Formative, selecting the source and then the target.
-  Formative inputs point into the composite. A new latent is marked as having no
-  indicators until connected; fitting/identification remains lavaan's responsibility.
-- Select a variable or parameter to rename/delete it or change its fixed/free
-  status, value or label. The right-hand inspector lists related parameters.
-  Data-derived fitted parameters absent from the syntax are read-only; declare
-  them explicitly in syntax to edit them. Structure edits apply to all groups;
-  parameter edits can target one group or all groups.
-- Select Dataset variables in the library to search, drag or click to add them.
-  Visual edits regenerate grouped syntax and replace custom comments/formatting.
-  lavaan checks round-trip meaning before commit; unsupported editing constructs
-  and dangling parameter-label dependencies receive a clear message.
-- Choose SEM, CFA or Path analysis, group count, means and exogenous-variable
-  treatment. SEM is the initial preset. The mediation and observed-path examples
-  select Path analysis, which uses SEM defaults and accepts observed variables
-  only. Latent or composite definitions receive a clear message; switching
-  presets keeps your syntax. Path mode also offers a button to load a path example.
-- Select ML, MLR or WLSMV, missing-data handling and a grouping variable where
-  applicable, then **Run analysis**. Unsupported combinations receive a message;
-  options are never silently substituted. Ordinal model variables use WLSMV.
-- Open **Results** for convergence/warnings, fit measures, sortable parameter
-  tables, R² and the complete R reproduction script. Export parameter CSV,
-  analysis JSON or the R script. Changing inputs marks previous results out of date.
-- Return to **Model** to show unstandardised or std.all labels, optional SEs or
-  p-values, and R². Inadmissible/unconverged results do not annotate the diagram.
-- Toggle implicit parameters and journal/presentation colours without changing
-  the parameter table or node positions.
-- Drag nodes, Shift-click to select several, align/distribute, zoom/pan or fit.
-  The canvas routes edges after a drag is released. Reflow regenerates all
-  positions and can be undone. Ordinary syntax edits preserve existing positions.
-  Model undo/redo also restores valid syntax and options, with the latest 100
-  transactions retained in memory. Ctrl/Cmd+Z and redo shortcuts work in the
-  editor/canvas; an invalid draft can be returned to the last valid model.
-- Save/open `.forma.json` projects. The file retains the canonical table,
-  current draft, model/analysis options and positions. Version 2 includes the
-  original dataset source and measurement-type choices by default; Model options
-  can exclude the dataset from exported projects. Version 1 files remain readable.
-  IndexedDB autosave retains the matching model/source/type settings locally and
-  restores them after reload. Fitted results must be rerun after reopening; analysis
-  JSON and R scripts remain separate exports. Dataset contents are not uploaded.
-  On opening, lavaan recompiles the draft;
-  an invalid draft leaves the last valid canonical model intact.
-- Inspect the complete parameter table or copy the equivalent R script.
-- Open **Analysis options** to request modification indices, reliability/validity,
-  seeded ML percentile bootstrap intervals or the continuous-CFA invariance
-  sequence. See the [workflow instructions and supported designs](../docs/phase-4.md).
-- Export an up-to-date diagram to SVG, PNG (150/300/600 DPI), vector PDF or TikZ.
-  Fonts, theme and annotation choices are retained; selections are omitted.
-  Choose a suitable physical width for legible print labels on dense models.
-- Export all result tables to Word or LaTeX with APA captions, rules and notes.
-  CI headers follow the selected confidence level. CSV/JSON retain full precision;
-  APA tables use three decimals. Invariance comparisons use lavaan's actual
-  difference tests. Modification additions apply to their indicated group and
-  make the previous fit stale until rerun.
-
-All product text is in `src/en.json`. The lightweight editor tokenizer colours
-text only: `src/r/compile.R` calls lavaan's actual parser. The R adapter
-retains raw parser metadata, constraints and all expanded parameter rows,
-including automatically fixed marker loadings.
-
-## Supported specification
-
-`=~`, `~`, `~~`, intercepts, definitions, fixed/free/label modifiers,
-equality/inequality constraints, group-specific vectors, second-order factors,
-formative composites, single-indicator factors and explicit ordinal thresholds.
-Group count is a document setting. Without data the app cannot infer an
-item's number of ordinal categories or prove model identification.
-
-Feedback cycles, multilevel and EFA blocks receive an explicit unsupported
-message. Conversion is capped at 300 variables and 16 groups. This is a
-coverage boundary, not a claim to render every valid lavaan construct.
-
-## Checks
-
-```powershell
-npm test
-npm run build
-```
-
-Tests use actual native-lavaan compilation fixtures. To regenerate them with R
-and the workspace `.Rlib` already set up in Phase 0:
-
-```powershell
-Rscript --vanilla scripts/compile-fixtures.R
-Rscript --vanilla scripts/check-adapter.R
-npm test
-npm run render:fixtures
-```
-
-Seven core models plus eight additional specifications are checked for
-semantic coverage. Core models have independent node/edge and label-box
-collision checks; tests also cover deterministic output, edit stability,
-explicit versus implicit marker values, formative arrow direction, SVG
-escaping and project round trips.
-
-For a user-operated browser check, open the **development** URL
-<http://127.0.0.1:5173/?verify=1>. This runs only the seven public fixtures and
-saves browser results to `../evidence/phase-1/`. The development-only evidence
-endpoint is absent from the production build. Then run from the workspace root:
-
-```powershell
-python scripts/verify-phase1.py
-```
-
-The browser output is compared against native lavaan table rows and semantic
-coverage. This verifies the scientific conversion, not every mouse/keyboard
-interaction or browser-specific export behaviour.
-
-For Phase 2, from the workspace root:
-
-```powershell
-Rscript --vanilla scripts/phase2-package-check.R
-Rscript --vanilla scripts/make-phase2-fixtures.R
-cd app
-Rscript --vanilla scripts/check-analysis.R
-cd ..
-python scripts/export-phase2-fixtures.py
-node spike/phase2-analysis.mjs
-python scripts/compare-phase2.py
-```
-
-The Node runner requires the Phase 0 webR dependency and its Windows import-path
-patch. It is actual WASM execution, not a browser benchmark. The native adapter
-checks also execute generated R scripts for Excel, SPSS, FIML, ordinal and matrix
-fits. Frontend tests include fitted diagram geometry and snapshot invalidation.
-
-With the development server running, open
-<http://127.0.0.1:5173/?verify=analysis>. This opt-in check runs the first three
-fits, uses actual browser font metrics and imports public Excel/SPSS fixtures.
-It saves `evidence/phase-2/browser-<timestamp>.json`. Compare from the root:
-
-```powershell
-python scripts/compare-phase2.py evidence/phase-2/browser-<timestamp>.json
-```
-
-The development fixture/evidence routes are absent from the static production
-build. A Firefox 159 run has passed; the other release browsers remain to verify.
-
-For Phase 3, run `Rscript --vanilla scripts/check-editing.R` from `app/`.
-From the root, run `node spike/phase3-editing.mjs` followed by
-`python scripts/compare-phase3.py`. These compare all seven fixed models plus
-eight extra specifications through actual native and WASM edit/format operations.
-They also check dependency guards, group-specific editing and transactional data
-restore. The GUI-created mediation specification is numerically compared with
-the reference model.
-
-With the development server running, open
-<http://127.0.0.1:5173/?verify=editing>. Its persistent status badge reports
-**Editing and project verification: 15/15** on success. It additionally checks
-portable source bytes, SPSS type/label/missing-code restoration, real IndexedDB,
-worker restart recovery and a drawn model's fit. Compare its saved report from
-the root:
-
-```powershell
-python scripts/compare-phase3.py evidence/phase-3/browser-<timestamp>.json
-```
-
-This check has passed in Firefox 159. The browser harness invokes real editing
-and storage APIs; manual drag/drop and file-dialog coverage remains limited.
-The [Phase 3 notes](../docs/phase-3.md) describe the coverage boundaries.
+Open <http://127.0.0.1:5173/>. Source is TypeScript/React; R adapters under
+`src/r/` call the real lavaan parser, estimator and parameter table. The editor
+tokenizer supplies highlighting only. All interface text is in `src/en.json`.
+The source and vendored engine are sufficient for an application build;
+native R is used only for independent reference verification.
 
 ## Build and deploy
 
 ```powershell
-npm run build
-npm run preview
-```
-
-The static app is in `app/dist/`. Upload that directory to an HTTPS static host,
-including GitHub Pages. Vite uses relative asset paths so repository subpaths
-work. No special cross-origin isolation headers are needed: webR uses
-PostMessage. Cancellation restarts the worker instead of interrupting R in place.
-Do not deploy the workspace root or the research harness's separate `dist/`.
-
-## Boundaries for the next phases
-
-Data import, viewing, fitting and annotated estimates are implemented in Phase 2.
-Visual relationships, parameter editing, model undo/redo, portable data attachments
-and browser workspace recovery are implemented in Phase 3. Advanced estimation,
-full exports and typography polish remain Phase 4. See the
-[current validation and limits](../docs/phase-3.md), including unsupported visual
-syntax families, per-origin autosave, source-file/model size limits and remaining
-browser checks. Dense diagrams/manual placement may still create crossings or
-geometry conflicts; these are reported rather than silently reinterpreted.
-
-
-## Phase 4 verification
-
-```powershell
-Rscript --vanilla scripts/setup-phase4.R
-Rscript --vanilla scripts/check-advanced.R
-Rscript --vanilla scripts/check-reproduction.R
 npm test
 npm run build
+node scripts/check-build.mjs
 ```
 
-`http://127.0.0.1:5173/?verify=advanced` runs the opt-in 12-check public/synthetic
-verification and restores the previous worker dataset. Its loopback evidence
-endpoint is development-only and absent from the production build. The recorded
-12/12 run used VS Code embedded Chromium/Electron. Native R and actual webR
-numerical comparisons, export renderings and remaining release-browser coverage
-are documented in [Phase 4](../docs/phase-4.md).
+The build compiles TypeScript, bundles production JavaScript, hashes all static
+assets and generates an integrity-bound service worker. `check-build.mjs` checks
+asset bytes/hashes and simulates cache installation, offline navigation,
+application-only caching and failed-install cleanup under Node. It does not
+certify browser service-worker behaviour.
+
+Deploy **only the contents of `app/dist/`** to HTTPS static hosting. Keep all
+engine files. Vite uses relative URLs, including runtime and service-worker
+paths, so subdirectory hosting is supported. PostMessage workers do not need
+cross-origin isolation headers. Cancellation recreates the worker and restores
+the dataset. No public deployment is performed by the build or launcher.
+
+## Verify statistics and exports
+
+From the workspace root:
+
+```powershell
+node spike/check-packaged.mjs
+python scripts/compare-release.py
+```
+
+This executes the **bundled** engine without package installation: all import,
+analysis, editing and advanced R checks run in its WebAssembly runtime. The
+comparison requires native reference evidence under `evidence/phase-2/` and
+`evidence/phase-4/`. To refresh the native references, use the installed Rscript
+from `app/` after the phase-specific setup scripts have installed their local
+reference dependencies:
+
+```powershell
+Rscript --vanilla scripts/check-analysis.R
+Rscript --vanilla scripts/check-editing.R
+Rscript --vanilla scripts/check-advanced.R
+Rscript --vanilla scripts/check-reproduction.R
+```
+
+`npx tsx scripts/render-phase4.ts` produces the 13 SVG/PNG/PDF/TikZ examples and
+three Word/LaTeX reports using production modules. Optional QA scripts under
+`scripts/` at the workspace root inspect PDF/vector/glyph output and compile
+TeX. These QA tools are not application dependencies.
+
+Development-only `?verify=analysis`, `?verify=editing` and `?verify=advanced`
+harnesses exercise the real browser runtime/storage with public or synthetic
+fixtures. Their bounded loopback evidence endpoints and fixture routes are
+absent from the production bundle. See the phase notes for their exact scope.
+
+## Runtime provenance and packaging
+
+`public/engine/manifest.json` records package versions and runtime hashes.
+`src/engine-spec.json` pins loader/library sizes and SHA-256 hashes. The loader
+checks those assets and required package versions before compiling a model.
+The library is mounted read-only through WORKERFS; datasets remain in the worker's
+separate writable filesystem.
+
+`spike/package-release.mjs` rebuilds this library from the pinned webR npm
+distribution and official R package binaries. It requires network access and
+rejects dependency versions that differ from the existing lock. Retain the
+vendored image when those historical package versions are unavailable.
+`scripts/patch-webr-windows.mjs` records the Node-only Windows import correction.
+No statistical algorithm is changed.
+
+`python scripts/package-release.py` from the workspace root packages the verified
+build, local server, guide, validation summary and original dependency licenses.
+It emits per-file checksums and a ZIP SHA-256 file. It does not publish anything.
+
+## Coverage boundaries
+
+The full Chrome/Edge/Firefox/Safari release matrix remains open. Earlier real
+checks passed in Firefox and embedded Chromium; the final offline/cache and
+saved-result additions have automated Node coverage and require browser matrix
+validation. Dense diagrams can retain crossings. The data viewer does not edit
+cells. Feedback, multilevel and EFA diagrams are explicitly unsupported; the
+[guide](../docs/user-guide.md) describes supported invariance/reliability designs
+and remaining limits.

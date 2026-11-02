@@ -3,7 +3,7 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 exe=root/'.qa-tools/tectonic/tectonic.exe'
 results=[]
-for source in list((root/'docs/phase-4-diagrams').glob('*.tex'))+list((root/'evidence/phase-4').glob('*-tables.tex')):
+for source in list((root/'docs/phase-4-diagrams').glob('*.tex'))+list((root/'evidence/phase-4').glob('*-tables.tex'))+list((root/'evidence/phase-4').glob('browser-*/*.tex')):
     out=root/'evidence/phase-4'/('tex-tables' if source.name.endswith('-tables.tex') else 'tex-diagrams');out.mkdir(exist_ok=True)
     completed=subprocess.run([str(exe),'--untrusted','--keep-logs','--outdir',str(out),str(source)],cwd=root,capture_output=True,text=True,encoding='utf-8',errors='replace')
     (out/(source.stem+'-command.log')).write_text(completed.stdout+completed.stderr,encoding='utf-8')

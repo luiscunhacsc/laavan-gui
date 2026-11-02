@@ -1,0 +1,690 @@
+{
+  "application": "Forma SEM Studio",
+  "version": "1.0.0-rc.1",
+  "status": "release-candidate",
+  "recordedAt": "2026-11-02T00:04:48.512819+00:00",
+  "build": {
+    "application": "Forma",
+    "version": "1.0.0-rc.1",
+    "build": "986082cd58b692566a7b",
+    "files": 140,
+    "bytes": 88315490
+  },
+  "automatedTests": {
+    "passed": 53,
+    "failed": 0
+  },
+  "nativeChecks": [
+    "imports and core analyses",
+    "15 model round trips and editing",
+    "advanced analyses",
+    "standalone reproduction scripts"
+  ],
+  "bundledEngine": {
+    "execution": "Node WebAssembly, no package installation",
+    "webR": "0.6.0",
+    "R": "R version 4.6.0 (2026-04-24)",
+    "packages": {
+      "MASS": "7.3-66",
+      "R6": "2.6.1",
+      "bit": "4.6.0",
+      "bit64": "4.8.6",
+      "cellranger": "1.1.0",
+      "cli": "3.6.6",
+      "clipr": "0.8.1",
+      "crayon": "1.5.3",
+      "forcats": "1.0.1",
+      "glue": "1.8.1",
+      "haven": "2.5.5",
+      "hms": "1.1.4",
+      "jsonlite": "2.0.0",
+      "lavaan": "0.7-3",
+      "lifecycle": "1.0.5",
+      "magrittr": "2.0.5",
+      "mnormt": "2.1.1",
+      "numDeriv": "2016.8-1.1",
+      "pbivnorm": "0.6.0",
+      "pillar": "1.11.1",
+      "pkgconfig": "2.0.3",
+      "quadprog": "1.5-8",
+      "readr": "2.2.0",
+      "readxl": "1.5.0.1",
+      "rematch": "2.0.0",
+      "rlang": "1.3.0",
+      "semTools": "0.5-10",
+      "tibble": "3.3.1",
+      "tidyselect": "1.2.1",
+      "translations": "4.6.0",
+      "tzdb": "0.5.0",
+      "utf8": "1.2.6",
+      "vctrs": "0.7.3",
+      "vroom": "1.7.1.9000",
+      "withr": "3.0.3"
+    },
+    "verifiedRuntimeFiles": 122,
+    "checks": [
+      "CSV/Excel/SPSS imports and paging",
+      "three reference fits",
+      "MLR/FIML",
+      "WLSMV",
+      "covariance input",
+      "15 model round trips and editing",
+      "reliability and modification indices",
+      "robust invariance",
+      "seeded bootstrap"
+    ]
+  },
+  "numericalComparison": {
+    "passed": true,
+    "comparedNumbers": 5599,
+    "basicAnalysisNumbers": 2697,
+    "advancedAnalysisNumbers": 2902,
+    "maxAbsoluteDifference": 2.850844687429799e-06,
+    "precision": 4,
+    "nativeLavaan": "0.7.3",
+    "engine": "self-contained webR distribution, executed under Node without package installation",
+    "saturatedModelAvailabilityDifferences": [
+      {
+        "case": "missing",
+        "measure": "cfi.robust",
+        "native": null,
+        "packaged": 1
+      },
+      {
+        "case": "missing",
+        "measure": "tli.robust",
+        "native": null,
+        "packaged": 1
+      },
+      {
+        "case": "missing",
+        "measure": "rmsea.ci.lower.robust",
+        "native": null,
+        "packaged": 0
+      },
+      {
+        "case": "missing",
+        "measure": "rmsea.ci.upper.robust",
+        "native": null,
+        "packaged": 0
+      }
+    ]
+  },
+  "assetAndOfflineSimulation": {
+    "passed": true,
+    "build": "986082cd58b692566a7b",
+    "assets": 140,
+    "bytes": 88315490,
+    "checks": [
+      "all asset hashes and sizes",
+      "integrity-bound service-worker precache",
+      "offline navigation and engine/font lookup",
+      "application-only GET cache",
+      "old-cache cleanup",
+      "failed-install cleanup"
+    ],
+    "scope": "Node service-worker simulation and artifact validation; not a browser offline certification"
+  },
+  "layoutBefore": [
+    {
+      "id": "01-holzinger-swineford",
+      "crossings": 1,
+      "covarianceCrossings": 1,
+      "covarianceLength": 2309,
+      "width": 893,
+      "height": 1384,
+      "milliseconds": 179
+    },
+    {
+      "id": "02-political-democracy",
+      "crossings": 10,
+      "covarianceCrossings": 10,
+      "covarianceLength": 7166,
+      "width": 2059,
+      "height": 1259,
+      "milliseconds": 728
+    },
+    {
+      "id": "03-mediation",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 904,
+      "height": 636,
+      "milliseconds": 46
+    },
+    {
+      "id": "04-second-order",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 986,
+      "height": 1247,
+      "milliseconds": 11
+    },
+    {
+      "id": "05-two-group",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 1720,
+      "height": 719,
+      "milliseconds": 3
+    },
+    {
+      "id": "06-observed-path",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 364,
+      "width": 991,
+      "height": 461,
+      "milliseconds": 53
+    },
+    {
+      "id": "07-large",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 3661,
+      "height": 932,
+      "milliseconds": 72
+    }
+  ],
+  "layoutAfter": [
+    {
+      "id": "01-holzinger-swineford",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 1782,
+      "width": 698,
+      "height": 1384,
+      "milliseconds": 121
+    },
+    {
+      "id": "02-political-democracy",
+      "crossings": 10,
+      "covarianceCrossings": 10,
+      "covarianceLength": 6957,
+      "width": 2059,
+      "height": 1142,
+      "milliseconds": 665
+    },
+    {
+      "id": "03-mediation",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 904,
+      "height": 636,
+      "milliseconds": 17
+    },
+    {
+      "id": "04-second-order",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 986,
+      "height": 1247,
+      "milliseconds": 6
+    },
+    {
+      "id": "05-two-group",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 1729,
+      "height": 719,
+      "milliseconds": 2
+    },
+    {
+      "id": "06-observed-path",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 252,
+      "width": 911,
+      "height": 461,
+      "milliseconds": 46
+    },
+    {
+      "id": "07-large",
+      "crossings": 0,
+      "covarianceCrossings": 0,
+      "covarianceLength": 0,
+      "width": 3661,
+      "height": 932,
+      "milliseconds": 62
+    }
+  ],
+  "exportInspection": [
+    {
+      "file": "01-holzinger-swineford-fitted.pdf",
+      "nodes": 21,
+      "textExtracts": true,
+      "vectorPaths": 67,
+      "noClippedText": true
+    },
+    {
+      "file": "01-holzinger-swineford.pdf",
+      "nodes": 21,
+      "textExtracts": true,
+      "vectorPaths": 67,
+      "noClippedText": true
+    },
+    {
+      "file": "02-political-democracy-fitted.pdf",
+      "nodes": 27,
+      "textExtracts": true,
+      "vectorPaths": 100,
+      "noClippedText": true
+    },
+    {
+      "file": "02-political-democracy.pdf",
+      "nodes": 27,
+      "textExtracts": true,
+      "vectorPaths": 100,
+      "noClippedText": true
+    },
+    {
+      "file": "03-mediation-fitted.pdf",
+      "nodes": 5,
+      "textExtracts": true,
+      "vectorPaths": 16,
+      "noClippedText": true
+    },
+    {
+      "file": "03-mediation.pdf",
+      "nodes": 5,
+      "textExtracts": true,
+      "vectorPaths": 16,
+      "noClippedText": true
+    },
+    {
+      "file": "04-second-order.pdf",
+      "nodes": 25,
+      "textExtracts": true,
+      "vectorPaths": 74,
+      "noClippedText": true
+    },
+    {
+      "file": "05-two-group.pdf",
+      "nodes": 14,
+      "textExtracts": true,
+      "vectorPaths": 39,
+      "noClippedText": true
+    },
+    {
+      "file": "06-observed-path.pdf",
+      "nodes": 6,
+      "textExtracts": true,
+      "vectorPaths": 24,
+      "noClippedText": true
+    },
+    {
+      "file": "07-large.pdf",
+      "nodes": 95,
+      "textExtracts": true,
+      "vectorPaths": 284,
+      "noClippedText": true
+    },
+    {
+      "file": "greek-cfa.pdf",
+      "nodes": 21,
+      "textExtracts": true,
+      "vectorPaths": 67,
+      "noClippedText": true
+    },
+    {
+      "file": "invariance-configural.pdf",
+      "nodes": 42,
+      "textExtracts": true,
+      "vectorPaths": 133,
+      "noClippedText": true
+    },
+    {
+      "file": "ram-cfa.pdf",
+      "nodes": 21,
+      "textExtracts": true,
+      "vectorPaths": 103,
+      "noClippedText": true
+    },
+    {
+      "file": "bootstrap.pdf",
+      "wordPages": 5,
+      "rendered": true
+    },
+    {
+      "file": "invariance.pdf",
+      "wordPages": 16,
+      "rendered": true
+    },
+    {
+      "file": "single.pdf",
+      "wordPages": 10,
+      "rendered": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-07-17-250Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-11-47-254Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-14-08-586Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-18-01-403Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-25-10-512Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-29-13-868Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-34-19-171Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-39-05-327Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    },
+    {
+      "file": "evidence\\phase-4\\browser-2026-11-01T22-41-30-201Z",
+      "pngWidth": 1950,
+      "pngDpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdfVectorPaths": 16,
+      "fittedLabelsExtract": true
+    }
+  ],
+  "texCompilation": [
+    {
+      "file": "01-holzinger-swineford-fitted.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "01-holzinger-swineford.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "02-political-democracy-fitted.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "02-political-democracy.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "03-mediation-fitted.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "03-mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "04-second-order.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "05-two-group.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "06-observed-path.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "07-large.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "greek-cfa.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "invariance-configural.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "ram-cfa.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "bootstrap-tables.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "invariance-tables.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "single-tables.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "analysis.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    },
+    {
+      "file": "mediation.tex",
+      "passed": true,
+      "overfull": 0,
+      "missingCharacters": 0
+    }
+  ],
+  "browserCoverage": {
+    "earlier": [
+      "Firefox 159 (earlier phase checks)",
+      "VS Code embedded Chromium 150/Electron 43 (Phase 4: 12/12)"
+    ],
+    "pending": [
+      "final bundled loader in Chrome/Edge/Firefox/Safari",
+      "actual browser offline/cache operation",
+      "final saved-result browser workflow"
+    ],
+    "reason": "Browser access host unavailable; Safari absent on Windows. Node tests are not browser certification."
+  },
+  "publicDeployment": false,
+  "portablePackageCheck": {
+    "passed": true,
+    "httpAssets": 140,
+    "checks": [
+      "ZIP CRC",
+      "every file checksum and expanded-byte equality",
+      "archive checksum",
+      "required launchers, guide and license notices",
+      "actual Python loopback server",
+      "all application asset bytes over HTTP",
+      "WebAssembly/module MIME types",
+      "no POST or development QA endpoints"
+    ],
+    "browserAutomation": false
+  }
+}

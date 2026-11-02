@@ -72,6 +72,12 @@
     "missingCharacters": 0
   },
   {
+    "file": "ram-cfa.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
     "file": "bootstrap-tables.tex",
     "passed": true,
     "overfull": 0,
@@ -85,6 +91,114 @@
   },
   {
     "file": "single-tables.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "analysis.tex",
+    "passed": true,
+    "overfull": 0,
+    "missingCharacters": 0
+  },
+  {
+    "file": "mediation.tex",
     "passed": true,
     "overfull": 0,
     "missingCharacters": 0

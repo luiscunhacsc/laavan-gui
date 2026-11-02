@@ -30,6 +30,7 @@ test('APA reports include every requested table, uncertainty, confidence level a
  assert.match(reportLatex(snapshot,true),/out of date|changed since/);assert.match(reportLatex(snapshot),/A \\& B\\_1/);
  const ninety=reportTables({...snapshot,result:{...fit,confidence:.9}});assert.ok(ninety[0].headers.includes('90% CI lower'));assert.ok(!ninety[0].headers.some(s=>s.includes('95%')));
  assert.match(texEscape('λ₁₁ & x_2'),/\\lambda_\{11\}/);assert.match(texEscape('λ₁₁ & x_2'),/\\& x\\_2/);
+ assert.match(texEscape('λ₁₀,₂'),/\\lambda_\{10,2\}/);
 });
 test('Greek projection preserves canonical labels, fixed values and all parameters',()=>{
  const before=JSON.stringify(fit.model),projected=notationModel(normalizeModel(fit.model));
@@ -37,6 +38,10 @@ test('Greek projection preserves canonical labels, fixed values and all paramete
  for(const row of projected.table)if(row.free===0||row.label)assert.equal(row.displayText,fit.model.table.find(r=>r.id===row.id)!.displayText);
  assert.equal(JSON.stringify(fit.model),before);
  const stars=annotatedModel(evidence.bootstrap,{mode:'estimates',extra:'stars',rsquared:false});assert.match(String(stars.table.find(r=>r.op===':=')?.displayText),/\*/);
+});
+test('global multigroup defined effects are not attributed to the first group',()=>{
+ const report=reportTables({...snapshot,result:{...fit,groupLabels:['First','Second'],parameters:[{...fit.parameters[0],lhs:'difference',op:':=',group:0}]}});
+ assert.equal(report[0].rows[0][0],'Across groups');
 });
 test('RAM variance loops avoid nodes, preserve canonical coverage and export their geometry',async()=>{
  const model={...normalizeModel(fit.model),displayVariances:'loops' as const};const scene=await layoutModel(model);

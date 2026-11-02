@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "comparedNumbers": 5599,
+  "basicAnalysisNumbers": 2697,
+  "advancedAnalysisNumbers": 2902,
+  "maxAbsoluteDifference": 2.850844687429799e-06,
+  "precision": 4,
+  "nativeLavaan": "0.7.3",
+  "engine": "self-contained webR distribution, executed under Node without package installation",
+  "saturatedModelAvailabilityDifferences": [
+    {
+      "case": "missing",
+      "measure": "cfi.robust",
+      "native": null,
+      "packaged": 1
+    },
+    {
+      "case": "missing",
+      "measure": "tli.robust",
+      "native": null,
+      "packaged": 1
+    },
+    {
+      "case": "missing",
+      "measure": "rmsea.ci.lower.robust",
+      "native": null,
+      "packaged": 0
+    },
+    {
+      "case": "missing",
+      "measure": "rmsea.ci.upper.robust",
+      "native": null,
+      "packaged": 0
+    }
+  ]
+}

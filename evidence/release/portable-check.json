@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "archive": "releases\\Forma-1.0.0-rc.1.zip",
+  "archiveBytes": 58514150,
+  "sha256": "7aefb4f73a34a94b77a582a47d466729281a252569ad15a38675495f41eb61d0",
+  "files": 261,
+  "httpAssets": 140,
+  "checks": [
+    "ZIP CRC",
+    "every file checksum and expanded-byte equality",
+    "archive checksum",
+    "required launchers, guide and license notices",
+    "actual Python loopback server",
+    "all application asset bytes over HTTP",
+    "WebAssembly/module MIME types",
+    "no POST or development QA endpoints"
+  ],
+  "browserAutomation": false
+}

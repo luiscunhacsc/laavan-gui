@@ -1,5 +1,6 @@
 {
   "brand": "forma",
+  "offline": {"preparing":"Preparing offline files…","ready":"Offline ready","failed":"Offline cache unavailable","update":"Update ready; reopen when convenient","help":"Only application files are cached. Datasets and saved analyses stay in your local workspace."},
   "tagline": "SEM STUDIO",
   "phase": "SEM analysis workspace",
   "local": "Runs on your device",
@@ -357,6 +358,7 @@
     "scalar": "Scalar",
     "strict": "Strict",
     "stage": "Stage",
+    "global": "Across groups",
     "deltaCfi": "ΔCFI",
     "deltaRmsea": "ΔRMSEA",
     "difference": "Δχ²",
@@ -417,6 +419,10 @@
     ,"verifying": "Checking public and synthetic fixtures. Keep this page open; your dataset will be restored."
   },
   "errors": {
+    "project.badFit": "The project contains invalid saved analysis results. Restore a valid project copy.",
+    "project.tooLarge": "This project exceeds 100 MB. Save it without the dataset, and retain the original data file separately.",
+    "engine.missing": "The local statistics engine is incomplete. Use the complete Forma distribution and reload.",
+    "engine.integrity": "The statistics engine failed its integrity check. Restore the complete Forma distribution and reload.",
     "advanced.bootstrapCount": "Choose 100–10,000 bootstrap resamples, or turn bootstrap off.",
     "advanced.seed": "Choose an integer random seed from 1 to 2,147,483,647.",
     "advanced.miConstraint": "This fixed parameter shares a label with other parameters. Edit its constraints in syntax before freeing it.",

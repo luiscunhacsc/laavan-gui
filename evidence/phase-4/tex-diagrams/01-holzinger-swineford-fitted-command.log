@@ -1,17 +1,7 @@
 note: Running TeX ...
-note: downloading lmroman9-regular.otf
-note: downloading lmroman6-regular.otf
-note: downloading lmroman5-regular.otf
-note: downloading cmmi9.tfm
-note: downloading cmmi6.tfm
-note: downloading cmsy9.tfm
-note: downloading cmsy6.tfm
-note: downloading cmr9.tfm
-note: downloading cmr6.tfm
 note: Rerunning TeX because "01-holzinger-swineford-fitted.aux" changed ...
 note: Running xdvipdfmx ...
-note: downloading cmr6.pfb
 note: Writing `C:\Users\luisl\Desktop\Amos\evidence\phase-4\tex-diagrams\01-holzinger-swineford-fitted.log` (16.357421875 KiB)
-note: Writing `C:\Users\luisl\Desktop\Amos\evidence\phase-4\tex-diagrams\01-holzinger-swineford-fitted.pdf` (10.3544921875 KiB)
+note: Writing `C:\Users\luisl\Desktop\Amos\evidence\phase-4\tex-diagrams\01-holzinger-swineford-fitted.pdf` (10.4462890625 KiB)
 note: Skipped writing 1 intermediate files (use --keep-intermediates to keep them)
 Fontconfig error: Cannot load default config file: No such file: (null)

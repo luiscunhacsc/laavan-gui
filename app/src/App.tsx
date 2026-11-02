@@ -10,13 +10,15 @@ import {ModelTools,ModelInspector,VariablePalette} from './ModelBuilder';
 import {ModelHistory,parameterKey,nextVariableName,editHeadings,type DrawTool,type EditCommand,type EditResult,type ModelSnapshot} from './editing';
 import {loadSession,saveSession} from './storage';
 import {attachmentState,portableAttachment,type DatasetState} from './dataset-source';
+import {datasetFingerprint,verifySavedDataset} from './stored-analysis';
+import {enableOffline,type OfflineState} from './offline';
 import {analysisKey,annotatedModel,defaultAnalysis,defaultAnnotation,messageText,type Dataset,type AnalysisOptions,type AnalysisSnapshot,type FitResult,type AnnotationOptions} from './analysis';
 import {Icon} from './icons';
 import {LavaanRuntime} from './runtime';
 import {layoutModel,type Measure} from './layout';
 import {renderSvg} from './svg';
 import {defaultOptions,defaultDisplay,nodeId,type Options,type Display,type Scene,type Box,type Positions,type Position,type SceneNode,type Parameter,type CompiledModel,parameterText} from './model';
-import {savedProject,readProject,downloadFile,rScript,SESSION,type Project} from './project';
+import {savedProject,readProject,downloadFile,downloadBlob,rScript,SESSION,type Project} from './project';
 import fixtures from '../../fixtures/models.json';
 import en from './en.json';
 
@@ -27,6 +29,8 @@ const savedPositions=(scene:Scene):Positions=>Object.fromEntries(scene.nodes.map
 const fitBox=(scene:Scene):Box=>({x:scene.minX,y:scene.minY,width:scene.width,height:scene.height});
 const errorText=(message:string)=>{const split=message.indexOf(': '),key=split>=0?message.slice(0,split):message;return (en.errors as Record<string,string>)[key]?`${(en.errors as Record<string,string>)[key]}${split>=0?message.slice(split):''}`:message;};
 const measureText:Measure=(text,size)=>{const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d')!;ctx.font=`${size}px "Forma Sans", Arial`;return ctx.measureText(text).width;};
+let diagramFonts:Promise<unknown>|undefined;
+const readyFonts=()=>diagramFonts??=Promise.all([document.fonts.load('16px "Forma Sans"'),document.fonts.load('600 20px "Forma Sans"')]);
 function Tool({label,icon,onClick,disabled=false,active=false}:{label:string;icon:string;onClick:()=>void;disabled?:boolean;active?:boolean}){
   return <button className={`tool ${active?'active':''}`} aria-label={label} title={label} onClick={onClick} disabled={disabled}><Icon name={icon}/></button>;
 }
@@ -54,13 +58,15 @@ export default function App(){
   const [verificationStatus,setVerificationStatus]=useState('');
   const [verifying,setVerifying]=useState(false);
   const [exportDialog,setExportDialog]=useState(false);
+  const [offline,setOffline]=useState<OfflineState>();
+  useEffect(()=>{if(import.meta.env.PROD)enableOffline(setOffline);},[]);
   const [,setHistoryRevision]=useState(0);
   const runtime=useRef<LavaanRuntime|null>(null);if(!runtime.current)runtime.current=new LavaanRuntime(s=>setStage(s));
   const positions=useRef<Positions>(initial?.positions||{}),sceneRef=useRef<Scene|undefined>(undefined);
   const serial=useRef(0),geometryRevision=useRef(0),needsFit=useRef(true),file=useRef<HTMLInputElement>(null);
   const committed=useRef<{model:CompiledModel;syntax:string;inputOptions:Options}|undefined>(initial?.canonical?{model:initial.canonical,syntax:initial.validSyntax||initial.syntax,inputOptions:initial.options}:undefined);
   const synced=!!scene&&!error&&!working&&validSyntax===syntax&&JSON.stringify(committed.current?.inputOptions)===JSON.stringify(options);
-  const currentKey=analysisKey(syntax,options,analysis,dataset),fresh=fit?.key===currentKey;
+  const currentKey=analysisKey(syntax,options,analysis,dataset),fresh=fit?.key===currentKey&&fit?.datasetVerified!==false;
   const canAnnotate=!!fit&&fresh&&fit.result.converged&&fit.result.admissible&&synced;
   const projectionKey=JSON.stringify([fit?.at,annotation,display.notation,display.varianceStyle,scene&&savedPositions(scene)]);
   const viewScene=canAnnotate&&fitScene?.key===projectionKey?fitScene.scene:scene;
@@ -69,7 +75,7 @@ export default function App(){
   const commitScene=(next:Scene)=>{sceneRef.current=next;setScene(next);positions.current=savedPositions(next);
     if(needsFit.current){setViewport(fitBox(next));needsFit.current=false;}};
   const model=committed.current?.model;
-  const layOut=(m:CompiledModel,p:Positions)=>layoutModel({...(display.notation?notationModel(m):m),displayVariances:display.varianceStyle||'amos'},p,measureText);
+  const layOut=async(m:CompiledModel,p:Positions)=>{await readyFonts();return layoutModel({...(display.notation?notationModel(m):m),displayVariances:display.varianceStyle||'amos'},p,measureText);};
   useEffect(()=>{needsFit.current=true;setRevision(n=>n+1);},[display.notation,display.varianceStyle]);
   const selectedNode=selection.length===1?viewScene?.nodes.find(n=>n.id===selection[0]&&n.kind!=='residual'):undefined;
   const chosenParameter=selectedParameter?(model?.table.find(r=>parameterKey(r)===selectedParameter)||viewScene?.model.table.find(r=>parameterKey(r)===selectedParameter)):undefined;
@@ -119,12 +125,12 @@ export default function App(){
   },[sessionReady,restoring]);
   useEffect(()=>{
     if(!sessionReady||restoring)return;
-    const project:Project={format:'forma-sem',version:2,syntax,options,analysis,datasetAttached:!!dataset,positions:positions.current,display,canonical:committed.current?.model,validSyntax:committed.current?.syntax};
+    const project:Project={format:'forma-sem',version:3,syntax,options,analysis,datasetAttached:!!dataset,positions:positions.current,display,canonical:committed.current?.model,validSyntax:committed.current?.syntax,fit:fit?.datasetDigest?fit:undefined,annotation,workspace};
     const source=dataset?runtime.current!.snapshotDataset():undefined;
     if(dataset&&source?.query.id!==dataset.id)return;
     let active=true;const timer=window.setTimeout(()=>{void saveSession(project,source).then(()=>{if(active){setAutosaved(true);setAutosaveFailed(false);}try{localStorage.setItem(SESSION,JSON.stringify(project));}catch{/* IndexedDB is the primary store. */}}).catch(()=>{if(active){setAutosaved(false);setAutosaveFailed(true);}});},800);
     return()=>{active=false;clearTimeout(timer);};
-  },[syntax,options,analysis,dataset,display,scene,sessionReady,restoring]);
+  },[syntax,options,analysis,dataset,display,scene,sessionReady,restoring,fit,annotation,workspace]);
   const showExample=(i:number)=>{const f=fixtures[i];positions.current={};needsFit.current=true;
     committed.current=undefined;sceneRef.current=undefined;setScene(undefined);setValidSyntax('');
     setSelection([]);setSelectedParameter(undefined);setLinkSource(undefined);setTool('select');setActiveExample(f.id);setSyntax(f.syntax);setOptions({...defaultOptions,preset:examplePreset(f),groups:f.groups,meanstructure:f.groups>1});setDisplay(d=>({...d,title:en.exampleNames[i]}));};
@@ -185,29 +191,30 @@ export default function App(){
     ordered.forEach((n,i)=>{const value=distribute?min+(max-min)*i/(ordered.length-1):(min+max)/2,delta=value-n[axis];next[n.id][axis]=value;
       scene?.nodes.filter(e=>e.owner===n.id&&!selection.includes(e.id)).forEach(e=>next[e.id][axis]+=delta);});void applyPositions(next);
   };
-  const project=():Project=>({format:'forma-sem',version:2,syntax,options,analysis,datasetAttached:!!dataset,positions:positions.current,display,canonical:committed.current?.model,validSyntax:committed.current?.syntax});
-  const save=()=>{try{const p=project(),source=dataset&&includeDataset?runtime.current?.snapshotDataset():undefined;if(dataset&&includeDataset&&source?.query.id!==dataset.id)throw new Error('storage.missing');if(source)p.dataset=portableAttachment(source);downloadFile(JSON.stringify(p,null,2),`${display.title||'model'}.forma.json`,'application/json');notify(source?en.projectData.saved:en.saved);}catch(e){notify(errorText((e as Error).message));}};
+  const project=():Project=>({format:'forma-sem',version:3,syntax,options,analysis,datasetAttached:!!dataset,positions:positions.current,display,canonical:committed.current?.model,validSyntax:committed.current?.syntax,fit:fit?.datasetDigest?fit:undefined,annotation,workspace});
+  const save=()=>{try{const p=project(),source=dataset&&includeDataset?runtime.current?.snapshotDataset():undefined;if(dataset&&includeDataset&&source?.query.id!==dataset.id)throw new Error('storage.missing');if(source)p.dataset=portableAttachment(source);const blob=new Blob([JSON.stringify(p,null,2)],{type:'application/json'});if(blob.size>100*1024*1024)throw new Error('project.tooLarge');downloadBlob(blob,`${display.title||'model'}.forma.json`);notify(source?en.projectData.saved:en.saved);}catch(e){notify(errorText((e as Error).message));}};
   const loadProject=async(p:Project,source?:DatasetState)=>{
     serial.current++;geometryRevision.current++;fitSerial.current++;setRestoring(true);
     try{const valid=p.validSyntax??p.syntax;let canonical:CompiledModel|undefined,next:Scene|undefined;
       if(valid.trim()){const result=await runtime.current!.compile(valid,p.options);if(!result.ok)throw new Error(result.message);canonical=result;next=await layOut(result,p.positions);}
       const attachment=source||(p.dataset?attachmentState(p.dataset):undefined);let restored:Dataset|undefined;
       if(attachment)restored=(await runtime.current!.restoreDataset(attachment)).dataset;else await runtime.current!.discardDataset();
+      const restoredFit=p.fit?{...p.fit,datasetVerified:attachment?await verifySavedDataset(p.fit,attachment):false}:undefined;
       needsFit.current=true;acceptModel(valid,p.options,canonical,next);if(p.syntax!==valid){skipCompile.current=undefined;setSyntax(p.syntax);}
       history.current.reset({syntax:valid,options:p.options,positions:next?savedPositions(next):{}});setHistoryRevision(n=>n+1);
-      setAnalysis(p.analysis||defaultAnalysis);setDataset(restored);setFit(undefined);setFitError('');setAnnotation(defaultAnnotation);setTool('select');setDisplay(p.display);setWorkspace(restored?'model':p.datasetAttached?'data':'model');setIncludeDataset(true);setRevision(n=>n+1);
+      setAnalysis(p.analysis||defaultAnalysis);setDataset(restored);setFit(restoredFit);setFitError('');setAnnotation(p.annotation||defaultAnnotation);setTool('select');setDisplay(p.display);setWorkspace(p.workspace||(restoredFit?'results':restored?'model':p.datasetAttached?'data':'model'));setIncludeDataset(true);setRevision(n=>n+1);
       if(p.datasetAttached&&!restored)notify(en.workspace.reattach);else if(restored)notify(en.projectData.restored);
     }finally{setRestoring(false);}
   };
-  const open=async(file:File)=>{try{if(file.size>80*1024*1024)throw new Error('badProject');const p=readProject(JSON.parse(await file.text()));await loadProject(p);}catch(e){notify(errorText((e as Error).message||'badProject'));}};
+  const open=async(file:File)=>{try{if(file.size>100*1024*1024)throw new Error('project.tooLarge');const p=readProject(JSON.parse(await file.text()));await loadProject(p);}catch(e){notify(errorText((e as Error).message||'badProject'));}};
   const exportSvg=()=>{if(!viewScene||!exportReady||viewScene.diagnostics.length)return;downloadFile(renderSvg(viewScene,display),`${display.title||'model'}.svg`,'image/svg+xml');notify(en.exported);};
   const zoom=(factor:number)=>setViewport(v=>({x:v.x+v.width*(1-factor)/2,y:v.y+v.height*(1-factor)/2,width:v.width*factor,height:v.height*factor}));
   const names=useMemo(()=>[...new Set([...(scene?[...scene.model.observed,...scene.model.latent]:[]),...(dataset?.columns.map(c=>c.name)||[])])],[scene?.model,dataset]);
   const rows=viewScene?.model.table.filter(r=>!filter||`${r.lhs} ${r.op} ${r.rhs} ${r.label}`.toLowerCase().includes(filter.toLowerCase()))||[];
   const inspectedScript=canAnnotate&&viewScene?.model.analysisDisplay?fit!.result.script:rScript(committed.current?.syntax||syntax,viewScene?.model.options||options);
   const runAnalysis=async()=>{if(!dataset||!synced||fitting||restoring)return;const request=++fitSerial.current,key=currentKey,data=dataset;setFitting(true);setFitError('');
-    try{const result=await runtime.current!.request<FitResult>({action:'fit',id:data.id,revision:data.revision,text:syntax,options,analysis});if(request!==fitSerial.current)return;
-      setFit({key,datasetName:data.name,syntax,result,at:new Date().toISOString()});setAnnotation(v=>({...v,mode:'estimates'}));setWorkspace('results');
+    try{const source=runtime.current!.snapshotDataset();if(!source)throw new Error('storage.missing');const datasetDigest=await datasetFingerprint(source);const result=await runtime.current!.request<FitResult>({action:'fit',id:data.id,revision:data.revision,text:syntax,options,analysis});if(request!==fitSerial.current)return;
+      setFit({key,datasetName:data.name,syntax,result,at:new Date().toISOString(),datasetDigest,datasetVerified:true});setAnnotation(v=>({...v,mode:'estimates'}));setWorkspace('results');
     }catch(e){if(request===fitSerial.current){setFitError(messageText((e as Error).message));setWorkspace('results');}}finally{if(request===fitSerial.current)setFitting(false);}
   };
   const stopAnalysis=async()=>{fitSerial.current++;setFitting(false);await runtime.current?.restart();setRevision(n=>n+1);notify(en.workspace.cancelled);};
@@ -271,7 +278,7 @@ export default function App(){
         </div>}
       </section>
     </main>
-    <footer className="statusbar"><span className={`r-status ${working?'busy':''}`}><i/>{scene?`lavaan ${scene.model.versions.lavaan}`:stageText}</span><span>{scene?en.dragHint:en.startupHint}</span><label><input type="checkbox" checked={snap} onChange={e=>setSnap(e.target.checked)}/>{en.snap}</label><span className="autosave" title={autosaveFailed?en.projectData.autosaveFailed:undefined}>{autosaveFailed?en.projectData.autosaveFailed:autosaved?<><Icon name="check" size={12}/>{en.autosave}</>:en.pending}</span></footer>
+    <footer className="statusbar"><span className={`r-status ${working?'busy':''}`}><i/>{scene?`lavaan ${scene.model.versions.lavaan}`:stageText}</span><span>{scene?en.dragHint:en.startupHint}</span><label><input type="checkbox" checked={snap} onChange={e=>setSnap(e.target.checked)}/>{en.snap}</label>{offline&&<span title={en.offline.help}>{en.offline[offline]}</span>}<span className="autosave" title={autosaveFailed?en.projectData.autosaveFailed:undefined}>{autosaveFailed?en.projectData.autosaveFailed:autosaved?<><Icon name="check" size={12}/>{en.autosave}</>:en.pending}</span></footer>
     {exportDialog&&viewScene&&<ExportDialog scene={viewScene} display={display} onClose={()=>setExportDialog(false)}/>}
     <input ref={file} hidden type="file" accept=".json,application/json" onChange={e=>{const f=e.target.files?.[0];if(f)void open(f);e.target.value='';}}/>
     {notice&&<div className="toast" role="status"><Icon name="check" size={16}/>{notice}</div>}
