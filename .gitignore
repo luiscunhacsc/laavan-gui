@@ -9,3 +9,9 @@ evidence/phase-4/lo-profile/
 evidence/phase-4/tex-cache/
 dist/
 
+# Reproducible standalone desktop distributions and downloaded build runtimes.
+desktop/.stage/
+desktop/.cache/
+desktop/.work/
+releases/desktop/
+

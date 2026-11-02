@@ -1,0 +1,74 @@
+name: Standalone desktop packages
+on:
+  workflow_dispatch:
+  push:
+    tags: ['desktop-v*']
+permissions:
+  contents: read
+jobs:
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win32
+          - os: macos-latest
+            platform: darwin
+          - os: ubuntu-latest
+            platform: linux
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            app/package-lock.json
+            desktop/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Build bundled web app
+        working-directory: app
+        run: |
+          npm ci
+          npm test
+          npm run build
+          node scripts/check-build.mjs
+      - name: Install packaging tools
+        working-directory: desktop
+        run: npm ci --ignore-scripts
+      - name: Test local desktop server
+        working-directory: desktop
+        run: npm test
+      - name: Package both processor architectures
+        working-directory: desktop
+        run: |
+          node scripts/package.mjs --target=${{ matrix.platform }}-x64
+          node scripts/package.mjs --target=${{ matrix.platform }}-arm64
+      - name: Run actual packaged application
+        if: runner.os != 'Linux'
+        working-directory: desktop
+        run: npm run smoke
+      - name: Run actual packaged application on Linux
+        if: runner.os == 'Linux'
+        working-directory: desktop
+        run: xvfb-run -a npm run smoke
+      - name: Verify archives and record native test coverage
+        working-directory: desktop
+        run: npm run check
+      - name: Upload archives and validation reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: Forma-${{ matrix.platform }}
+          if-no-files-found: error
+          path: |
+            releases/desktop/**/*.zip
+            releases/desktop/**/*.tar.gz
+            releases/desktop/**/SHA256SUMS.txt
+            releases/desktop/**/downloads.json
+            releases/desktop/**/VALIDATION.json
+            releases/desktop/*/README.md
+            evidence/desktop/*.json

@@ -58,16 +58,24 @@ const css = readFileSync(new URL('../src/theme.css', import.meta.url), 'utf8');
 for (const [index, block] of [...css.matchAll(/:root(?:\[data-theme='dark'\])?\s*\{([^}]+)\}/g)].entries()) {
   test(`${index ? 'dark' : 'light'} palette maintains readable text and status contrast`, () => {
     const colors = Object.fromEntries([...block[1].matchAll(/--([\w-]+):\s*(#[\da-f]{6});/g)].map(match => [match[1], match[2]]));
-    const check = (ink: string, background: string) => {
+    const check = (ink: string, background: string, minimum = 4.5) => {
       const a = luminance(colors[ink]), b = luminance(colors[background]);
       const ratio = (Math.max(a, b) + .05) / (Math.min(a, b) + .05);
-      assert.ok(ratio >= 4.5, `${ink} on ${background}: ${ratio.toFixed(2)}:1`);
+      assert.ok(ratio >= minimum, `${ink} on ${background}: ${ratio.toFixed(2)}:1 (minimum ${minimum}:1)`);
     };
     for (const ink of ['text', 'text-strong', 'text-secondary', 'text-muted']) {
       for (const surface of ['surface', 'surface-subtle', 'surface-muted', 'surface-hover']) check(ink, surface);
     }
     for (const state of ['accent', 'success', 'warning', 'danger']) check(state === 'accent' ? 'accent-text' : state, `${state}-soft`);
     check('on-accent', 'accent');
+    // Small secondary labels and the theme/control outlines must stay distinct.
+    check('text-muted', 'surface', 7);
+    for (const surface of ['surface', 'surface-subtle', 'surface-muted', 'surface-hover']) {
+      check('border-strong', surface, 3);
+      check('focus', surface, 3);
+    }
+    check('accent-border', 'accent-soft', 3);
+    check('diagram-muted', 'diagram-fill');
     for (const syntax of ['comment', 'operator', 'number', 'keyword', 'string']) check(`syntax-${syntax}`, 'surface');
   });
 }

@@ -1,8 +1,8 @@
 {
   "passed": true,
-  "build": "0d36b7bcafcc5845118c",
+  "build": "330b14f4a2deb4dd6806",
   "assets": 141,
-  "bytes": 88328627,
+  "bytes": 88330254,
   "checks": [
     "all asset hashes and sizes",
     "browser entry import and worker startup without Node built-ins",

@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "build": "330b14f4a2deb4dd6806",
+  "checks": [
+    {
+      "target": "darwin-arm64",
+      "assets": 141,
+      "arch": "arm64",
+      "archiveHash": true
+    },
+    {
+      "target": "darwin-x64",
+      "assets": 141,
+      "arch": "x64",
+      "archiveHash": true
+    },
+    {
+      "target": "linux-arm64",
+      "assets": 141,
+      "arch": "arm64",
+      "archiveHash": true
+    },
+    {
+      "target": "linux-x64",
+      "assets": 141,
+      "arch": "x64",
+      "archiveHash": true
+    },
+    {
+      "target": "win32-arm64",
+      "assets": 141,
+      "arch": "arm64",
+      "archiveHash": true
+    },
+    {
+      "target": "win32-x64",
+      "assets": 141,
+      "arch": "x64",
+      "archiveHash": true
+    }
+  ],
+  "runtimeChecks": [
+    {
+      "target": "win32-x64",
+      "checks": [
+        "packaged Chromium window",
+        "sandboxed renderer without Node",
+        "offline startup",
+        "bundled R/lavaan model compilation",
+        "light/dark switching",
+        "bundled sample import",
+        "lavaan fit and results",
+        "IndexedDB and theme restoration after reload"
+      ]
+    }
+  ],
+  "pendingNativeRuntime": [
+    "darwin-arm64",
+    "darwin-x64",
+    "linux-arm64",
+    "linux-x64",
+    "win32-arm64"
+  ],
+  "developerSigned": false,
+  "notarized": false,
+  "scope": "All packages: archive checksums, contents, asset hashes, executable architectures. Actual native execution is verified only for the targets listed in runtimeChecks."
+}

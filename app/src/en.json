@@ -54,7 +54,7 @@
   "journal": "Journal",
   "presentation": "Presentation",
   "appearance": "Appearance",
-  "uiTheme": {"label": "Interface theme", "light": "Light", "dark": "Dark"},
+  "uiTheme": {"shortLabel": "Theme", "label": "Interface theme", "light": "Light", "dark": "Dark"},
   "zoomIn": "Zoom in",
   "zoomOut": "Zoom out",
   "fit": "Fit diagram",

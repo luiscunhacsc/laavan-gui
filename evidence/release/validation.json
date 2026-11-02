@@ -2,13 +2,13 @@
   "application": "Forma SEM Studio",
   "version": "1.0.0-rc.1",
   "status": "release-candidate",
-  "recordedAt": "2026-11-02T22:02:23.079569+00:00",
+  "recordedAt": "2026-11-02T22:15:35.077168+00:00",
   "build": {
     "application": "Forma",
     "version": "1.0.0-rc.1",
-    "build": "0d36b7bcafcc5845118c",
+    "build": "fd13154d4ceffed2d2d6",
     "files": 141,
-    "bytes": 88328627
+    "bytes": 88330321
   },
   "automatedTests": {
     "passed": 66,
@@ -112,9 +112,9 @@
   },
   "assetAndOfflineSimulation": {
     "passed": true,
-    "build": "0d36b7bcafcc5845118c",
+    "build": "fd13154d4ceffed2d2d6",
     "assets": 141,
-    "bytes": 88328627,
+    "bytes": 88330321,
     "checks": [
       "all asset hashes and sizes",
       "browser entry import and worker startup without Node built-ins",

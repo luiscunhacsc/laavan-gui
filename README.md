@@ -5,6 +5,14 @@ path analysis using datasets supplied by the user. It includes a spreadsheet-sty
 data viewer, model specification through syntax and drawing, lavaan estimation,
 annotated diagrams and analysis results. Data-free diagramming is also supported.
 
+Standalone desktop packages are available in
+`releases/desktop/Forma-1.0.0-rc.1/` for **Windows, macOS and Linux**, with
+**x64 and ARM64** editions. They include Chromium, Node.js, R/lavaan, import
+readers and fonts: no separate runtime installation or internet connection is
+needed. Extract the archive and open `Forma.exe` on Windows, `Forma.app` on
+macOS, or `Start-Forma.sh` on Linux. See the [desktop instructions](desktop/README.md)
+for building, project migration and validation limits.
+
 **The local release candidate, 1.0.0-rc.1, is ready** in `app/` and
 `releases/Forma-1.0.0-rc.1.zip`. It includes the data viewer, two-way model editor,
 SEM/CFA/path estimation, advanced analyses and publication exports, plus a

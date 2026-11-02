@@ -6,6 +6,20 @@ release includes its R/WebAssembly engine, packages and fonts.
 
 ## Start and keep your work
 
+The standalone desktop edition includes its own browser and runtime: extract
+the matching Windows, macOS or Linux package and open **Forma.exe**,
+**Forma.app** or **Start-Forma.sh** respectively. No Python, Node.js, R or
+internet connection is required. Choose ARM64 for Apple Silicon or Windows/Linux
+ARM computers and x64 for Intel/AMD computers. See the included desktop README
+for publisher-signing status and platform requirements.
+
+Desktop projects are autosaved in Forma's application-data folder, separately
+from browser-edition autosave. To transfer an existing browser analysis, use
+**Save project**, then **Open project** in the desktop app. Project files work
+across all three operating systems.
+
+The following launcher instructions apply to the alternative browser package.
+
 Extract the complete release ZIP. On Windows run `Start-Forma.cmd`; on macOS
 double-click `Start-Forma.command`; on Linux run `sh Start-Forma.sh` in the
 extracted folder. The launcher opens <http://127.0.0.1:8765/> in your browser.
@@ -38,8 +52,9 @@ containing a dataset contain that dataset's data and should be stored accordingl
 
 ## Load and inspect data
 
-Use **Light** or **Dark** in the header to change the interface theme. Forma uses
-your system appearance on the first visit and remembers your choice in this
+Use **Theme: Light / Dark** in the header to change the interface theme.
+On smaller windows, the labeled Theme row sits directly below the project controls.
+Forma uses your system appearance on the first visit and remembers your choice in this
 browser. The theme also applies to the syntax editor, diagram canvas, data and
 results. Journal and Presentation remain separate diagram export styles.
 

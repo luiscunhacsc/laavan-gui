@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "platform": "win32",
+  "arch": "x64",
+  "electron": "45.2.1",
+  "initial": {
+    "title": "Forma · SEM studio",
+    "nodes": 21,
+    "runtime": "lavaan 0.7.3",
+    "bundled": true,
+    "node": "undefined",
+    "offline": true
+  },
+  "restored": {
+    "theme": "dark",
+    "cards": 5,
+    "data": "Labelled mediation\n400 × 3"
+  },
+  "errors": [],
+  "checks": [
+    "packaged Chromium window",
+    "sandboxed renderer without Node",
+    "offline startup",
+    "bundled R/lavaan model compilation",
+    "light/dark switching",
+    "bundled sample import",
+    "lavaan fit and results",
+    "IndexedDB and theme restoration after reload"
+  ],
+  "asarSha256": "07b0e79ed48f088ca77799c1d221925be5bf0e4e01c21c412621fe0ef1950c4a",
+  "build": "330b14f4a2deb4dd6806",
+  "log": "\r\n"
+}

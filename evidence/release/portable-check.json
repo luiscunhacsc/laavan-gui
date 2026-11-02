@@ -1,9 +1,9 @@
 {
   "passed": true,
   "archive": "releases\\Forma-1.0.0-rc.1.zip",
-  "archiveBytes": 58518206,
-  "build": "0d36b7bcafcc5845118c",
-  "sha256": "34c884e88c207b57e344db1d29ed0063820ee34b88ce8bde15906434789630c6",
+  "archiveBytes": 58518545,
+  "build": "fd13154d4ceffed2d2d6",
+  "sha256": "d89e0eed07ad38744ac98e16bd7c8b1af3e9d1302624f6b7116d3cca2ef7a6b1",
   "files": 263,
   "httpAssets": 141,
   "checks": [

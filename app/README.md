@@ -7,6 +7,12 @@ and [13 reference figures](../docs/phase-4-gallery.html).
 
 ## Use the portable application
 
+For a desktop application with everything included, use the
+[standalone desktop packages](../desktop/README.md) under
+`releases/desktop/Forma-1.0.0-rc.1/`. Windows, macOS and Linux editions include
+their own browser/runtime and require no Python, Node.js or R installation.
+The browser-based package below is retained as an alternative.
+
 Extract `releases/Forma-1.0.0-rc.1.zip`. Run `Start-Forma.cmd` on Windows,
 double-click `Start-Forma.command` on macOS, or run `sh Start-Forma.sh` on Linux.
 The launcher opens <http://127.0.0.1:8765/> and binds to loopback only. Python 3.8

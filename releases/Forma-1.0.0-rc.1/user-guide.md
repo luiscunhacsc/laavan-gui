@@ -38,8 +38,9 @@ containing a dataset contain that dataset's data and should be stored accordingl
 
 ## Load and inspect data
 
-Use **Light** or **Dark** in the header to change the interface theme. Forma uses
-your system appearance on the first visit and remembers your choice in this
+Use **Theme: Light / Dark** in the header to change the interface theme.
+On smaller windows, the labeled Theme row sits directly below the project controls.
+Forma uses your system appearance on the first visit and remembers your choice in this
 browser. The theme also applies to the syntax editor, diagram canvas, data and
 results. Journal and Presentation remain separate diagram export styles.
 
